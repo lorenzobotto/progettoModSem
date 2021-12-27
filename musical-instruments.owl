@@ -1,0 +1,845 @@
+Prefix(:=<http://www.semanticweb.org/musical-instruments#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/musical-instruments>
+Annotation(<http://purl.org/dc/elements/1.1/creator> "Lorenzo Botto")
+Annotation(<http://purl.org/dc/elements/1.1/date> "25/01/2021")
+Annotation(<http://purl.org/dc/elements/1.1/description> "L'ontologia \"musical-instruments\" rappresenta l'intera conoscenza di un'enciclopedia per gli amanti della musica. Incorpora il vocabolario FOAF per la descrizione dei produttori degli strumenti musicali.")
+Annotation(<http://purl.org/dc/elements/1.1/title> "Strumenti Musicali - Un'enciclopedia per gli amanti della musica")
+Annotation(<http://www.semanticweb.org/musical-instrumentsmusical-instruments#vann:preferredNamespacePrefix> "http://www.music.com/musical-instruments")
+Annotation(<http://www.semanticweb.org/musical-instrumentsmusical-instruments#vann:preferredNamespaceUri> "musical-instruments")
+Annotation(rdfs:label "musical-instruments")
+
+Declaration(Class(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag>))
+Declaration(Class(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection>))
+Declaration(Class(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item>))
+Declaration(Class(:Artista))
+Declaration(Class(:Bacchette))
+Declaration(Class(:BandMusicale))
+Declaration(Class(:Bassista))
+Declaration(Class(:Basso))
+Declaration(Class(:Batteria))
+Declaration(Class(:BatteriaAcustica))
+Declaration(Class(:BatteriaElettronica))
+Declaration(Class(:Batterista))
+Declaration(Class(:Cantante))
+Declaration(Class(:CasaProduttrice))
+Declaration(Class(:CasaProduttriceBasso))
+Declaration(Class(:CasaProduttriceBatteria))
+Declaration(Class(:CasaProduttriceChitarra))
+Declaration(Class(:CasaProduttriceMicrofono))
+Declaration(Class(:CasaProduttriceTastiera))
+Declaration(Class(:Chitarra))
+Declaration(Class(:ChitarraAPiuCorde))
+Declaration(Class(:ChitarraAcustica))
+Declaration(Class(:ChitarraElettrica))
+Declaration(Class(:ChitarraGibson))
+Declaration(Class(:ChitarraStratocaster))
+Declaration(Class(:ChitarraTelecaster))
+Declaration(Class(:Chitarrista))
+Declaration(Class(:Citta))
+Declaration(Class(:CittaAmericana))
+Declaration(Class(:CittaItaliana))
+Declaration(Class(:GenereMusicale))
+Declaration(Class(:Gruppo))
+Declaration(Class(:Microfono))
+Declaration(Class(:Oggetto))
+Declaration(Class(:Origine))
+Declaration(Class(:OrigineAmericana))
+Declaration(Class(:OrigineItaliana))
+Declaration(Class(:Plettro))
+Declaration(Class(:Solista))
+Declaration(Class(:StrumentoMusicale))
+Declaration(Class(:Tastiera))
+Declaration(Class(:Tastierista))
+Declaration(ObjectProperty(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem>))
+Declaration(ObjectProperty(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent>))
+Declaration(ObjectProperty(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf>))
+Declaration(ObjectProperty(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember>))
+Declaration(ObjectProperty(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf>))
+Declaration(ObjectProperty(:haLavoratori))
+Declaration(ObjectProperty(:lavoraIn))
+Declaration(ObjectProperty(:prodottoDa))
+Declaration(ObjectProperty(:produce))
+Declaration(ObjectProperty(:suona))
+Declaration(ObjectProperty(:suonatoCon))
+Declaration(ObjectProperty(:suonatoDa))
+Declaration(ObjectProperty(:suonatoIn))
+Declaration(ObjectProperty(:ubicataDa))
+Declaration(ObjectProperty(:ubicataIn))
+Declaration(ObjectProperty(:utilizza))
+Declaration(ObjectProperty(:utilizzatoDa))
+Declaration(ObjectProperty(<http://xmlns.com/foaf/0.1/member>))
+Declaration(DataProperty(:BodyChitarra))
+Declaration(DataProperty(:FondataNel))
+Declaration(DataProperty(:HaNumeroArtisti))
+Declaration(DataProperty(:HaNumeroCorde))
+Declaration(DataProperty(:LegniChitarra))
+Declaration(DataProperty(:NomeBandMusicale))
+Declaration(DataProperty(:NomeCasaProduttrice))
+Declaration(DataProperty(:NomeCitta))
+Declaration(DataProperty(:NomeGenereMusicale))
+Declaration(DataProperty(:NomeStrumentoMusicale))
+Declaration(DataProperty(:PonteChitarra))
+Declaration(DataProperty(<http://xmlns.com/foaf/0.1/age>))
+Declaration(DataProperty(<http://xmlns.com/foaf/0.1/birthday>))
+Declaration(DataProperty(<http://xmlns.com/foaf/0.1/firstName>))
+Declaration(DataProperty(<http://xmlns.com/foaf/0.1/gender>))
+Declaration(DataProperty(<http://xmlns.com/foaf/0.1/lastName>))
+Declaration(NamedIndividual(:Blues))
+Declaration(NamedIndividual(:Bongo6))
+Declaration(NamedIndividual(:DreamTheater))
+Declaration(NamedIndividual(:GibsonGuitar))
+Declaration(NamedIndividual(:GoldTop))
+Declaration(NamedIndividual(:JoeBonamassa))
+Declaration(NamedIndividual(:JohnMyung))
+Declaration(NamedIndividual(:JohnPetrucci))
+Declaration(NamedIndividual(:LosAngeles))
+Declaration(NamedIndividual(:Majesty7))
+Declaration(NamedIndividual(:Majesty8))
+Declaration(NamedIndividual(:MusicMan))
+Declaration(NamedIndividual(:Nashville))
+Declaration(NamedIndividual(:PlettroJoe))
+Declaration(NamedIndividual(:PlettroJohnMyung))
+Declaration(NamedIndividual(:PlettroJohnPetrucci))
+Declaration(NamedIndividual(:ProgressiveMetal))
+Declaration(NamedIndividual(:SanLuisObispo))
+Declaration(NamedIndividual(:SolistaJoe))
+Declaration(AnnotationProperty(<http://purl.org/dc/elements/1.1/creator>))
+Declaration(AnnotationProperty(<http://purl.org/dc/elements/1.1/date>))
+Declaration(AnnotationProperty(<http://purl.org/dc/elements/1.1/description>))
+Declaration(AnnotationProperty(<http://purl.org/dc/elements/1.1/title>))
+Declaration(AnnotationProperty(<http://www.semanticweb.org/musical-instrumentsmusical-instruments#vann:preferredNamespacePrefix>))
+Declaration(AnnotationProperty(<http://www.semanticweb.org/musical-instrumentsmusical-instruments#vann:preferredNamespaceUri>))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem> (has item)
+
+AnnotationAssertion(rdfs:comment <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem> "has item - The link to every item of the Bag"^^xsd:string)
+AnnotationAssertion(rdfs:label <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem> "has item"^^xsd:string)
+SubObjectPropertyOf(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember>)
+InverseObjectProperties(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem> <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf>)
+ObjectPropertyDomain(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem> <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag>)
+ObjectPropertyRange(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item>)
+
+# Object Property: <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent> (item content)
+
+AnnotationAssertion(rdfs:comment <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent> "itemContent - The link to the actual resource to which the item refers."^^xsd:string)
+AnnotationAssertion(rdfs:label <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent> "item content"^^xsd:string)
+ObjectPropertyDomain(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item>)
+ObjectPropertyRange(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent> ObjectComplementOf(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item>))
+
+# Object Property: <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf> (item of)
+
+AnnotationAssertion(rdfs:comment <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf> "item of - The link from an item to the Bag where it is contained"^^xsd:string)
+AnnotationAssertion(rdfs:label <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf> "item of"^^xsd:string)
+SubObjectPropertyOf(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf>)
+ObjectPropertyDomain(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item>)
+ObjectPropertyRange(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf> <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag>)
+
+# Object Property: <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> (has member)
+
+AnnotationAssertion(rdfs:comment <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> "A relation between collections and entities, e.g. 'my collection of saxophones includes an old Adolphe Sax original alto' (i.e. my collection has member an Adolphe Sax alto)."@en)
+AnnotationAssertion(rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl>)
+AnnotationAssertion(rdfs:label <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> "has member"@en)
+InverseObjectProperties(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf>)
+ObjectPropertyDomain(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection>)
+ObjectPropertyRange(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> owl:Thing)
+
+# Object Property: <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> (is member of)
+
+AnnotationAssertion(rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl>)
+AnnotationAssertion(rdfs:label <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> "is member of"@en)
+ObjectPropertyDomain(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> owl:Thing)
+ObjectPropertyRange(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection>)
+
+# Object Property: :haLavoratori (haLavoratori)
+
+AnnotationAssertion(rdfs:comment :haLavoratori "Una band musicale è rappresentata dagli artisti che suonano"@it)
+AnnotationAssertion(rdfs:label :haLavoratori "haLavoratori"@it)
+InverseObjectProperties(:haLavoratori :lavoraIn)
+ObjectPropertyDomain(:haLavoratori :BandMusicale)
+ObjectPropertyRange(:haLavoratori :Artista)
+
+# Object Property: :lavoraIn (lavoraIn)
+
+AnnotationAssertion(rdfs:comment :lavoraIn "Rappresenta gli artisti che suonano in una band musicale"@it)
+AnnotationAssertion(rdfs:label :lavoraIn "lavoraIn"@it)
+ObjectPropertyDomain(:lavoraIn :Artista)
+ObjectPropertyRange(:lavoraIn :BandMusicale)
+
+# Object Property: :prodottoDa (prodottoDa)
+
+AnnotationAssertion(rdfs:comment :prodottoDa "Rappresenta lo strumento musicale da quale casa produttrice è prodotto"@it)
+AnnotationAssertion(rdfs:label :prodottoDa "prodottoDa"@it)
+InverseObjectProperties(:prodottoDa :produce)
+ObjectPropertyDomain(:prodottoDa :StrumentoMusicale)
+ObjectPropertyRange(:prodottoDa :CasaProduttrice)
+
+# Object Property: :produce (produce)
+
+AnnotationAssertion(rdfs:comment :produce "Rappresenta la casa produttrice che produce uno strumento musicale"@it)
+AnnotationAssertion(rdfs:label :produce "produce"@it)
+ObjectPropertyDomain(:produce :CasaProduttrice)
+ObjectPropertyRange(:produce :StrumentoMusicale)
+
+# Object Property: :suona (suona)
+
+AnnotationAssertion(rdfs:comment :suona "Rappresenta l'artista che suona lo strumento musicale"@it)
+AnnotationAssertion(rdfs:label :suona "suona"@it)
+InverseObjectProperties(:suona :suonatoDa)
+ObjectPropertyDomain(:suona :Artista)
+ObjectPropertyRange(:suona :StrumentoMusicale)
+
+# Object Property: :suonatoCon (suonatoCon)
+
+AnnotationAssertion(rdfs:comment :suonatoCon "Rappresenta con quale ogetto è suonato lo strumento musicale"@it)
+AnnotationAssertion(rdfs:label :suonatoCon "suonatoCon"@it)
+FunctionalObjectProperty(:suonatoCon)
+ObjectPropertyDomain(:suonatoCon :StrumentoMusicale)
+ObjectPropertyRange(:suonatoCon :Oggetto)
+
+# Object Property: :suonatoDa (suonatoDa)
+
+AnnotationAssertion(rdfs:comment :suonatoDa "Lo strumento musicale è rappresentato dagli artisti che lo suonano"@it)
+AnnotationAssertion(rdfs:label :suonatoDa "suonatoDa"@it)
+ObjectPropertyDomain(:suonatoDa :StrumentoMusicale)
+ObjectPropertyRange(:suonatoDa :Artista)
+
+# Object Property: :suonatoIn (suonatoIn)
+
+AnnotationAssertion(rdfs:comment :suonatoIn "Rappresenta in quale genere musicali si suonano gli strumenti musicali"@it)
+AnnotationAssertion(rdfs:label :suonatoIn "suonatoIn"@it)
+ObjectPropertyDomain(:suonatoIn :StrumentoMusicale)
+ObjectPropertyRange(:suonatoIn :GenereMusicale)
+
+# Object Property: :ubicataDa (ubicataDa)
+
+AnnotationAssertion(rdfs:comment :ubicataDa "Rappresenta una città che è ubicata da una casa produttrice"@it)
+AnnotationAssertion(rdfs:label :ubicataDa "ubicataDa"@it)
+InverseObjectProperties(:ubicataDa :ubicataIn)
+ObjectPropertyDomain(:ubicataDa :Citta)
+ObjectPropertyRange(:ubicataDa :CasaProduttrice)
+
+# Object Property: :ubicataIn (ubicataIn)
+
+AnnotationAssertion(rdfs:comment :ubicataIn "Rappresenta una casa produttrice ubicata in una città"@it)
+AnnotationAssertion(rdfs:label :ubicataIn "ubicataIn"@it)
+FunctionalObjectProperty(:ubicataIn)
+ObjectPropertyDomain(:ubicataIn :CasaProduttrice)
+ObjectPropertyRange(:ubicataIn :Citta)
+
+# Object Property: :utilizza (utilizza)
+
+AnnotationAssertion(rdfs:comment :utilizza "Rappresenta l'artiche che utilizza un oggetto per suonare uno strumento musicale"@it)
+AnnotationAssertion(rdfs:label :utilizza "utilizza"@it)
+InverseObjectProperties(:utilizza :utilizzatoDa)
+FunctionalObjectProperty(:utilizza)
+ObjectPropertyDomain(:utilizza :Artista)
+ObjectPropertyRange(:utilizza :Oggetto)
+
+# Object Property: :utilizzatoDa (utilizzatoDa)
+
+AnnotationAssertion(rdfs:comment :utilizzatoDa "Rappresenta un oggetto che è utilizzato da un'artista per suonare uno strumento musicale"@it)
+AnnotationAssertion(rdfs:label :utilizzatoDa "utilizzatoDa"@it)
+ObjectPropertyDomain(:utilizzatoDa :Oggetto)
+ObjectPropertyRange(:utilizzatoDa :Artista)
+
+# Object Property: <http://xmlns.com/foaf/0.1/member> ((foaf) member)
+
+AnnotationAssertion(rdfs:comment <http://xmlns.com/foaf/0.1/member> "member - Indicates a member of a Group"@en)
+AnnotationAssertion(rdfs:label <http://xmlns.com/foaf/0.1/member> "(foaf) member"@en)
+ObjectPropertyDomain(<http://xmlns.com/foaf/0.1/member> :Artista)
+ObjectPropertyRange(<http://xmlns.com/foaf/0.1/member> :BandMusicale)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: :BodyChitarra (BodyChitarra)
+
+AnnotationAssertion(rdfs:comment :BodyChitarra "Tipo del body della chitarra"@it)
+AnnotationAssertion(rdfs:label :BodyChitarra "BodyChitarra"@en)
+DataPropertyDomain(:BodyChitarra :Chitarra)
+DataPropertyRange(:BodyChitarra xsd:string)
+
+# Data Property: :FondataNel (FondataNel)
+
+AnnotationAssertion(rdfs:comment :FondataNel "Anno di fondazione della casa produttrice"@it)
+AnnotationAssertion(rdfs:label :FondataNel "FondataNel"@it)
+DataPropertyDomain(:FondataNel :CasaProduttrice)
+DataPropertyRange(:FondataNel xsd:integer)
+
+# Data Property: :HaNumeroArtisti (HaNumeroArtisti)
+
+AnnotationAssertion(rdfs:comment :HaNumeroArtisti "Rappresenta un dato di tipo intero per indicare il numero degli artisti"@it)
+AnnotationAssertion(rdfs:label :HaNumeroArtisti "HaNumeroArtisti"@it)
+DataPropertyDomain(:HaNumeroArtisti :Artista)
+DataPropertyRange(:HaNumeroArtisti xsd:integer)
+
+# Data Property: :HaNumeroCorde (HaNumeroCorde)
+
+AnnotationAssertion(rdfs:comment :HaNumeroCorde "Numero delle corde di una chitarra"@it)
+AnnotationAssertion(rdfs:label :HaNumeroCorde "HaNumeroCorde"@it)
+DataPropertyDomain(:HaNumeroCorde ObjectUnionOf(:Basso :Chitarra))
+DataPropertyRange(:HaNumeroCorde xsd:integer)
+
+# Data Property: :LegniChitarra (LegniChitarra)
+
+AnnotationAssertion(rdfs:comment :LegniChitarra "I legni utilizzati per la chitarra"@it)
+AnnotationAssertion(rdfs:label :LegniChitarra "LegniChitarra"@it)
+DataPropertyDomain(:LegniChitarra :Chitarra)
+DataPropertyRange(:LegniChitarra xsd:string)
+
+# Data Property: :NomeBandMusicale (NomeBandMusicale)
+
+AnnotationAssertion(rdfs:comment :NomeBandMusicale "Nome della band musicale o solista"@it)
+AnnotationAssertion(rdfs:label :NomeBandMusicale "NomeBandMusicale"@it)
+DataPropertyDomain(:NomeBandMusicale :BandMusicale)
+DataPropertyRange(:NomeBandMusicale xsd:string)
+
+# Data Property: :NomeCasaProduttrice (NomeCasaProduttrice)
+
+AnnotationAssertion(rdfs:comment :NomeCasaProduttrice "Nome della casa produttrice"@it)
+AnnotationAssertion(rdfs:label :NomeCasaProduttrice "NomeCasaProduttrice"@it)
+DataPropertyDomain(:NomeCasaProduttrice :CasaProduttrice)
+DataPropertyRange(:NomeCasaProduttrice xsd:string)
+
+# Data Property: :NomeCitta (NomeCitta)
+
+AnnotationAssertion(rdfs:comment :NomeCitta "Nome della città"@it)
+AnnotationAssertion(rdfs:label :NomeCitta "NomeCitta"@it)
+DataPropertyDomain(:NomeCitta :Citta)
+DataPropertyRange(:NomeCitta xsd:string)
+
+# Data Property: :NomeGenereMusicale (NomeGenereMusicale)
+
+AnnotationAssertion(rdfs:comment :NomeGenereMusicale "Nome del genere musicale"@it)
+AnnotationAssertion(rdfs:label :NomeGenereMusicale "NomeGenereMusicale"@it)
+DataPropertyDomain(:NomeGenereMusicale :GenereMusicale)
+DataPropertyRange(:NomeGenereMusicale xsd:string)
+
+# Data Property: :NomeStrumentoMusicale (NomeStrumentoMusicale)
+
+AnnotationAssertion(rdfs:comment :NomeStrumentoMusicale "Nome di uno strumento musicale"@it)
+AnnotationAssertion(rdfs:label :NomeStrumentoMusicale "NomeStrumentoMusicale"@it)
+DataPropertyDomain(:NomeStrumentoMusicale :StrumentoMusicale)
+DataPropertyRange(:NomeStrumentoMusicale xsd:string)
+
+# Data Property: :PonteChitarra (PonteChitarra)
+
+AnnotationAssertion(rdfs:comment :PonteChitarra "Ponte della chitarra"@it)
+AnnotationAssertion(rdfs:label :PonteChitarra "PonteChitarra"@it)
+DataPropertyDomain(:PonteChitarra :Chitarra)
+DataPropertyRange(:PonteChitarra xsd:string)
+
+# Data Property: <http://xmlns.com/foaf/0.1/age> ((foaf) età)
+
+AnnotationAssertion(rdfs:label <http://xmlns.com/foaf/0.1/age> "(foaf) età"@it)
+DataPropertyDomain(<http://xmlns.com/foaf/0.1/age> :Artista)
+DataPropertyRange(<http://xmlns.com/foaf/0.1/age> xsd:nonNegativeInteger)
+
+# Data Property: <http://xmlns.com/foaf/0.1/birthday> ((foaf) data di nascita)
+
+AnnotationAssertion(rdfs:label <http://xmlns.com/foaf/0.1/birthday> "(foaf) data di nascita"@it)
+DataPropertyDomain(<http://xmlns.com/foaf/0.1/birthday> :Artista)
+DataPropertyRange(<http://xmlns.com/foaf/0.1/birthday> xsd:string)
+
+# Data Property: <http://xmlns.com/foaf/0.1/firstName> ((foaf) nome)
+
+AnnotationAssertion(rdfs:label <http://xmlns.com/foaf/0.1/firstName> "(foaf) nome"@it)
+DataPropertyDomain(<http://xmlns.com/foaf/0.1/firstName> :Artista)
+DataPropertyRange(<http://xmlns.com/foaf/0.1/firstName> xsd:string)
+
+# Data Property: <http://xmlns.com/foaf/0.1/gender> ((foaf) genere)
+
+AnnotationAssertion(rdfs:label <http://xmlns.com/foaf/0.1/gender> "(foaf) genere"@it)
+DataPropertyDomain(<http://xmlns.com/foaf/0.1/gender> :Artista)
+DataPropertyRange(<http://xmlns.com/foaf/0.1/gender> xsd:string)
+
+# Data Property: <http://xmlns.com/foaf/0.1/lastName> ((foaf) cognome)
+
+AnnotationAssertion(rdfs:label <http://xmlns.com/foaf/0.1/lastName> "(foaf) cognome"@it)
+DataPropertyDomain(<http://xmlns.com/foaf/0.1/lastName> :Artista)
+DataPropertyRange(<http://xmlns.com/foaf/0.1/lastName> xsd:string)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag> ((collections) Bag)
+
+AnnotationAssertion(rdfs:comment <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag> "Bag - Collection that can have a number of copies of each object"^^xsd:string)
+AnnotationAssertion(rdfs:label <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag> "(collections) Bag"^^xsd:string)
+SubClassOf(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection>)
+
+# Class: <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> (Collection)
+
+AnnotationAssertion(rdfs:comment <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> "Any container for entities that share one or more common properties. E.g. \"stone objects\", \"the nurses\", \"the Louvre Aegyptian collection\". A collection is not a logical class: a collection is a first-order entity, while a class is a second-order one.")
+AnnotationAssertion(rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl>)
+AnnotationAssertion(rdfs:label <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> "Collection"@en)
+DisjointClasses(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item>)
+
+# Class: <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item> (item)
+
+AnnotationAssertion(rdfs:comment <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item> "Item - Element belonging to a Bag"^^xsd:string)
+AnnotationAssertion(rdfs:label <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item> "item"^^xsd:string)
+SubClassOf(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item> owl:Thing)
+SubClassOf(<http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item> ObjectExactCardinality(1 <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent>))
+
+# Class: :Artista (Artista)
+
+AnnotationAssertion(rdfs:comment :Artista "Artista in campo musicale"@it)
+AnnotationAssertion(rdfs:label :Artista "Artista"@it)
+EquivalentClasses(:Artista ObjectIntersectionOf(ObjectSomeValuesFrom(:lavoraIn :BandMusicale) ObjectMinCardinality(1 :suona :StrumentoMusicale)))
+
+# Class: :Bacchette (Bacchette)
+
+AnnotationAssertion(rdfs:comment :Bacchette "Oggetto utilizzato per suonare la batteria (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :Bacchette "Bacchette"@it)
+EquivalentClasses(:Bacchette ObjectSomeValuesFrom(:utilizzatoDa :Batterista))
+SubClassOf(:Bacchette :Oggetto)
+
+# Class: :BandMusicale (BandMusicale)
+
+AnnotationAssertion(rdfs:comment :BandMusicale "Band musicale che si ebisce o suona"@it)
+AnnotationAssertion(rdfs:label :BandMusicale "BandMusicale"@it)
+EquivalentClasses(:BandMusicale ObjectSomeValuesFrom(:haLavoratori :Artista))
+
+# Class: :Bassista (Bassista)
+
+AnnotationAssertion(rdfs:comment :Bassista "Artista che suona il basso (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :Bassista "Bassista"@it)
+EquivalentClasses(:Bassista ObjectMinCardinality(1 :suona :Basso))
+SubClassOf(:Bassista :Artista)
+
+# Class: :Basso (Basso)
+
+AnnotationAssertion(rdfs:comment :Basso "Descrive il Basso (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :Basso "Basso"@it)
+EquivalentClasses(:Basso ObjectIntersectionOf(ObjectSomeValuesFrom(:prodottoDa :CasaProduttriceBasso) ObjectSomeValuesFrom(:suonatoCon :Plettro) ObjectSomeValuesFrom(:suonatoDa :Bassista)))
+SubClassOf(:Basso :StrumentoMusicale)
+
+# Class: :Batteria (Batteria)
+
+AnnotationAssertion(rdfs:comment :Batteria "Descrive la batteria (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :Batteria "Batteria"@it)
+EquivalentClasses(:Batteria ObjectIntersectionOf(ObjectSomeValuesFrom(:prodottoDa :CasaProduttriceBatteria) ObjectSomeValuesFrom(:suonatoCon :Bacchette) ObjectSomeValuesFrom(:suonatoDa :Batterista)))
+SubClassOf(:Batteria :StrumentoMusicale)
+
+# Class: :BatteriaAcustica (BatteriaAcustica)
+
+AnnotationAssertion(rdfs:comment :BatteriaAcustica "Descrive la categoria delle batterie acustiche"@it)
+AnnotationAssertion(rdfs:label :BatteriaAcustica "BatteriaAcustica"@it)
+SubClassOf(:BatteriaAcustica :Batteria)
+
+# Class: :BatteriaElettronica (BatteriaElettronica)
+
+AnnotationAssertion(rdfs:comment :BatteriaElettronica "Descrive la categoria delle batterie elettroniche"@it)
+AnnotationAssertion(rdfs:label :BatteriaElettronica "BatteriaElettronica"@it)
+SubClassOf(:BatteriaElettronica :Batteria)
+
+# Class: :Batterista (Batterista)
+
+AnnotationAssertion(rdfs:comment :Batterista "Artista che suona la batteria (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :Batterista "Batterista"@it)
+EquivalentClasses(:Batterista ObjectMinCardinality(1 :suona :Batteria))
+SubClassOf(:Batterista :Artista)
+
+# Class: :Cantante (Cantante)
+
+AnnotationAssertion(rdfs:comment :Cantante "Artista che canta in una band musicale"@it)
+AnnotationAssertion(rdfs:label :Cantante "Cantante"@it)
+EquivalentClasses(:Cantante ObjectMinCardinality(1 :suona :Microfono))
+SubClassOf(:Cantante :Artista)
+
+# Class: :CasaProduttrice (CasaProduttrice)
+
+AnnotationAssertion(rdfs:comment :CasaProduttrice "Descrive la casa produttrice di uno strumento musicale"@it)
+AnnotationAssertion(rdfs:label :CasaProduttrice "CasaProduttrice"@it)
+
+# Class: :CasaProduttriceBasso (CasaProduttriceBasso)
+
+AnnotationAssertion(rdfs:comment :CasaProduttriceBasso "Case produttrici di bassi (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :CasaProduttriceBasso "CasaProduttriceBasso"@it)
+EquivalentClasses(:CasaProduttriceBasso ObjectSomeValuesFrom(:produce :Basso))
+SubClassOf(:CasaProduttriceBasso :CasaProduttrice)
+
+# Class: :CasaProduttriceBatteria (CasaProduttriceBatteria)
+
+AnnotationAssertion(rdfs:comment :CasaProduttriceBatteria "Case produttrici delle batterie (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :CasaProduttriceBatteria "CasaProduttriceBatteria"@it)
+EquivalentClasses(:CasaProduttriceBatteria ObjectSomeValuesFrom(:produce :Batteria))
+SubClassOf(:CasaProduttriceBatteria :CasaProduttrice)
+
+# Class: :CasaProduttriceChitarra (CasaProduttriceChitarra)
+
+AnnotationAssertion(rdfs:comment :CasaProduttriceChitarra "Case produttrici di chitarre"@it)
+AnnotationAssertion(rdfs:label :CasaProduttriceChitarra "CasaProduttriceChitarra"@it)
+EquivalentClasses(:CasaProduttriceChitarra ObjectSomeValuesFrom(:produce :Chitarra))
+SubClassOf(:CasaProduttriceChitarra :CasaProduttrice)
+
+# Class: :CasaProduttriceMicrofono (CasaProduttriceMicrofono)
+
+AnnotationAssertion(rdfs:label :CasaProduttriceMicrofono "Casa che produce i microfoni (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :CasaProduttriceMicrofono "CasaProduttriceMicrofono"@it)
+EquivalentClasses(:CasaProduttriceMicrofono ObjectSomeValuesFrom(:produce :Microfono))
+SubClassOf(:CasaProduttriceMicrofono :CasaProduttrice)
+
+# Class: :CasaProduttriceTastiera (CasaProduttriceTastiera)
+
+AnnotationAssertion(rdfs:comment :CasaProduttriceTastiera "Case produttrici di tastiere (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :CasaProduttriceTastiera "CasaProduttriceTastiera"@it)
+EquivalentClasses(:CasaProduttriceTastiera ObjectSomeValuesFrom(:produce :Tastiera))
+SubClassOf(:CasaProduttriceTastiera :CasaProduttrice)
+
+# Class: :Chitarra (Chitarra)
+
+AnnotationAssertion(rdfs:comment :Chitarra "Descrive la chitarra"@it)
+AnnotationAssertion(rdfs:label :Chitarra "Chitarra"@it)
+EquivalentClasses(:Chitarra ObjectIntersectionOf(ObjectSomeValuesFrom(:prodottoDa :CasaProduttriceChitarra) ObjectSomeValuesFrom(:suonatoCon :Plettro) ObjectSomeValuesFrom(:suonatoDa :Chitarrista)))
+SubClassOf(:Chitarra :StrumentoMusicale)
+
+# Class: :ChitarraAPiuCorde (ChitarraAPiuCorde)
+
+AnnotationAssertion(rdfs:comment :ChitarraAPiuCorde "Descrive la categoria delle chitarre \"a più corde\""@it)
+AnnotationAssertion(rdfs:label :ChitarraAPiuCorde "ChitarraAPiuCorde"@it)
+SubClassOf(:ChitarraAPiuCorde :ChitarraElettrica)
+
+# Class: :ChitarraAcustica (ChitarraAcustica)
+
+AnnotationAssertion(rdfs:comment :ChitarraAcustica "Descrive la categoria delle chitarre acustiche"@it)
+AnnotationAssertion(rdfs:label :ChitarraAcustica "ChitarraAcustica"@it)
+SubClassOf(:ChitarraAcustica :Chitarra)
+
+# Class: :ChitarraElettrica (ChitarraElettrica)
+
+AnnotationAssertion(rdfs:comment :ChitarraElettrica "Descrive la categoria delle chitarre elettriche"@it)
+AnnotationAssertion(rdfs:label :ChitarraElettrica "ChitarraElettrica"@it)
+SubClassOf(:ChitarraElettrica :Chitarra)
+
+# Class: :ChitarraGibson (ChitarraGibson)
+
+AnnotationAssertion(rdfs:comment :ChitarraGibson "Descrive la categoria delle chitarre \"Gibson\""@it)
+AnnotationAssertion(rdfs:label :ChitarraGibson "ChitarraGibson"@it)
+SubClassOf(:ChitarraGibson :ChitarraElettrica)
+
+# Class: :ChitarraStratocaster (ChitarraStratocaster)
+
+AnnotationAssertion(rdfs:comment :ChitarraStratocaster "Descrive la categoria delle chitarre \"Stratocaster\""@it)
+AnnotationAssertion(rdfs:label :ChitarraStratocaster "ChitarraStratocaster"@it)
+SubClassOf(:ChitarraStratocaster :ChitarraElettrica)
+
+# Class: :ChitarraTelecaster (ChitarraTelecaster)
+
+AnnotationAssertion(rdfs:comment :ChitarraTelecaster "Descrive la categoria delle chitarre \"Telecaster\""@it)
+AnnotationAssertion(rdfs:label :ChitarraTelecaster "ChitarraTelecaster"@it)
+SubClassOf(:ChitarraTelecaster :ChitarraElettrica)
+
+# Class: :Chitarrista (Chitarrista)
+
+AnnotationAssertion(rdfs:comment :Chitarrista "Artista che suona la chitarra"@it)
+AnnotationAssertion(rdfs:label :Chitarrista "Chitarrista"@it)
+EquivalentClasses(:Chitarrista ObjectMinCardinality(1 :suona :Chitarra))
+SubClassOf(:Chitarrista :Artista)
+
+# Class: :Citta (Citta)
+
+AnnotationAssertion(rdfs:comment :Citta "Città dove è ubicata una casa produttrice"@it)
+AnnotationAssertion(rdfs:label :Citta "Citta"@it)
+
+# Class: :CittaAmericana (CittaAmericana)
+
+AnnotationAssertion(rdfs:comment :CittaAmericana "Città americana dove è ubicata una casa produttrice"@it)
+AnnotationAssertion(rdfs:label :CittaAmericana "CittaAmericana"@it)
+EquivalentClasses(:CittaAmericana ObjectOneOf(:Nashville :SanLuisObispo))
+EquivalentClasses(:CittaAmericana ObjectSomeValuesFrom(:ubicataDa :OrigineAmericana))
+SubClassOf(:CittaAmericana :Citta)
+DisjointClasses(:CittaAmericana :CittaItaliana)
+
+# Class: :CittaItaliana (CittaItaliana)
+
+AnnotationAssertion(rdfs:comment :CittaItaliana "Città italiana dove è ubicata una casa produttrice"@it)
+AnnotationAssertion(rdfs:label :CittaItaliana "CittaItaliana"@it)
+EquivalentClasses(:CittaItaliana ObjectSomeValuesFrom(:ubicataDa :OrigineItaliana))
+SubClassOf(:CittaItaliana :Citta)
+
+# Class: :GenereMusicale (GenereMusicale)
+
+AnnotationAssertion(rdfs:comment :GenereMusicale "I generi musicali della musica"@it)
+AnnotationAssertion(rdfs:label :GenereMusicale "GenereMusicale"@it)
+EquivalentClasses(:GenereMusicale ObjectOneOf(:Blues :ProgressiveMetal))
+
+# Class: :Gruppo (Gruppo)
+
+AnnotationAssertion(rdfs:comment :Gruppo "Band musicale formata da almeno 2 artisti"@it)
+AnnotationAssertion(rdfs:label :Gruppo "Gruppo"@it)
+EquivalentClasses(:Gruppo DataSomeValuesFrom(:HaNumeroArtisti DatatypeRestriction(xsd:integer xsd:minExclusive "1"^^xsd:integer)))
+SubClassOf(:Gruppo :BandMusicale)
+
+# Class: :Microfono (Microfono)
+
+AnnotationAssertion(rdfs:comment :Microfono "Descrive il microfono (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :Microfono "Microfono"@it)
+EquivalentClasses(:Microfono ObjectIntersectionOf(ObjectSomeValuesFrom(:prodottoDa :CasaProduttriceMicrofono) ObjectSomeValuesFrom(:suonatoDa :Cantante)))
+SubClassOf(:Microfono :StrumentoMusicale)
+
+# Class: :Oggetto (Oggetto)
+
+AnnotationAssertion(rdfs:comment :Oggetto "Ogetto con il quale si suona uno strumento musicale"@it)
+AnnotationAssertion(rdfs:label :Oggetto "Oggetto"@it)
+
+# Class: :Origine (Origine)
+
+AnnotationAssertion(rdfs:comment :Origine "Stato di origine della casa produttrice"@it)
+AnnotationAssertion(rdfs:label :Origine "Origine"@it)
+SubClassOf(:Origine :CasaProduttrice)
+
+# Class: :OrigineAmericana (OrigineAmericana)
+
+AnnotationAssertion(rdfs:comment :OrigineAmericana "Casa produttrice di origine americana"@it)
+AnnotationAssertion(rdfs:label :OrigineAmericana "OrigineAmericana"@it)
+EquivalentClasses(:OrigineAmericana ObjectExactCardinality(1 :ubicataIn :CittaAmericana))
+SubClassOf(:OrigineAmericana :Origine)
+DisjointClasses(:OrigineAmericana :OrigineItaliana)
+
+# Class: :OrigineItaliana (OrigineItaliana)
+
+AnnotationAssertion(rdfs:comment :OrigineItaliana "Casa produttrice di origine italiana"@it)
+AnnotationAssertion(rdfs:label :OrigineItaliana "OrigineItaliana"@it)
+EquivalentClasses(:OrigineItaliana ObjectExactCardinality(1 :ubicataIn :CittaItaliana))
+SubClassOf(:OrigineItaliana :Origine)
+
+# Class: :Plettro (Plettro)
+
+AnnotationAssertion(rdfs:comment :Plettro "Oggetto utilizzato per suonare la chitarra e il basso (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :Plettro "Plettro"@it)
+EquivalentClasses(:Plettro ObjectSomeValuesFrom(:utilizzatoDa :Bassista))
+EquivalentClasses(:Plettro ObjectSomeValuesFrom(:utilizzatoDa :Chitarrista))
+SubClassOf(:Plettro :Oggetto)
+
+# Class: :Solista (Solista)
+
+AnnotationAssertion(rdfs:comment :Solista "Band musicale formata da un solo artista"@it)
+AnnotationAssertion(rdfs:label :Solista "Solista"@it)
+EquivalentClasses(:Solista DataExactCardinality(1 :HaNumeroArtisti xsd:integer))
+SubClassOf(:Solista :BandMusicale)
+
+# Class: :StrumentoMusicale (StrumentoMusicale)
+
+AnnotationAssertion(rdfs:comment :StrumentoMusicale "Un'entità per descrivere gli strumenti musicali."@it)
+AnnotationAssertion(rdfs:label :StrumentoMusicale "StrumentoMusicale"@it)
+EquivalentClasses(:StrumentoMusicale ObjectSomeValuesFrom(:suonatoIn :GenereMusicale))
+
+# Class: :Tastiera (Tastiera)
+
+AnnotationAssertion(rdfs:comment :Tastiera "Descrive la tastiera (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :Tastiera "Tastiera"@it)
+EquivalentClasses(:Tastiera ObjectIntersectionOf(ObjectSomeValuesFrom(:prodottoDa :CasaProduttriceTastiera) ObjectSomeValuesFrom(:suonatoDa :Tastierista)))
+SubClassOf(:Tastiera :StrumentoMusicale)
+
+# Class: :Tastierista (Tastierista)
+
+AnnotationAssertion(rdfs:comment :Tastierista "Artista che suona la tastiera (strumento musicale)"@it)
+AnnotationAssertion(rdfs:label :Tastierista "Tastierista"@it)
+EquivalentClasses(:Tastierista ObjectMinCardinality(1 :suona :Tastiera))
+SubClassOf(:Tastierista :Artista)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :Blues (Blues)
+
+AnnotationAssertion(rdfs:comment :Blues "Genere musicale chiamato \"Blues\""@it)
+AnnotationAssertion(rdfs:label :Blues "Blues"@en)
+ClassAssertion(:GenereMusicale :Blues)
+DataPropertyAssertion(:NomeGenereMusicale :Blues "Blues"^^xsd:string)
+
+# Individual: :Bongo6 (Bongo6)
+
+AnnotationAssertion(rdfs:comment :Bongo6 "Basso chiamato \"Bongo John Myung 6 HH\" utilizzato da John Myung"@it)
+AnnotationAssertion(rdfs:label :Bongo6 "Bongo6"@en)
+ClassAssertion(:Basso :Bongo6)
+ObjectPropertyAssertion(:prodottoDa :Bongo6 :MusicMan)
+ObjectPropertyAssertion(:suonatoCon :Bongo6 :PlettroJohnMyung)
+ObjectPropertyAssertion(:suonatoDa :Bongo6 :JohnMyung)
+ObjectPropertyAssertion(:suonatoIn :Bongo6 :ProgressiveMetal)
+DataPropertyAssertion(:HaNumeroCorde :Bongo6 "6"^^xsd:integer)
+DataPropertyAssertion(:NomeStrumentoMusicale :Bongo6 "Bongo John Myung 6 HH"^^xsd:string)
+
+# Individual: :DreamTheater (DreamTheater)
+
+AnnotationAssertion(rdfs:comment :DreamTheater "Band musicale \"Dream Theater\""@it)
+AnnotationAssertion(rdfs:label :DreamTheater "DreamTheater"@en)
+ClassAssertion(:Gruppo :DreamTheater)
+ObjectPropertyAssertion(:haLavoratori :DreamTheater :JohnPetrucci)
+DataPropertyAssertion(:HaNumeroArtisti :DreamTheater "5"^^xsd:integer)
+DataPropertyAssertion(:NomeBandMusicale :DreamTheater "Dream Theater"^^xsd:string)
+
+# Individual: :GibsonGuitar (GibsonGuitar)
+
+AnnotationAssertion(rdfs:comment :GibsonGuitar "Casa produttrice \"Gibson\""@it)
+AnnotationAssertion(rdfs:label :GibsonGuitar "GibsonGuitar"@en)
+ClassAssertion(:CasaProduttriceChitarra :GibsonGuitar)
+ObjectPropertyAssertion(:ubicataIn :GibsonGuitar :Nashville)
+DataPropertyAssertion(:FondataNel :GibsonGuitar "1902"^^xsd:integer)
+DataPropertyAssertion(:NomeCasaProduttrice :GibsonGuitar "Gibson Guitar Corporation"^^xsd:string)
+
+# Individual: :GoldTop (GoldTop)
+
+AnnotationAssertion(rdfs:comment :GoldTop "Chittarra Gibson con il nome \"Gold Top\""@it)
+AnnotationAssertion(rdfs:label :GoldTop "GoldTop"@en)
+ClassAssertion(:ChitarraGibson :GoldTop)
+ObjectPropertyAssertion(:prodottoDa :GoldTop :GibsonGuitar)
+ObjectPropertyAssertion(:suonatoCon :GoldTop :PlettroJoe)
+ObjectPropertyAssertion(:suonatoIn :GoldTop :Blues)
+DataPropertyAssertion(:BodyChitarra :GoldTop "Solid Body"^^xsd:string)
+DataPropertyAssertion(:LegniChitarra :GoldTop "Mogano, Ebano o Palissandro"^^xsd:string)
+DataPropertyAssertion(:NomeStrumentoMusicale :GoldTop "Gold Top Personalizzata"^^xsd:string)
+DataPropertyAssertion(:PonteChitarra :GoldTop "Fisso, raramente tremolo"^^xsd:string)
+
+# Individual: :JoeBonamassa (JoeBonamassa)
+
+AnnotationAssertion(rdfs:comment :JoeBonamassa "Il chitarrista \"Joe Bonamassa\""@it)
+AnnotationAssertion(rdfs:label :JoeBonamassa "JoeBonamassa"@en)
+ClassAssertion(:Chitarrista :JoeBonamassa)
+ObjectPropertyAssertion(:lavoraIn :JoeBonamassa :SolistaJoe)
+ObjectPropertyAssertion(:suona :JoeBonamassa :GoldTop)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/age> :JoeBonamassa "44"^^xsd:integer)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/birthday> :JoeBonamassa "08/05/1977"^^xsd:string)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/firstName> :JoeBonamassa "Joe"^^xsd:string)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/gender> :JoeBonamassa "Uomo"^^xsd:string)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/lastName> :JoeBonamassa "Bonamassa"^^xsd:string)
+
+# Individual: :JohnMyung (JohnMyung)
+
+AnnotationAssertion(rdfs:comment :JohnMyung "Bassista \"John Myung\""@it)
+AnnotationAssertion(rdfs:label :JohnMyung "JohnMyung"@en)
+ClassAssertion(:Bassista :JohnMyung)
+ObjectPropertyAssertion(:lavoraIn :JohnMyung :DreamTheater)
+ObjectPropertyAssertion(:suona :JohnMyung :Bongo6)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/age> :JohnMyung "54"^^xsd:integer)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/birthday> :JohnMyung "24/01/1967"^^xsd:string)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/firstName> :JohnMyung "John"^^xsd:string)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/gender> :JohnMyung "Uomo"^^xsd:string)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/lastName> :JohnMyung "Myung"^^xsd:string)
+
+# Individual: :JohnPetrucci (JohnPetrucci)
+
+AnnotationAssertion(rdfs:comment :JohnPetrucci "Chitarrista \"John Petrucci\""@it)
+AnnotationAssertion(rdfs:label :JohnPetrucci "JohnPetrucci"@en)
+ClassAssertion(:Chitarrista :JohnPetrucci)
+ObjectPropertyAssertion(:suona :JohnPetrucci :Majesty7)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/age> :JohnPetrucci "54"^^xsd:integer)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/birthday> :JohnPetrucci "12/07/1967"^^xsd:string)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/firstName> :JohnPetrucci "John"^^xsd:string)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/gender> :JohnPetrucci "Uomo"^^xsd:string)
+DataPropertyAssertion(<http://xmlns.com/foaf/0.1/lastName> :JohnPetrucci "Petrucci"^^xsd:string)
+
+# Individual: :LosAngeles (LosAngeles)
+
+AnnotationAssertion(rdfs:comment :LosAngeles "Città di \"Los Angeles\""@it)
+AnnotationAssertion(rdfs:label :LosAngeles "LosAngeles"@en)
+ClassAssertion(:CittaAmericana :LosAngeles)
+DataPropertyAssertion(:NomeCitta :LosAngeles "Los Angeles"^^xsd:string)
+
+# Individual: :Majesty7 (Majesty7)
+
+AnnotationAssertion(rdfs:comment :Majesty7 "La chitarra \"Majesty 7\" utilizzata da John Petrucci"@it)
+AnnotationAssertion(rdfs:label :Majesty7 "Majesty7"@en)
+ClassAssertion(:ChitarraAPiuCorde :Majesty7)
+ObjectPropertyAssertion(:suonatoCon :Majesty7 :PlettroJohnPetrucci)
+ObjectPropertyAssertion(:suonatoIn :Majesty7 :ProgressiveMetal)
+DataPropertyAssertion(:BodyChitarra :Majesty7 "Solid Body"^^xsd:string)
+DataPropertyAssertion(:HaNumeroCorde :Majesty7 "7"^^xsd:integer)
+DataPropertyAssertion(:LegniChitarra :Majesty7 "Mogano, Acero, Ebano"^^xsd:string)
+DataPropertyAssertion(:NomeStrumentoMusicale :Majesty7 "Music Man Majesty 7 Hydrospace"^^xsd:string)
+DataPropertyAssertion(:PonteChitarra :Majesty7 "Tremolo Fluttuante"^^xsd:string)
+
+# Individual: :Majesty8 (Majesty8)
+
+AnnotationAssertion(rdfs:comment :Majesty8 "La chitarra \"Majesty 8\" che utilizza John Petrucci"@it)
+AnnotationAssertion(rdfs:label :Majesty8 "Majesty8"@en)
+ClassAssertion(:ChitarraAPiuCorde :Majesty8)
+ObjectPropertyAssertion(:prodottoDa :Majesty8 :MusicMan)
+ObjectPropertyAssertion(:suonatoCon :Majesty8 :PlettroJohnPetrucci)
+ObjectPropertyAssertion(:suonatoDa :Majesty8 :JohnPetrucci)
+ObjectPropertyAssertion(:suonatoIn :Majesty8 :ProgressiveMetal)
+
+# Individual: :MusicMan (MusicMan)
+
+AnnotationAssertion(rdfs:comment :MusicMan "La casa produttrice di chitarre \"Ernie Ball Music Man\""@it)
+AnnotationAssertion(rdfs:label :MusicMan "MusicMan"@en)
+ClassAssertion(:CasaProduttriceBasso :MusicMan)
+ClassAssertion(:CasaProduttriceChitarra :MusicMan)
+ObjectPropertyAssertion(:produce :MusicMan :Majesty7)
+ObjectPropertyAssertion(:ubicataIn :MusicMan :SanLuisObispo)
+DataPropertyAssertion(:FondataNel :MusicMan "1974"^^xsd:integer)
+DataPropertyAssertion(:NomeCasaProduttrice :MusicMan "Ernie Ball Music Man"^^xsd:string)
+
+# Individual: :Nashville (Nashville)
+
+AnnotationAssertion(rdfs:comment :Nashville "Città di Nashville"@it)
+AnnotationAssertion(rdfs:label :Nashville "Nashville"@en)
+ClassAssertion(:CittaAmericana :Nashville)
+DataPropertyAssertion(:NomeCitta :Nashville "Nashville"^^xsd:string)
+
+# Individual: :PlettroJoe (PlettroJoe)
+
+AnnotationAssertion(rdfs:comment :PlettroJoe "Plettro che usa Joe Bonamassa per suonare la chitarra"@it)
+AnnotationAssertion(rdfs:label :PlettroJoe "PlettroJoe"@it)
+ClassAssertion(:Plettro :PlettroJoe)
+ObjectPropertyAssertion(:utilizzatoDa :PlettroJoe :JoeBonamassa)
+
+# Individual: :PlettroJohnMyung (PlettroJohnMyung)
+
+AnnotationAssertion(rdfs:comment :PlettroJohnMyung "Pletto utilizzato da John Myung per suonare"@it)
+AnnotationAssertion(rdfs:label :PlettroJohnMyung "PlettroJohnMyung"@it)
+ClassAssertion(:Plettro :PlettroJohnMyung)
+ObjectPropertyAssertion(:utilizzatoDa :PlettroJohnMyung :JohnMyung)
+
+# Individual: :PlettroJohnPetrucci (PlettroJohnPetrucci)
+
+AnnotationAssertion(rdfs:comment :PlettroJohnPetrucci "Il plettro utilizzato da John Petrucci per suonare"@it)
+AnnotationAssertion(rdfs:label :PlettroJohnPetrucci "PlettroJohnPetrucci"@it)
+ClassAssertion(:Plettro :PlettroJohnPetrucci)
+ObjectPropertyAssertion(:utilizzatoDa :PlettroJohnPetrucci :JohnPetrucci)
+
+# Individual: :ProgressiveMetal (ProgressiveMetal)
+
+AnnotationAssertion(rdfs:comment :ProgressiveMetal "Genere musicale \"Progressive Metal\""@it)
+AnnotationAssertion(rdfs:label :ProgressiveMetal "ProgressiveMetal"@en)
+ClassAssertion(:GenereMusicale :ProgressiveMetal)
+DataPropertyAssertion(:NomeGenereMusicale :ProgressiveMetal "Progressive Metal"^^xsd:string)
+
+# Individual: :SanLuisObispo (SanLuisObispo)
+
+AnnotationAssertion(rdfs:comment :SanLuisObispo "Città americana \"San Luis Obispo\""@it)
+AnnotationAssertion(rdfs:label :SanLuisObispo "SanLuisObispo"@en)
+ClassAssertion(:CittaAmericana :SanLuisObispo)
+DataPropertyAssertion(:NomeCitta :SanLuisObispo "San Luis Obispo"^^xsd:string)
+
+# Individual: :SolistaJoe (SolistaJoe)
+
+AnnotationAssertion(rdfs:comment :SolistaJoe "Joe Bonamassa è un solista"@it)
+AnnotationAssertion(rdfs:label :SolistaJoe "SolistaJoe"@it)
+ClassAssertion(:Solista :SolistaJoe)
+DataPropertyAssertion(:HaNumeroArtisti :SolistaJoe "1"^^xsd:integer)
+DataPropertyAssertion(:NomeBandMusicale :SolistaJoe "Joe Bonamassa Solista"^^xsd:string)
+
+
+DifferentIndividuals(:Majesty7 :Majesty8)
+)
