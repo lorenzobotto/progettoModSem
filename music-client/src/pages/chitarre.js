@@ -1,14 +1,14 @@
 import React from 'react'
-import MicrofonoElement from '../components/Microfoni'
+import ChitarraElement from '../components/Chitarre'
 import NavbarElement from '../components/Navbar'
 
-const Microfoni = () => {
+const Chitarre = () => {
     return (
         <>
             <NavbarElement />
-            <MicrofonoElement />
+            <ChitarraElement />
         </>
     )
 }
 
-export default Microfoni
+export default Chitarre

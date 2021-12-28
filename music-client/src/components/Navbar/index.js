@@ -24,7 +24,6 @@ const NavbarElement = () => {
                 </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <br />
         </div>
     )
 }
