@@ -1,0 +1,20 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX music: <http://www.semanticweb.org/musical-instruments#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?band ?descrizione ?nome ?numArtisti ?immagine (group_concat(distinct ?artisti;separator=", ") AS ?artistiNome) where {
+  	?band rdf:type music:BandMusicale .
+    ?band rdfs:comment ?descrizione .
+    ?band music:NomeBandMusicale ?nome .
+    ?band music:HaNumeroArtisti ?numArtisti .
+    ?band music:Immagine ?immagine .
+    ?citta rdf:type ?origineTipo .
+    ?band music:haLavoratori ?artistiIRI .
+    ?artistiIRI foaf:firstName ?artistaNome .
+    ?artistiIRI foaf:lastName ?artistaCognome .
+    BIND(CONCAT(?artistaNome, " ", ?artistaCognome) AS ?artisti)
+}
+GROUP BY ?band ?descrizione ?nome ?numArtisti ?immagine

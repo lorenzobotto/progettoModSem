@@ -11,6 +11,14 @@ import Chitarristi from './pages/Artisti/chitarristi';
 import Cantanti from './pages/Artisti/cantanti';
 import Tastieristi from './pages/Artisti/tastieristi';
 import Batteristi from './pages/Artisti/batteristi';
+import CaseProdMicrofoni from './pages/CaseProduttrici/microfoni';
+import CaseProdBassi from './pages/CaseProduttrici/bassi';
+import CaseProdChitarre from './pages/CaseProduttrici/chitarre';
+import CaseProdTastiere from './pages/CaseProduttrici/tastiere';
+import CaseProdBatterie from './pages/CaseProduttrici/batterie';
+import Gruppi from './pages/BandMusicali/gruppi';
+import Solisti from './pages/BandMusicali/solisti';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -27,6 +35,14 @@ function App() {
         <Route path="/cantanti" element={<Cantanti />} exact />
         <Route path="/tastieristi" element={<Tastieristi />} exact />
         <Route path="/batteristi" element={<Batteristi />} exact />
+        <Route path="/caseMicrofoni" element={<CaseProdMicrofoni />} exact />
+        <Route path="/caseBassi" element={<CaseProdBassi />} exact />
+        <Route path="/caseChitarre" element={<CaseProdChitarre />} exact />
+        <Route path="/caseTastiere" element={<CaseProdTastiere />} exact />
+        <Route path="/caseBatterie" element={<CaseProdBatterie />} exact />
+        <Route path="/band" element={<Gruppi />} exact />
+        <Route path="/solisti" element={<Solisti />} exact />
+        <Route path="/search" element={<Search />} exact />
       </Routes>
     </Router>
   );

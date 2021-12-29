@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 
 
@@ -40,6 +41,7 @@ const ResultsH1 = styled.h1`
 
 const BassoElement = () => {
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         const requestData = {
@@ -49,7 +51,7 @@ const BassoElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT ?basso ?nome ?descrizione ?immagine ?numCorde ?ponte ?legni ?suonatoCon ?suonatoIn ?prodottoDa ?suonatoDa\n" +
+                    "SELECT ?basso ?nome ?descrizione ?immagine ?numCorde ?ponte ?legni ?suonatoCon ?suonatoIn ?prodottoDa ?suonatoDaURI ?suonatoDa\n" +
                     "    WHERE { ?basso rdf:type music:Basso .\n" +
                         "        ?basso music:NomeStrumentoMusicale ?nome .\n" +
                         "    ?basso music:HaNumeroCorde ?numCorde .\n" +
@@ -63,9 +65,9 @@ const BassoElement = () => {
                         "   ?genere music:NomeGenereMusicale ?suonatoIn .\n" +
                         "   ?basso music:prodottoDa ?casaProd . \n" +
                         "   ?casaProd music:NomeCasaProduttrice ?prodottoDa .\n" +
-                        "   ?basso music:suonatoDa ?artista .\n" +
-                        "   ?artista foaf:firstName ?artistaNome .\n" +
-                        "   ?artista foaf:lastName ?artistaCognome .\n" +
+                        "   ?basso music:suonatoDa ?suonatoDaURI .\n" +
+                        "   ?suonatoDaURI foaf:firstName ?artistaNome .\n" +
+                        "   ?suonatoDaURI foaf:lastName ?artistaCognome .\n" +
                         "   BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?suonatoDa)\n" +
                         "}",
             infer: true,
@@ -98,7 +100,9 @@ const BassoElement = () => {
                     <p>Legni del basso: {item.legni.value}</p>
                     <p>Ponte basso: {item.ponte.value}</p>
                     {item.numCorde != null && <p>Numero corde della basso: {item.numCorde.value}</p>}
-                    <p>E' suonata dall'artista: {item.suonatoDa.value}</p>
+                    <p>E' suonata dall'artista: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                        navigate('/search', {state: {tipo: "Artista", URI: item.suonatoDaURI.value}});
+                    }}>{item.suonatoDa.value}</a></p>
                     <p>L'artista {item.suonatoDa.value} suona la "{item.nome.value}" con: "{item.suonatoCon.value}"</p>
                     <p>E' suonato nel genere musicale: {item.suonatoIn.value}</p>
                   </ItemDescription>
