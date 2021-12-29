@@ -38,7 +38,7 @@ const ResultsH1 = styled.h1`
     color: #fff;
 `
 
-const ChitarraElement = () => {
+const BassoElement = () => {
     const [results, setResults] = useState([]);
 
     useEffect( () => {
@@ -49,25 +49,25 @@ const ChitarraElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT ?chitarra ?nome ?immagine ?descrizione ?numCorde ?body ?ponte ?legni ?suonatoCon ?suonatoIn ?prodottoDa ?suonatoDa\n" +
-                    "WHERE { ?chitarra rdf:type music:Chitarra .\n" +
-                    "        ?chitarra music:NomeStrumentoMusicale ?nome .\n" +
-                    "        ?chitarra rdfs:comment ?descrizione .\n" + 
-                    "        ?chitarra music:Immagine ?immagine .\n" +
-                    "        optional {?chitarra music:HaNumeroCorde ?numCorde} .\n" +
-                    "        ?chitarra music:Body ?body .\n" +
-                    "        ?chitarra music:Ponte ?ponte .\n" +
-                    "        ?chitarra music:Legni ?legni .\n" +
-                    "        ?chitarra music:suonatoCon ?suonato .\n" +
-                    "        ?suonato rdfs:label ?suonatoCon .\n" +
-                    "        ?chitarra music:suonatoIn ?genere . \n" +
-                    "        ?genere music:NomeGenereMusicale ?suonatoIn .\n" +
-                    "        ?chitarra music:prodottoDa ?casaProd . \n" +
-                    "        ?casaProd music:NomeCasaProduttrice ?prodottoDa .\n" +
-                    "        ?chitarra music:suonatoDa ?artista .\n" +
-                    "        ?artista foaf:firstName ?artistaNome .\n" +
-                    "        ?artista foaf:lastName ?artistaCognome .\n" +
-                    "        BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?suonatoDa) .\n}",
+                    "SELECT ?basso ?nome ?descrizione ?immagine ?numCorde ?ponte ?legni ?suonatoCon ?suonatoIn ?prodottoDa ?suonatoDa\n" +
+                    "    WHERE { ?basso rdf:type music:Basso .\n" +
+                        "        ?basso music:NomeStrumentoMusicale ?nome .\n" +
+                        "    ?basso music:HaNumeroCorde ?numCorde .\n" +
+                        "    ?basso rdfs:comment ?descrizione .\n" +
+                        "   ?basso music:Ponte ?ponte .\n" +
+                        "   ?basso music:Legni ?legni .\n" +
+                        "   ?basso music:Immagine ?immagine .\n" +
+                        "   ?basso music:suonatoCon ?suonato .\n" +
+                        "   ?suonato rdfs:label ?suonatoCon .\n" +
+                        "   ?basso music:suonatoIn ?genere . \n" +
+                        "   ?genere music:NomeGenereMusicale ?suonatoIn .\n" +
+                        "   ?basso music:prodottoDa ?casaProd . \n" +
+                        "   ?casaProd music:NomeCasaProduttrice ?prodottoDa .\n" +
+                        "   ?basso music:suonatoDa ?artista .\n" +
+                        "   ?artista foaf:firstName ?artistaNome .\n" +
+                        "   ?artista foaf:lastName ?artistaCognome .\n" +
+                        "   BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?suonatoDa)\n" +
+                        "}",
             infer: true,
             sameAs: true
         }
@@ -86,7 +86,7 @@ const ChitarraElement = () => {
 
     return (
         <ResultsContainer>
-            <ResultsH1>Chitarre</ResultsH1>
+            <ResultsH1>Bassi elettrici</ResultsH1>
             {results.map((item) => 
                 <Item>
                   <ItemImage src={item.immagine.value}></ItemImage>
@@ -94,11 +94,10 @@ const ChitarraElement = () => {
                     <h1>{item.nome.value}</h1>
                     <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>
                     <hr style={{paddingTop: "3px"}} />
-                    <p>La chitarra è prodotta dalla casa produttrice: {item.prodottoDa.value}</p>
-                    <p>Body chitarra: {item.body.value}</p>
-                    <p>Legni della chitarra: {item.legni.value}</p>
-                    <p>Ponte chitarra: {item.ponte.value}</p>
-                    {item.numCorde != null && <p>Numero corde della chitarra: {item.numCorde.value}</p>}
+                    <p>Il basso è prodotta dalla casa produttrice: {item.prodottoDa.value}</p>
+                    <p>Legni del basso: {item.legni.value}</p>
+                    <p>Ponte basso: {item.ponte.value}</p>
+                    {item.numCorde != null && <p>Numero corde della basso: {item.numCorde.value}</p>}
                     <p>E' suonata dall'artista: {item.suonatoDa.value}</p>
                     <p>L'artista {item.suonatoDa.value} suona la "{item.nome.value}" con: "{item.suonatoCon.value}"</p>
                     <p>E' suonato nel genere musicale: {item.suonatoIn.value}</p>
@@ -109,4 +108,4 @@ const ChitarraElement = () => {
     )
 }
 
-export default ChitarraElement
+export default BassoElement

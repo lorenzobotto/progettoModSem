@@ -9,10 +9,10 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 Ontology(<http://www.semanticweb.org/musical-instruments>
 Annotation(<http://purl.org/dc/elements/1.1/creator> "Lorenzo Botto")
 Annotation(<http://purl.org/dc/elements/1.1/date> "25/01/2021")
-Annotation(<http://purl.org/dc/elements/1.1/description> "L'ontologia \"musical-instruments\" rappresenta l'intera conoscenza di un'enciclopedia per gli amanti della musica. Incorpora il vocabolario FOAF per la descrizione dei produttori degli strumenti musicali.")
+Annotation(<http://purl.org/dc/elements/1.1/description> "L'ontologia \"musical-instruments\" rappresenta l'intera conoscenza di un'enciclopedia per gli amanti della musica. Oltre gli strumenti musicali, incorpora anche gli artisti e le case produttrici relativi agli strumenti musicali. Incorpora il vocabolario FOAF per gli artisti che suonano lo strumento musicale.")
 Annotation(<http://purl.org/dc/elements/1.1/title> "Strumenti Musicali - Un'enciclopedia per gli amanti della musica")
-Annotation(<http://www.semanticweb.org/musical-instrumentsmusical-instruments#vann:preferredNamespacePrefix> "http://www.music.com/musical-instruments")
-Annotation(<http://www.semanticweb.org/musical-instrumentsmusical-instruments#vann:preferredNamespaceUri> "musical-instruments")
+Annotation(<http://purl.org/vocab/vann/preferredNamespacePrefix> "musical-instruments")
+Annotation(<http://purl.org/vocab/vann/preferredNamespaceUri> "http://www.music.com/musical-instruments")
 Annotation(rdfs:label "musical-instruments")
 
 Declaration(Class(<http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag>))
@@ -141,8 +141,20 @@ Declaration(AnnotationProperty(<http://purl.org/dc/elements/1.1/creator>))
 Declaration(AnnotationProperty(<http://purl.org/dc/elements/1.1/date>))
 Declaration(AnnotationProperty(<http://purl.org/dc/elements/1.1/description>))
 Declaration(AnnotationProperty(<http://purl.org/dc/elements/1.1/title>))
-Declaration(AnnotationProperty(<http://www.semanticweb.org/musical-instrumentsmusical-instruments#vann:preferredNamespacePrefix>))
-Declaration(AnnotationProperty(<http://www.semanticweb.org/musical-instrumentsmusical-instruments#vann:preferredNamespaceUri>))
+Declaration(AnnotationProperty(<http://purl.org/vocab/vann/preferredNamespacePrefix>))
+Declaration(AnnotationProperty(<http://purl.org/vocab/vann/preferredNamespaceUri>))
+############################
+#   Annotation Properties
+############################
+
+# Annotation Property: <http://purl.org/vocab/vann/preferredNamespacePrefix> (vann:preferredNamespacePrefix)
+
+AnnotationAssertion(rdfs:label <http://purl.org/vocab/vann/preferredNamespacePrefix> "vann:preferredNamespacePrefix")
+
+# Annotation Property: <http://purl.org/vocab/vann/preferredNamespaceUri> (vann:preferredNamespaceUri)
+
+AnnotationAssertion(rdfs:label <http://purl.org/vocab/vann/preferredNamespaceUri> "vann:preferredNamespaceUri")
+
 
 ############################
 #   Object Properties
@@ -777,6 +789,7 @@ ObjectPropertyAssertion(:suonatoCon :BatteriaMike :BacchetteMike)
 ObjectPropertyAssertion(:suonatoDa :BatteriaMike :MikeMangini)
 ObjectPropertyAssertion(:suonatoIn :BatteriaMike :ProgressiveMetal)
 DataPropertyAssertion(:DescrizioneStrumento :BatteriaMike "Batteria di Mike Mangini completa di piatti Zildjian e fusti Pearl."^^xsd:string)
+DataPropertyAssertion(:Immagine :BatteriaMike "http://www.metalsucks.net/wp-content/uploads/2011/09/DSC01870.jpeg"^^xsd:string)
 DataPropertyAssertion(:NomeStrumentoMusicale :BatteriaMike "Mike Mangini Masterworks Kit and Zildjian Cymbals"^^xsd:string)
 
 # Individual: :Blues (Blues)
@@ -796,6 +809,7 @@ ObjectPropertyAssertion(:suonatoCon :Bongo6 :PlettroJohnMyung)
 ObjectPropertyAssertion(:suonatoDa :Bongo6 :JohnMyung)
 ObjectPropertyAssertion(:suonatoIn :Bongo6 :ProgressiveMetal)
 DataPropertyAssertion(:HaNumeroCorde :Bongo6 "6"^^xsd:integer)
+DataPropertyAssertion(:Immagine :Bongo6 "https://shop.music-man.com/media/catalog/product/cache/203b24419cd48b22c95677b2694a4cb5/w/e/web-myung-bongo6-_0000_1.jpg"^^xsd:string)
 DataPropertyAssertion(:Legni :Bongo6 "Tiglio e Acero"^^xsd:string)
 DataPropertyAssertion(:NomeStrumentoMusicale :Bongo6 "Bongo John Myung 6 HH"^^xsd:string)
 DataPropertyAssertion(:Ponte :Bongo6 "Ponte Music Man in acciaio temprato"^^xsd:string)
@@ -823,6 +837,7 @@ AnnotationAssertion(rdfs:label :FantomG8 "FantomG8"@en)
 ClassAssertion(:Tastiera :FantomG8)
 ObjectPropertyAssertion(:suonatoIn :FantomG8 :ProgressiveMetal)
 DataPropertyAssertion(:DescrizioneStrumento :FantomG8 "La workstation live più potente e lussuosa nella storia di Roland. Il Fantom-G è uno strumento da sogno che ridefinisce i confini della suonabilità e della creatività con il suo motore sonoro avanzato, il rivoluzionario alloggiamento di espansione ARX SuperNATURAL, LCD a colori di grandi dimensioni, nuovo potente sequencer audio/MIDI e tasti pesati \"Ivory Feel\" di prima classe."^^xsd:string)
+DataPropertyAssertion(:Immagine :FantomG8 "https://d1aeri3ty3izns.cloudfront.net/media/1/19048/600/preview.jpg"^^xsd:string)
 DataPropertyAssertion(:NomeStrumentoMusicale :FantomG8 "Fantom-G8"^^xsd:string)
 
 # Individual: :Fullerton (Fullerton)

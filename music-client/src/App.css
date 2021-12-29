@@ -1,3 +1,7 @@
+* {
+  font-family: 'Encode Sans Expanded', sans-serif;
+}
+
 .nav-item .dropdown-menu {
   background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
 }
@@ -8,4 +12,8 @@
 
 .nav-item .dropdown-item:hover {
   background: #f0ad4e;
+}
+
+p {
+  font-size: 20px;
 }

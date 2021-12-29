@@ -47,7 +47,7 @@ const MicrofonoElement = () => {
           query: "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
                 "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" + 
                 "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" + 
-                "SELECT ?microfono ?nome ?descrizione ?suonatoDa ?suonatoIn ?immagine where {\n" + 
+                "SELECT ?microfono ?nome ?descrizione ?suonatoDa ?suonatoIn ?prodottoDa ?immagine where {\n" + 
                 "?microfono music:suonatoDa ?suonato .\n" + 
                 "?microfono rdf:type music:Microfono .\n" + 
                 "?suonato foaf:firstName ?suonatoNome .\n" + 
@@ -56,6 +56,8 @@ const MicrofonoElement = () => {
                 "?microfono music:NomeStrumentoMusicale ?nome .\n" +
                 "?microfono music:DescrizioneStrumento ?descrizione .\n" +
                 "?microfono music:suonatoIn ?suonatoGenere .\n" +
+                "?microfono music:prodottoDa ?casaProd .\n" +
+                "?casaProd music:NomeCasaProduttrice ?prodottoDa .\n" +
                 "?suonatoGenere music:NomeGenereMusicale ?suonatoIn .\n" + 
                 "?microfono music:Immagine ?immagine .\n}",
           infer: true,
@@ -76,16 +78,17 @@ const MicrofonoElement = () => {
 
     return (
         <ResultsContainer>
-            <ResultsH1>Chitarre</ResultsH1>
+            <ResultsH1>Microfoni</ResultsH1>
             {results.map((item) => 
                 <Item>
                   <ItemImage src={item.immagine.value}></ItemImage>
                   <ItemDescription>
                     <h1>{item.nome.value}</h1>
-                    <p>{item.descrizione.value}</p>
+                    <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>
                     <hr style={{paddingTop: "3px"}} />
-                    <p>E' suonata dall'artista: {item.suonatoDa.value}</p>
-                    <p>E' suonato nel genere musicale: {item.suonatoIn.value}</p>
+                    <p>E' prodotto dalla casa produttrice: {item.prodottoDa.value}</p>
+                    <p>E' utilizzato dall'artista: {item.suonatoDa.value}</p>
+                    <p>E' utilizzato nel genere musicale: {item.suonatoIn.value}</p>
                   </ItemDescription>
                 </Item>
             )}

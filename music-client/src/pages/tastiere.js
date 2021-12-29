@@ -1,14 +1,14 @@
 import React from 'react'
-import HomeElement from '../components/Homepage'
 import NavbarElement from '../components/Navbar'
+import TastieraElement from '../components/Tastiere'
 
-const Home = () => {
+const Tastiere = () => {
     return (
         <>
             <NavbarElement />
-            <HomeElement />
+            <TastieraElement />
         </>
     )
 }
 
-export default Home
+export default Tastiere

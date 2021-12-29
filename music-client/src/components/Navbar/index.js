@@ -8,7 +8,7 @@ const NavbarElement = () => {
         <div>
             <Navbar bg="dark" variant="dark" expand="lg">
                 <Container>
-                <Navbar.Brand as={Link} to="/">Music Client</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">Music Ontology</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse>
                 <Nav className="me-auto">

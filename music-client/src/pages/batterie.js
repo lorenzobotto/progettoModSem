@@ -1,14 +1,14 @@
 import React from 'react'
-import HomeElement from '../components/Homepage'
+import BatteriaElement from '../components/Batterie'
 import NavbarElement from '../components/Navbar'
 
-const Home = () => {
+const Batterie = () => {
     return (
         <>
             <NavbarElement />
-            <HomeElement />
+            <BatteriaElement />
         </>
     )
 }
 
-export default Home
+export default Batterie
