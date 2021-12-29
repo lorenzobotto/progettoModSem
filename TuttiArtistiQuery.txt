@@ -1,0 +1,27 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX music: <http://www.semanticweb.org/musical-instruments#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?artista ?nome ?dataNascita ?genere ?eta ?cognome ?immagine ?lavoraIn (group_concat(distinct ?oggetto;separator=", ") AS ?suonaCon) (group_concat(distinct ?strumentoMusicale;separator=", ") AS ?suona) where{
+  	?artista rdf:type music:Artista .
+    ?artista foaf:firstName ?nome .
+    ?artista foaf:lastName ?cognome .
+    ?artista foaf:birthday ?dataNascita .
+    ?artista foaf:age ?eta .
+    ?artista foaf:gender ?genere .
+    ?artista music:Immagine ?immagine .
+    ?artista music:lavoraIn ?gruppo .
+    ?gruppo music:NomeBandMusicale ?lavoraIn .
+    ?artista music:suona ?strumento .
+    ?strumento music:NomeStrumentoMusicale ?strumentoMusicale .
+    optional {
+        ?strumento music:suonatoCon	?oggettoCon .
+        ?oggettoCon rdfs:label ?oggetto
+    }
+}
+GROUP BY ?artista ?nome ?dataNascita ?genere ?eta ?cognome ?immagine ?lavoraIn
+
+

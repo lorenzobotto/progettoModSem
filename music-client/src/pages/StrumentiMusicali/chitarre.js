@@ -1,6 +1,6 @@
 import React from 'react'
-import ChitarraElement from '../components/Chitarre'
-import NavbarElement from '../components/Navbar'
+import ChitarraElement from '../../components/StrumentiMusicali/Chitarre'
+import NavbarElement from '../../components/Navbar'
 
 const Chitarre = () => {
     return (

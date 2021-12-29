@@ -1,6 +1,6 @@
 import React from 'react'
-import MicrofonoElement from '../components/Microfoni'
-import NavbarElement from '../components/Navbar'
+import MicrofonoElement from '../../components/StrumentiMusicali/Microfoni'
+import NavbarElement from '../../components/Navbar'
 
 const Microfoni = () => {
     return (

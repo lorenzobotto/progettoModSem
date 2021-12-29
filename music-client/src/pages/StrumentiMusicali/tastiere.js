@@ -1,6 +1,6 @@
 import React from 'react'
-import NavbarElement from '../components/Navbar'
-import TastieraElement from '../components/Tastiere'
+import NavbarElement from '../../components/Navbar'
+import TastieraElement from '../../components/StrumentiMusicali/Tastiere'
 
 const Tastiere = () => {
     return (

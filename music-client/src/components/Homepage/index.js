@@ -21,6 +21,7 @@ const HomeDescription = styled.div`
 
 const HomeImage = styled.img`
     width: 50%;
+    max-height: 400px;
     flex-shrink: 1;
     margin-right: 20px;
 `

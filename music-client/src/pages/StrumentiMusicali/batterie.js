@@ -1,6 +1,6 @@
 import React from 'react'
-import BatteriaElement from '../components/Batterie'
-import NavbarElement from '../components/Navbar'
+import BatteriaElement from '../../components/StrumentiMusicali/Batterie'
+import NavbarElement from '../../components/Navbar'
 
 const Batterie = () => {
     return (
