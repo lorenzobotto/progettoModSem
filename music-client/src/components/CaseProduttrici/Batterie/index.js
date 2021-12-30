@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 
@@ -41,6 +42,7 @@ const ResultsH1 = styled.h1`
 
 const CaseProdBatterieElement = () => {
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         const requestData = {
@@ -50,7 +52,7 @@ const CaseProdBatterieElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" + 
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" + 
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" + 
-                    "SELECT DISTINCT ?casaProdBatterie ?descrizione ?nome ?immagine ?dataFond ?tipoCasa ?origine ?nomecitta (group_concat(distinct ?prod;separator=\", \") AS ?produce) where {\n" + 
+                    "SELECT DISTINCT ?casaProdBatterie ?descrizione ?nome ?immagine ?dataFond ?tipoCasa ?origine ?nomecitta (group_concat(distinct ?strumentoMusicaleURI;separator=\", \") AS ?suonaURI) (group_concat(distinct ?prod;separator=\", \") AS ?produce) where {\n" + 
                     "    ?casaProdBatterie rdf:type ?tipoCasaProd .\n" + 
                     "    FILTER(?tipoCasaProd IN (music:CasaProduttriceBatteria, music:CasaProduttricePiatti)) .\n" + 
                     "    ?tipoCasaProd rdfs:label ?tipoCasa .\n" +
@@ -64,12 +66,12 @@ const CaseProdBatterieElement = () => {
                     "    FILTER(?origineTipo IN (music:CittaAmericana, music:CittaGiapponese))\n" + 
                     "    ?origineTipo rdfs:label ?origine .\n" + 
                     "    optional {\n" + 
-                    "        ?casaProdBatterie music:produce ?strumento .\n" + 
-                    "        ?strumento music:NomeStrumentoMusicale ?prod\n" + 
+                    "        ?casaProdBatterie music:produce ?strumentoMusicaleURI .\n" + 
+                    "        ?strumentoMusicaleURI music:NomeStrumentoMusicale ?prod\n" + 
                     "    }\n" + 
                     "    optional {\n" + 
-                    "        ?casaProdBatterie music:producePezzi ?strumento .\n" + 
-                    "        ?strumento music:NomeStrumentoMusicale ?prod\n" + 
+                    "        ?casaProdBatterie music:producePezzi ?strumentoMusicaleURI .\n" + 
+                    "        ?strumentoMusicaleURI music:NomeStrumentoMusicale ?prod\n" + 
                     "    }\n" + 
                     "}\n" + 
                     "GROUP BY ?casaProdBatterie ?descrizione ?nome ?immagine ?dataFond ?tipoCasa ?origine ?nomecitta",
@@ -94,6 +96,7 @@ const CaseProdBatterieElement = () => {
             <ResultsH1>Case Produttrici Batterie</ResultsH1>
             {results.map((item) => {
                 const strumenti = item.produce.value.split(", ");
+                const strumentiURI = item.suonaURI.value.split(", ");
                 return(
                     <Item>
                     <ItemImage src={item.immagine.value}></ItemImage>
@@ -107,8 +110,13 @@ const CaseProdBatterieElement = () => {
                         {item.tipoCasa.value === "CasaProduttriceBatteria" && 
                             <p>{item.nome.value} produce {strumenti.length !== 1 ? "le batterie" : "la batteria"}:
                                 <ul>
-                                    {strumenti.map((strumento) => 
-                                        <li>{strumento}</li>
+                                    {strumenti.map((strumento, i) => 
+                                        <li>
+                                            <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                    navigate('/search', {state: {tipo: "StrumentoMusicale", URI: strumentiURI[i]}});
+                                                }}>{strumento}
+                                            </a>
+                                        </li>
                                     )}
                                 </ul>
                             </p>
@@ -116,8 +124,13 @@ const CaseProdBatterieElement = () => {
                         {item.tipoCasa.value === "CasaProduttricePiatti" && 
                             <p>{item.nome.value} produce i piatti:
                                 <ul>
-                                    {strumenti.map((strumento) => 
-                                        <li>{strumento}</li>
+                                    {strumenti.map((strumento, i) => 
+                                        <li>
+                                            <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                    navigate('/search', {state: {tipo: "StrumentoMusicale", URI: strumentiURI[i]}});
+                                                }}>{strumento}
+                                            </a>
+                                        </li>
                                     )}
                                 </ul>
                             </p>

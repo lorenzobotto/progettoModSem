@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 
@@ -41,6 +42,7 @@ const ResultsH1 = styled.h1`
 
 const CaseProdTastiereElement = () => {
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         const requestData = {
@@ -50,7 +52,7 @@ const CaseProdTastiereElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT DISTINCT ?casaProdTastiere ?descrizione ?nome ?immagine ?dataFond ?origine ?nomecitta (group_concat(distinct ?prod;separator=\", \") AS ?produce) where {\n" +
+                    "SELECT DISTINCT ?casaProdTastiere ?descrizione ?nome ?immagine ?dataFond ?origine ?nomecitta (group_concat(distinct ?strumentoMusicaleURI;separator=\", \") AS ?suonaURI) (group_concat(distinct ?prod;separator=\", \") AS ?produce) where {\n" +
                     "    ?casaProdTastiere rdf:type music:CasaProduttriceTastiera .\n" +
                     "    ?casaProdTastiere rdfs:comment ?descrizione .\n" +
                     "    ?casaProdTastiere music:NomeCasaProduttrice ?nome .\n" +
@@ -62,12 +64,12 @@ const CaseProdTastiereElement = () => {
                     "    FILTER(?origineTipo IN (music:CittaAmericana, music:CittaGiapponese))\n" +
                     "    ?origineTipo rdfs:label ?origine .\n" +
                     "    optional {\n" +
-                    "        ?casaProdTastiere music:produce ?strumento .\n" +
-                    "        ?strumento music:NomeStrumentoMusicale ?prod\n" +
+                    "        ?casaProdTastiere music:produce ?strumentoMusicaleURI .\n" +
+                    "        ?strumentoMusicaleURI music:NomeStrumentoMusicale ?prod\n" +
                     "    }\n" +
                     "    optional {\n" +
-                    "        ?casaProdTastiere music:producePezzi ?strumento .\n" +
-                    "        ?strumento music:NomeStrumentoMusicale ?prod\n" +
+                    "        ?casaProdTastiere music:producePezzi ?strumentoMusicaleURI .\n" +
+                    "        ?strumentoMusicaleURI music:NomeStrumentoMusicale ?prod\n" +
                     "    }\n" +
                     "}\n" +
                     "GROUP BY ?casaProdTastiere ?descrizione ?nome ?immagine ?dataFond ?origine ?nomecitta",
@@ -92,6 +94,7 @@ const CaseProdTastiereElement = () => {
             <ResultsH1>Case Produttrici Chitarre</ResultsH1>
             {results.map((item) => {
                 const strumenti = item.produce.value.split(", ");
+                const strumentiURI = item.suonaURI.value.split(", ");
                 return(
                     <Item>
                     <ItemImage src={item.immagine.value}></ItemImage>
@@ -104,8 +107,13 @@ const CaseProdTastiereElement = () => {
                         <p>Sede principale: {item.nomecitta.value}</p>
                         <p>{item.nome.value} produce {strumenti.length !== 1 ? "le tastiere" : "la tastiera"}:
                             <ul>
-                                {strumenti.map((strumento) => 
-                                    <li>{strumento}</li>
+                                {strumenti.map((strumento, i) => 
+                                    <li>
+                                        <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                navigate('/search', {state: {tipo: "StrumentoMusicale", URI: strumentiURI[i]}});
+                                            }}>{strumento}
+                                        </a>
+                                    </li>
                                 )}
                             </ul>
                         </p>

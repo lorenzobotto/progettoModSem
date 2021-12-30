@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 
@@ -41,6 +42,7 @@ const ResultsH1 = styled.h1`
 
 const CaseProdChitarreElement = () => {
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         const requestData = {
@@ -50,7 +52,7 @@ const CaseProdChitarreElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT DISTINCT ?casaProdChitarre ?descrizione ?nome ?immagine ?dataFond ?origine ?nomecitta (group_concat(distinct ?prod;separator=\", \") AS ?produce) where {\n" +
+                    "SELECT DISTINCT ?casaProdChitarre ?descrizione ?nome ?immagine ?dataFond ?origine ?nomecitta (group_concat(distinct ?strumentoMusicaleURI;separator=\", \") AS ?suonaURI) (group_concat(distinct ?prod;separator=\", \") AS ?produce) where {\n" +
                     "    ?casaProdChitarre rdf:type music:CasaProduttriceChitarra .\n" +
                     "    ?casaProdChitarre rdfs:comment ?descrizione .\n" +
                     "    ?casaProdChitarre music:NomeCasaProduttrice ?nome .\n" +
@@ -62,14 +64,14 @@ const CaseProdChitarreElement = () => {
                     "    FILTER(?origineTipo IN (music:CittaAmericana, music:CittaGiapponese))\n" +
                     "    ?origineTipo rdfs:label ?origine .\n" +
                     "    optional {\n" +
-                    "        ?casaProdChitarre music:produce ?strumento .\n" +
-                    "        ?strumento rdf:type ?strumentoTipo .\n" +
+                    "        ?casaProdChitarre music:produce ?strumentoMusicaleURI .\n" +
+                    "        ?strumentoMusicaleURI rdf:type ?strumentoTipo .\n" +
                     "        FILTER(?strumentoTipo IN (music:Chitarra)) .\n" +
-                    "        ?strumento music:NomeStrumentoMusicale ?prod\n" +
+                    "        ?strumentoMusicaleURI music:NomeStrumentoMusicale ?prod\n" +
                     "    }\n" +
                     "    optional {\n" +
-                    "        ?casaProdChitarre music:producePezzi ?strumento .\n" +
-                    "        ?strumento music:NomeStrumentoMusicale ?prod\n" +
+                    "        ?casaProdChitarre music:producePezzi ?strumentoMusicaleURI .\n" +
+                    "        ?strumentoMusicaleURI music:NomeStrumentoMusicale ?prod\n" +
                     "    }\n" +
                     "}\n" +
                     "GROUP BY ?casaProdChitarre ?descrizione ?nome ?immagine ?dataFond ?origine ?nomecitta",
@@ -94,6 +96,7 @@ const CaseProdChitarreElement = () => {
             <ResultsH1>Case Produttrici Chitarre</ResultsH1>
             {results.map((item) => {
                 const strumenti = item.produce.value.split(", ");
+                const strumentiURI = item.suonaURI.value.split(", ");
                 return(
                     <Item>
                     <ItemImage src={item.immagine.value}></ItemImage>
@@ -106,8 +109,13 @@ const CaseProdChitarreElement = () => {
                         <p>Sede principale: {item.nomecitta.value}</p>
                         <p>{item.nome.value} produce {strumenti.length !== 1 ? "le chitarre" : "la chitarra"}:
                             <ul>
-                                {strumenti.map((strumento) => 
-                                    <li>{strumento}</li>
+                                {strumenti.map((strumento, i) => 
+                                     <li>
+                                        <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                navigate('/search', {state: {tipo: "StrumentoMusicale", URI: strumentiURI[i]}});
+                                            }}>{strumento}
+                                        </a>
+                                    </li>
                                 )}
                             </ul>
                         </p>

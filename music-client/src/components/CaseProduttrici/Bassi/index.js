@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 
@@ -41,6 +42,7 @@ const ResultsH1 = styled.h1`
 
 const CaseProdBassiElement = () => {
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         const requestData = {
@@ -50,7 +52,7 @@ const CaseProdBassiElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT DISTINCT ?casaProdBassi ?descrizione ?nome ?immagine ?dataFond ?origine ?nomecitta (group_concat(distinct ?prod;separator=\", \") AS ?produce) where {\n" +
+                    "SELECT DISTINCT ?casaProdBassi ?descrizione ?nome ?immagine ?dataFond ?origine ?nomecitta (group_concat(distinct ?strumentoMusicaleURI;separator=\", \") AS ?suonaURI) (group_concat(distinct ?prod;separator=\", \") AS ?produce) where {\n" +
                     "    ?casaProdBassi rdf:type music:CasaProduttriceBasso .\n" +
                     "    ?casaProdBassi rdfs:comment ?descrizione .\n" +
                     "    ?casaProdBassi music:NomeCasaProduttrice ?nome .\n" +
@@ -62,14 +64,14 @@ const CaseProdBassiElement = () => {
                     "    FILTER(?origineTipo IN (music:CittaAmericana, music:CittaGiapponese))\n" +
                     "    ?origineTipo rdfs:label ?origine .\n" +
                     "    optional {\n" +
-                    "        ?casaProdBassi music:produce ?strumento .\n" +
-                    "        ?strumento rdf:type ?strumentoTipo .\n" +
+                    "        ?casaProdBassi music:produce ?strumentoMusicaleURI .\n" +
+                    "        ?strumentoMusicaleURI rdf:type ?strumentoTipo .\n" +
                     "        FILTER(?strumentoTipo IN (music:Basso)) .\n" +
-                    "        ?strumento music:NomeStrumentoMusicale ?prod\n" +
+                    "        ?strumentoMusicaleURI music:NomeStrumentoMusicale ?prod\n" +
                     "    }\n" +
                     "    optional {\n" +
-                    "        ?casaProdBassi music:producePezzi ?strumento .\n" +
-                    "        ?strumento music:NomeStrumentoMusicale ?prod\n" +
+                    "        ?casaProdBassi music:producePezzi ?strumentoMusicaleURI .\n" +
+                    "        ?strumentoMusicaleURI music:NomeStrumentoMusicale ?prod\n" +
                     "    }\n" +
                     "}\n" +
                     "GROUP BY ?casaProdBassi ?descrizione ?nome ?immagine ?dataFond ?origine ?nomecitta",
@@ -94,6 +96,7 @@ const CaseProdBassiElement = () => {
             <ResultsH1>Case Produttrici Bassi</ResultsH1>
             {results.map((item) => {
                 const strumenti = item.produce.value.split(", ");
+                const strumentiURI = item.suonaURI.value.split(", ");
                 return(
                     <Item>
                     <ItemImage src={item.immagine.value}></ItemImage>
@@ -106,8 +109,13 @@ const CaseProdBassiElement = () => {
                         <p>Sede principale: {item.nomecitta.value}</p>
                         <p>{item.nome.value} produce {strumenti.length !== 1 ? "i bassi" : "il basso"}:
                             <ul>
-                                {strumenti.map((strumento) => 
-                                    <li>{strumento}</li>
+                                {strumenti.map((strumento, i) => 
+                                    <li>
+                                        <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                navigate('/search', {state: {tipo: "StrumentoMusicale", URI: strumentiURI[i]}});
+                                            }}>{strumento}
+                                        </a>
+                                    </li>
                                 )}
                             </ul>
                         </p>

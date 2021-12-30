@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 
@@ -41,6 +42,7 @@ const ResultsH1 = styled.h1`
 
 const TastieristiElement = () => {
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         const requestData = {
@@ -50,7 +52,7 @@ const TastieristiElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT DISTINCT ?tastierista ?nome ?dataNascita ?genere ?eta ?cognome ?immagine ?groupband ?lavoraIn (group_concat(distinct ?oggetto;separator=\", \") AS ?suonaCon) (group_concat(distinct ?strumentoMusicale;separator=\", \") AS ?suona) where{\n" +
+                    "SELECT DISTINCT ?tastierista ?nome ?dataNascita ?genere ?eta ?cognome ?immagine ?groupband ?lavoraIn (group_concat(distinct ?strumentoMusicaleURI;separator=\", \") AS ?suonaURI) (group_concat(distinct ?oggetto;separator=\", \") AS ?suonaCon) (group_concat(distinct ?strumentoMusicale;separator=\", \") AS ?suona) where{\n" +
                     "    ?tastierista rdf:type music:Tastierista .\n" +
                     "    ?tastierista foaf:firstName ?nome .\n" +
                     "    ?tastierista foaf:lastName ?cognome .\n" +
@@ -63,10 +65,10 @@ const TastieristiElement = () => {
                     "    ?gruppo rdf:type ?band .\n" +
                     "    FILTER(?band in (music:Solista, music:Gruppo))\n" +
                     "    ?band rdfs:label ?groupband .\n" +
-                    "    ?tastierista music:suona ?strumento .\n" +
-                    "    ?strumento music:NomeStrumentoMusicale ?strumentoMusicale .\n" +
+                    "    ?tastierista music:suona ?strumentoMusicaleURI .\n" +
+                    "    ?strumentoMusicaleURI music:NomeStrumentoMusicale ?strumentoMusicale .\n" +
                     "    optional {\n" +
-                    "        ?strumento music:suonatoCon	?oggettoCon .\n" +
+                    "        ?strumentoMusicaleURI music:suonatoCon	?oggettoCon .\n" +
                     "        ?oggettoCon rdfs:label ?oggetto\n" +
                     "    }\n" +
                     "}\n" +
@@ -92,6 +94,7 @@ const TastieristiElement = () => {
             <ResultsH1>Tastieristi</ResultsH1>
             {results.map((item) => {
                 const strumenti = item.suona.value.split(", ");
+                const strumentiURI = item.suonaURI.value.split(", ");
                 return(
                     <Item>
                     <ItemImage src={item.immagine.value}></ItemImage>
@@ -103,8 +106,13 @@ const TastieristiElement = () => {
                         <hr style={{paddingTop: "3px"}} />
                         <p>{item.nome.value + " " + item.cognome.value} suona {strumenti.length !== 1 ? "le tastiere" : "la tastiera"}:
                             <ul>
-                                {strumenti.map((strumento) => 
-                                    <li>{strumento}</li>
+                                {strumenti.map((strumento, i) => 
+                                    <li>
+                                        <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                navigate('/search', {state: {tipo: "StrumentoMusicale", URI: strumentiURI[i]}});
+                                            }}>{strumento}
+                                        </a>    
+                                    </li>
                                 )}
                             </ul>
                         </p>

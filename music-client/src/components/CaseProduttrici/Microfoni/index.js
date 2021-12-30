@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 
@@ -41,6 +42,7 @@ const ResultsH1 = styled.h1`
 
 const CaseProdMicrofoniElement = () => {
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         const requestData = {
@@ -50,7 +52,7 @@ const CaseProdMicrofoniElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT DISTINCT ?casaProdMicrofoni ?descrizione ?nome ?immagine ?dataFond ?origine ?nomecitta (group_concat(distinct ?prod;separator=\", \") AS ?produce) where {\n" +
+                    "SELECT DISTINCT ?casaProdMicrofoni ?descrizione ?nome ?immagine ?dataFond ?origine ?nomecitta (group_concat(distinct ?strumentoMusicaleURI;separator=\", \") AS ?suonaURI) (group_concat(distinct ?prod;separator=\", \") AS ?produce) where {\n" +
                     "    ?casaProdMicrofoni rdf:type music:CasaProduttriceMicrofono .\n" +
                     "    ?casaProdMicrofoni rdfs:comment ?descrizione .\n" +
                     "    ?casaProdMicrofoni music:NomeCasaProduttrice ?nome .\n" +
@@ -62,12 +64,12 @@ const CaseProdMicrofoniElement = () => {
                     "    FILTER(?origineTipo IN (music:CittaAmericana, music:CittaGiapponese))\n" +
                     "    ?origineTipo rdfs:label ?origine .\n" +
                     "    optional {\n" +
-                    "        ?casaProdMicrofoni music:produce ?strumento .\n" +
-                    "        ?strumento music:NomeStrumentoMusicale ?prod\n" +
+                    "        ?casaProdMicrofoni music:produce ?strumentoMusicaleURI .\n" +
+                    "        ?strumentoMusicaleURI music:NomeStrumentoMusicale ?prod\n" +
                     "    }\n" +
                     "    optional {\n" +
-                    "        ?casaProdMicrofoni music:producePezzi ?strumento .\n" +
-                    "        ?strumento music:NomeStrumentoMusicale ?prod\n" +
+                    "        ?casaProdMicrofoni music:producePezzi ?strumentoMusicaleURI .\n" +
+                    "        ?strumentoMusicaleURI music:NomeStrumentoMusicale ?prod\n" +
                     "    }\n" +
                     "}\n" +
                     "GROUP BY ?casaProdMicrofoni ?descrizione ?nome ?immagine ?dataFond ?origine ?nomecitta",
@@ -92,6 +94,7 @@ const CaseProdMicrofoniElement = () => {
             <ResultsH1>Case Produttrici Microfoni</ResultsH1>
             {results.map((item) => {
                 const strumenti = item.produce.value.split(", ");
+                const strumentiURI = item.suonaURI.value.split(", ");
                 return(
                     <Item>
                     <ItemImage src={item.immagine.value}></ItemImage>
@@ -104,8 +107,13 @@ const CaseProdMicrofoniElement = () => {
                         <p>Sede principale: {item.nomecitta.value}</p>
                         <p>{item.nome.value} produce {strumenti.length !== 1 ? "i microfoni" : "il microfono"}:
                             <ul>
-                                {strumenti.map((strumento) => 
-                                    <li>{strumento}</li>
+                                {strumenti.map((strumento, i) => 
+                                    <li>
+                                        <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                navigate('/search', {state: {tipo: "StrumentoMusicale", URI: strumentiURI[i]}});
+                                            }}>{strumento}
+                                        </a>
+                                    </li>
                                 )}
                             </ul>
                         </p>
