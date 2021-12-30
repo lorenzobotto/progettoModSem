@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import {useNavigate} from 'react-router-dom';
 
 
 const ResultsContainer = styled.div`
@@ -40,6 +41,7 @@ const ResultsH1 = styled.h1`
 
 const ChitarraElement = () => {
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         const requestData = {
@@ -49,7 +51,7 @@ const ChitarraElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT ?chitarra ?nome ?immagine ?descrizione ?numCorde ?body ?ponte ?legni ?suonatoCon ?suonatoIn ?prodottoDa ?suonatoDa\n" +
+                    "SELECT ?chitarra ?nome ?immagine ?descrizione ?numCorde ?body ?ponte ?legni ?suonatoDaURI ?suonatoCon ?suonatoIn ?prodottoDaURI ?prodottoDa ?suonatoDa\n" +
                     "WHERE { ?chitarra rdf:type music:Chitarra .\n" +
                     "        ?chitarra music:NomeStrumentoMusicale ?nome .\n" +
                     "        ?chitarra rdfs:comment ?descrizione .\n" + 
@@ -62,11 +64,11 @@ const ChitarraElement = () => {
                     "        ?suonato rdfs:label ?suonatoCon .\n" +
                     "        ?chitarra music:suonatoIn ?genere . \n" +
                     "        ?genere music:NomeGenereMusicale ?suonatoIn .\n" +
-                    "        ?chitarra music:prodottoDa ?casaProd . \n" +
-                    "        ?casaProd music:NomeCasaProduttrice ?prodottoDa .\n" +
-                    "        ?chitarra music:suonatoDa ?artista .\n" +
-                    "        ?artista foaf:firstName ?artistaNome .\n" +
-                    "        ?artista foaf:lastName ?artistaCognome .\n" +
+                    "        ?chitarra music:prodottoDa ?prodottoDaURI . \n" +
+                    "        ?prodottoDaURI music:NomeCasaProduttrice ?prodottoDa .\n" +
+                    "        ?chitarra music:suonatoDa ?suonatoDaURI .\n" +
+                    "        ?suonatoDaURI foaf:firstName ?artistaNome .\n" +
+                    "        ?suonatoDaURI foaf:lastName ?artistaCognome .\n" +
                     "        BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?suonatoDa) .\n}",
             infer: true,
             sameAs: true
@@ -94,12 +96,16 @@ const ChitarraElement = () => {
                     <h1>{item.nome.value}</h1>
                     <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>
                     <hr style={{paddingTop: "3px"}} />
-                    <p>La chitarra è prodotta dalla casa produttrice: {item.prodottoDa.value}</p>
+                    <p>La chitarra è prodotta dalla casa produttrice: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                        navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.prodottoDaURI.value}});
+                    }}>{item.prodottoDa.value}</a></p>
                     <p>Body chitarra: {item.body.value}</p>
                     <p>Legni della chitarra: {item.legni.value}</p>
                     <p>Ponte chitarra: {item.ponte.value}</p>
                     {item.numCorde != null && <p>Numero corde della chitarra: {item.numCorde.value}</p>}
-                    <p>E' suonata dall'artista: {item.suonatoDa.value}</p>
+                    <p>E' suonata dall'artista: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                        navigate('/search', {state: {tipo: "Artista", URI: item.suonatoDaURI.value}});
+                    }}>{item.suonatoDa.value}</a></p>
                     <p>L'artista {item.suonatoDa.value} suona la "{item.nome.value}" con: "{item.suonatoCon.value}"</p>
                     <p>E' suonato nel genere musicale: {item.suonatoIn.value}</p>
                   </ItemDescription>

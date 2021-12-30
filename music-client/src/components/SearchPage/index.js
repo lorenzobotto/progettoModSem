@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import styled from 'styled-components';
+import {useNavigate} from 'react-router-dom'
 
 
 const ResultsContainer = styled.div`
@@ -43,6 +44,8 @@ const ResultsH1 = styled.h1`
 const SearchElement = () => {
     const [results, setResults] = useState([]);
     const {state} = useLocation();
+    const navigate = useNavigate();
+    console.log(state);
 
     let query = null;
 
@@ -73,6 +76,74 @@ const SearchElement = () => {
                 "    }\n" +
                 "}\n" +
                 "GROUP BY ?nome ?cognome ?eta ?genere ?dataNascita ?gruppo ?immagine ?tipoGruppo";
+    } else if (state.tipo === 'CasaProduttrice') {
+        query =  "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
+                 "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+                 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+                 "select ?nome ?descrizione ?immagine ?fondataNel ?origineTipo ?citta (group_concat(distinct ?prod;separator=\", \") AS ?produce) where { \n" +
+                 "   <" + state.URI + "> ?p ?o .\n" +
+                 "   ?o rdf:type music:CasaProduttrice .\n" +
+                 "   ?o rdfs:comment ?descrizione .\n" +
+                 "   ?o music:NomeCasaProduttrice ?nome .\n" +
+                 "   ?o music:Immagine ?immagine .\n" +
+                 "   ?o music:FondataNel ?fondataNel .\n" +
+                 "   ?o music:ubicataIn ?ubicataIn .\n" +
+                 "   ?ubicataIn music:NomeCitta ?citta .\n" +
+                 "   ?ubicataIn rdf:type ?origine .\n" +
+                 "   FILTER(?origine IN (music:CittaAmericana, music:CittaGiapponese)) .\n" +
+                 "   ?origine rdfs:label ?origineTipo .\n" +
+                 "   optional {\n" +
+                 "       ?o music:produce ?strumento .\n" +
+                 "       ?strumento music:NomeStrumentoMusicale ?prod\n" +
+                 "   }\n" +
+                 "   optional {\n" +
+                 "       ?o music:producePezzi ?strumento .\n" +
+                 "       ?strumento music:NomeStrumentoMusicale ?prod\n" +
+                 "   }\n" +
+                 "}\n" +
+                 "GROUP BY ?nome ?descrizione ?immagine ?fondataNel ?origineTipo ?citta";
+    } else if (state.tipo === 'StrumentoMusicale') {
+        query =     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
+                    "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+                    "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+                    "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
+                    "select ?nome ?immagine ?descrizione ?numCorde ?body ?ponte ?legni ?prodottoDaFustiURI ?prodottoDaFusti ?produzionePiattiURI ?suonatoDaURI ?suonatoCon ?suonatoIn ?prodottoDaURI ?produzionePiatti ?prodottoDa ?suonatoDa where { \n" +
+                    "    <" + state.URI + "> ?p ?o .\n" +
+                    "    ?o rdf:type music:StrumentoMusicale .\n" +
+                    "    ?o rdfs:comment ?descrizione .\n" +
+                    "    ?o music:NomeStrumentoMusicale ?nome .\n" +
+                    "    ?o music:Immagine ?immagine .\n" +
+                    "    optional {?o music:HaNumeroCorde ?numCorde} .\n" +
+                    "    optional {?o music:Body ?body} .\n" +
+                    "    optional {?o music:Ponte ?ponte} .\n" +
+                    "    optional {?o music:Legni ?legni} .\n" +
+                    "    optional {\n" +
+                    "        ?o music:suonatoCon ?suonato .\n" +
+                    "        ?suonato rdfs:label ?suonatoCon .\n" +
+                    "    } .\n" +
+                    "    ?o music:suonatoIn ?genere .\n" +
+                    "    ?genere music:NomeGenereMusicale ?suonatoIn .\n" +
+                    "    optional {\n" +
+                    "        ?o music:prodottoDa ?prodottoDaURI .   \n" +
+                    "        ?prodottoDaURI music:NomeCasaProduttrice ?prodottoDa .\n" +
+                    "    }\n" +
+                    "    optional {\n" +
+                    "        ?o music:compostoDa ?fusti .   \n" +
+                    "        ?fusti music:NomeStrumentoMusicale ?fustiNome .\n" +
+                    "        ?fusti rdf:type music:TuttiFusti .\n" +
+                    "        ?fusti music:pezziProdottiDa ?prodottoDaFustiURI .\n" +
+                    "        ?prodottoDaFustiURI music:NomeCasaProduttrice ?prodottoDaFusti .\n" +
+                    "        ?o music:compostoDa ?piatti .\n" +
+                    "        ?piatti music:NomeStrumentoMusicale ?piattiNome .\n" +
+                    "        ?piatti rdf:type music:Piatti .\n" +
+                    "        ?piatti music:pezziProdottiDa ?produzionePiattiURI .\n" +
+                    "        ?produzionePiattiURI music:NomeCasaProduttrice ?produzionePiatti .\n" +
+                    "    }\n" +
+                    "    ?o music:suonatoDa ?suonatoDaURI .\n" +
+                    "    ?suonatoDaURI foaf:firstName ?artistaNome .\n" +
+                    "    ?suonatoDaURI foaf:lastName ?artistaCognome .\n" +
+                    "    BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?suonatoDa)\n" +
+                    "}";
     }
 
     useEffect( () => {
@@ -125,10 +196,10 @@ const SearchElement = () => {
             })}
         </ResultsContainer>
         )
-    } else {
+    } else if (state.tipo === 'CasaProduttrice') {
         return (
             <ResultsContainer>
-                <ResultsH1>Case Produttrici Bassi</ResultsH1>
+                <ResultsH1>Ricerca URI</ResultsH1>
                 {results.map((item) => {
                     const strumenti = item.produce.value.split(", ");
                     return(
@@ -138,10 +209,10 @@ const SearchElement = () => {
                             <h1>{item.nome.value}</h1>
                             <p>{item.descrizione.value}</p>
                             <hr style={{paddingTop: "3px"}} />
-                            <p>Data fondazione: {item.dataFond.value}</p>
-                            <p>Origine: {item.origine.value === "CittaAmericana" ? "Americana" : "Giapponese"}</p>
-                            <p>Sede principale: {item.nomecitta.value}</p>
-                            <p>{item.nome.value} produce {strumenti.length !== 1 ? "i bassi" : "il basso"}:
+                            <p>Data fondazione: {item.fondataNel.value}</p>
+                            <p>Origine: {item.origineTipo.value === "CittaAmericana" ? "Americana" : "Giapponese"}</p>
+                            <p>Sede principale: {item.citta.value}</p>
+                            <p>{item.nome.value} produce:
                                 <ul>
                                     {strumenti.map((strumento) => 
                                         <li>{strumento}</li>
@@ -152,6 +223,42 @@ const SearchElement = () => {
                         </Item>
                     )
                 })}
+            </ResultsContainer>
+        )
+    } else if (state.tipo === 'StrumentoMusicale') {
+        return (
+            <ResultsContainer>
+                <ResultsH1>Ricerca URI</ResultsH1>
+                {results.map((item) => 
+                    <Item>
+                    <ItemImage src={item.immagine.value}></ItemImage>
+                    <ItemDescription>
+                        {console.log(item.body)}
+                        <h1>{item.nome.value}</h1>
+                        <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>
+                        <hr style={{paddingTop: "3px"}} />
+                        {item.body !== undefined && <p>Body: {item.body.value}</p>}
+                        {item.legni !== undefined && <p>Legni: {item.legni.value}</p>}
+                        {item.ponte !== undefined &&<p>Ponte: {item.ponte.value}</p>}
+                        {item.numCorde != undefined && <p>Numero corde: {item.numCorde.value}</p>}
+                        {item.prodottoDaFusti != undefined &&<p>La batteria è composta da: 
+                            <ul>
+                                <li>Fusti: {item.fustiNome.value} - Prodotti da: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                            navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.produzioneFustiURI.value}});
+                        }}>{item.produzioneFusti.value}</a></li>
+                                <li>Piatti: {item.piattiNome.value} - Prodotti da: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                            navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.produzionePiattiURI.value}});
+                        }}>{item.produzionePiatti.value}</a></li>
+                            </ul>    
+                        </p>}
+                        <p>E' suonata dall'artista: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                            navigate('/search', {state: {tipo: "Artista", URI: item.suonatoDaURI.value}});
+                        }}>{item.suonatoDa.value}</a></p>
+                        {item.suonatoCon !== null &&<p>L'artista {item.suonatoDa.value} suona la "{item.nome.value}" con: "{item.suonatoCon.value}"</p>}
+                        <p>E' suonato nel genere musicale: {item.suonatoIn.value}</p>
+                    </ItemDescription>
+                    </Item>
+                )}
             </ResultsContainer>
         )
     }

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import {useNavigate} from 'react-router-dom';
 
 
 const ResultsContainer = styled.div`
@@ -41,6 +42,7 @@ const ResultsH1 = styled.h1`
 const TastieraElement = () => {
 
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         const requestData = {
@@ -50,18 +52,18 @@ const TastieraElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" + 
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" + 
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" + 
-                    "SELECT ?tastiera ?nome ?immagine ?descrizione ?suonatoIn ?prodottoDa ?suonatoDa\n" + 
+                    "SELECT ?tastiera ?nome ?immagine ?descrizione ?suonatoDaURI ?suonatoIn ?prodottoDaURI ?prodottoDa ?suonatoDa\n" + 
                     "    WHERE { ?tastiera rdf:type music:Tastiera .\n" + 
                     "        ?tastiera music:DescrizioneStrumento ?descrizione .\n" + 
                     "        ?tastiera music:Immagine ?immagine .\n" + 
                     "        ?tastiera music:NomeStrumentoMusicale ?nome .\n" + 
                     "        ?tastiera music:suonatoIn ?genere . \n" + 
                     "        ?genere music:NomeGenereMusicale ?suonatoIn .\n" + 
-                    "        ?tastiera music:prodottoDa ?casaProd . \n" + 
-                    "        ?casaProd music:NomeCasaProduttrice ?prodottoDa .\n" + 
-                    "        ?tastiera music:suonatoDa ?artista .\n" + 
-                    "        ?artista foaf:firstName ?artistaNome .\n" + 
-                    "        ?artista foaf:lastName ?artistaCognome .\n" + 
+                    "        ?tastiera music:prodottoDa ?prodottoDaURI . \n" + 
+                    "        ?prodottoDaURI music:NomeCasaProduttrice ?prodottoDa .\n" + 
+                    "        ?tastiera music:suonatoDa ?suonatoDaURI .\n" + 
+                    "        ?suonatoDaURI foaf:firstName ?artistaNome .\n" + 
+                    "        ?suonatoDaURI foaf:lastName ?artistaCognome .\n" + 
                     "        BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?suonatoDa)\n" + 
                     "}",
           infer: true,
@@ -90,8 +92,12 @@ const TastieraElement = () => {
                     <h1>{item.nome.value}</h1>
                     <p>{item.descrizione.value}</p>
                     <hr style={{paddingTop: "3px"}} />
-                    <p>E' prodotto dalla casa produttrice: {item.prodottoDa.value}</p>
-                    <p>E' suonato dall'artista: {item.suonatoDa.value}</p>
+                    <p>E' prodotto dalla casa produttrice: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                        navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.prodottoDaURI.value}});
+                    }}>{item.prodottoDa.value}</a></p>
+                    <p>E' suonato dall'artista: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                        navigate('/search', {state: {tipo: "Artista", URI: item.suonatoDaURI.value}});
+                    }}>{item.suonatoDa.value}</a></p>
                     <p>E' suonato nel genere musicale: {item.suonatoIn.value}</p>
                   </ItemDescription>
                 </Item>

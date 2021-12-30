@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import {useNavigate} from 'react-router-dom';
 
 
 const ResultsContainer = styled.div`
@@ -41,6 +42,7 @@ const ResultsH1 = styled.h1`
 
 const BatteriaElement = () => {
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         const requestData = {
@@ -50,7 +52,7 @@ const BatteriaElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT ?batteria ?nome ?immagine ?descrizione ?suonatoIn ?fustiNome ?produzioneFusti ?piattiNome ?produzionePiatti ?suonatoDa ?suonatoCon\n" +
+                    "SELECT ?batteria ?nome ?immagine ?descrizione ?suonatoIn ?fustiNome ?produzioneFustiURI ?produzioneFusti ?piattiNome ?produzionePiattiURI ?produzionePiatti ?suonatoDaURI ?suonatoDa ?suonatoCon\n" +
                         "WHERE { ?batteria rdf:type music:Batteria .\n" +
                             "?batteria music:DescrizioneStrumento ?descrizione .\n" +
                             "?batteria music:Immagine ?immagine .\n" +
@@ -59,20 +61,20 @@ const BatteriaElement = () => {
                             "?suonato rdfs:label ?suonatoCon .\n" +
                             "?batteria music:suonatoIn ?genere . \n" +
                             "?genere music:NomeGenereMusicale ?suonatoIn .\n" +
-                            "?batteria music:suonatoDa ?artista .\n" +
-                            "?artista foaf:firstName ?artistaNome .\n" +
-                            "?artista foaf:lastName ?artistaCognome .\n" +
+                            "?batteria music:suonatoDa ?suonatoDaURI .\n" +
+                            "?suonatoDaURI foaf:firstName ?artistaNome .\n" +
+                            "?suonatoDaURI foaf:lastName ?artistaCognome .\n" +
                             "BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?suonatoDa) .\n" +
                             "?batteria music:compostoDa ?fusti .\n" +
                             "?fusti music:NomeStrumentoMusicale ?fustiNome .\n" +
                             "?fusti rdf:type music:TuttiFusti .\n" +
-                            "?fusti music:pezziProdottiDa ?fustiCasaProd . \n" +
-                            "?fustiCasaProd music:NomeCasaProduttrice ?produzioneFusti .\n" +
+                            "?fusti music:pezziProdottiDa ?produzioneFustiURI . \n" +
+                            "?produzioneFustiURI music:NomeCasaProduttrice ?produzioneFusti .\n" +
                             "?batteria music:compostoDa ?piatti .\n" +
                             "?piatti music:NomeStrumentoMusicale ?piattiNome . \n" +
                             "?piatti rdf:type music:Piatti .\n" +
-                            "?piatti music:pezziProdottiDa ?piattiCasaProd . \n" +
-                            "?piattiCasaProd music:NomeCasaProduttrice ?produzionePiatti\n" +
+                            "?piatti music:pezziProdottiDa ?produzionePiattiURI . \n" +
+                            "?produzionePiattiURI music:NomeCasaProduttrice ?produzionePiatti\n" +
                     "}",
             infer: true,
             sameAs: true
@@ -102,11 +104,17 @@ const BatteriaElement = () => {
                     <hr style={{paddingTop: "3px"}} />
                     <p>La batteria è composta da: 
                         <ul>
-                            <li>Fusti: {item.fustiNome.value} - Prodotti da: {item.produzioneFusti.value}</li>
-                            <li>Piatti: {item.piattiNome.value} - Prodotti da: {item.produzionePiatti.value}</li>
+                            <li>Fusti: {item.fustiNome.value} - Prodotti da: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                        navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.produzioneFustiURI.value}});
+                    }}>{item.produzioneFusti.value}</a></li>
+                            <li>Piatti: {item.piattiNome.value} - Prodotti da: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                        navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.produzionePiattiURI.value}});
+                    }}>{item.produzionePiatti.value}</a></li>
                         </ul>    
                     </p>
-                    <p>E' suonata dall'artista: {item.suonatoDa.value}</p>
+                    <p>E' suonata dall'artista: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                        navigate('/search', {state: {tipo: "Artista", URI: item.suonatoDaURI.value}});
+                    }}>{item.suonatoDa.value}</a></p>
                     <p>L'artista {item.suonatoDa.value} suona la "{item.nome.value}" con: "{item.suonatoCon.value}"</p>
                     <p>E' suonato nel genere musicale: {item.suonatoIn.value}</p>
                   </ItemDescription>

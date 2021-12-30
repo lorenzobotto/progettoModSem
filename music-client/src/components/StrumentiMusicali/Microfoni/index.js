@@ -89,7 +89,7 @@ const MicrofonoElement = () => {
                     <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>
                     <hr style={{paddingTop: "3px"}} />
                     <p>E' prodotto dalla casa produttrice: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
-                        navigate('/search', {state: {tipo: "CasaProduttriceMicrofono", URI: item.prodottoDaURI.value}});
+                        navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.prodottoDaURI.value}});
                     }}>{item.prodottoDa.value}</a></p>
                     <p>E' utilizzato dall'artista: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
                         navigate('/search', {state: {tipo: "Artista", URI: item.suonatoDaURI.value}});

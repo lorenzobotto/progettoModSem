@@ -51,7 +51,7 @@ const BassoElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT ?basso ?nome ?descrizione ?immagine ?numCorde ?ponte ?legni ?suonatoCon ?suonatoIn ?prodottoDa ?suonatoDaURI ?suonatoDa\n" +
+                    "SELECT ?basso ?nome ?descrizione ?immagine ?numCorde ?ponte ?legni ?suonatoCon ?suonatoIn ?prodottoDaURI ?prodottoDa ?suonatoDaURI ?suonatoDa\n" +
                     "    WHERE { ?basso rdf:type music:Basso .\n" +
                         "        ?basso music:NomeStrumentoMusicale ?nome .\n" +
                         "    ?basso music:HaNumeroCorde ?numCorde .\n" +
@@ -63,8 +63,8 @@ const BassoElement = () => {
                         "   ?suonato rdfs:label ?suonatoCon .\n" +
                         "   ?basso music:suonatoIn ?genere . \n" +
                         "   ?genere music:NomeGenereMusicale ?suonatoIn .\n" +
-                        "   ?basso music:prodottoDa ?casaProd . \n" +
-                        "   ?casaProd music:NomeCasaProduttrice ?prodottoDa .\n" +
+                        "   ?basso music:prodottoDa ?prodottoDaURI . \n" +
+                        "   ?prodottoDaURI music:NomeCasaProduttrice ?prodottoDa .\n" +
                         "   ?basso music:suonatoDa ?suonatoDaURI .\n" +
                         "   ?suonatoDaURI foaf:firstName ?artistaNome .\n" +
                         "   ?suonatoDaURI foaf:lastName ?artistaCognome .\n" +
@@ -96,7 +96,9 @@ const BassoElement = () => {
                     <h1>{item.nome.value}</h1>
                     <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>
                     <hr style={{paddingTop: "3px"}} />
-                    <p>Il basso è prodotta dalla casa produttrice: {item.prodottoDa.value}</p>
+                    <p>Il basso è prodotta dalla casa produttrice: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                        navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.prodottoDaURI.value}});
+                    }}>{item.prodottoDa.value}</a></p>
                     <p>Legni del basso: {item.legni.value}</p>
                     <p>Ponte basso: {item.ponte.value}</p>
                     {item.numCorde != null && <p>Numero corde della basso: {item.numCorde.value}</p>}

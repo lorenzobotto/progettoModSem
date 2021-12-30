@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-
+import {useNavigate} from 'react-router-dom';
 
 const ResultsContainer = styled.div`
     min-height: 100vh;
@@ -41,6 +41,7 @@ const ResultsH1 = styled.h1`
 
 const GruppiElement = () => {
     const [results, setResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         const requestData = {
@@ -50,16 +51,16 @@ const GruppiElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT DISTINCT ?band ?descrizione ?nome ?numArtisti ?immagine (group_concat(distinct ?artisti;separator=\", \") AS ?artistiNome) where {\n" +
+                    "SELECT DISTINCT ?band ?descrizione ?nome ?numArtisti ?immagine (group_concat(distinct ?artistiURI;separator=\", \") AS ?artistiNomeURI) (group_concat(distinct ?artisti;separator=\", \") AS ?artistiNome) where {\n" +
                     "    ?band rdf:type music:Gruppo .\n" +
                     "    ?band rdfs:comment ?descrizione .\n" +
                     "    ?band music:NomeBandMusicale ?nome .\n" +
                     "    ?band music:HaNumeroArtisti ?numArtisti .\n" +
                     "    ?band music:Immagine ?immagine .\n" +
                     "    ?citta rdf:type ?origineTipo .\n" +
-                    "    ?band music:haLavoratori ?artistiIRI .\n" +
-                    "    ?artistiIRI foaf:firstName ?artistaNome .\n" +
-                    "    ?artistiIRI foaf:lastName ?artistaCognome .\n" +
+                    "    ?band music:haLavoratori ?artistiURI .\n" +
+                    "    ?artistiURI foaf:firstName ?artistaNome .\n" +
+                    "    ?artistiURI foaf:lastName ?artistaCognome .\n" +
                     "   BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?artisti)\n" +
                     "}\n" +
                     "GROUP BY ?band ?descrizione ?nome ?numArtisti ?immagine",
@@ -84,6 +85,7 @@ const GruppiElement = () => {
             <ResultsH1>Band musicali - Gruppi</ResultsH1>
             {results.map((item) => {
                 const artisti = item.artistiNome.value.split(", ");
+                const artistiURI = item.artistiNomeURI.value.split(", ");
                 return(
                     <Item>
                     <ItemImage src={item.immagine.value}></ItemImage>
@@ -93,8 +95,13 @@ const GruppiElement = () => {
                         <hr style={{paddingTop: "3px"}} />
                         <p>Nella band musicale "{item.nome.value}" suonano {item.numArtisti.value} artisti:
                             <ul>
-                                {artisti.map((artista) => 
-                                    <li>{artista}</li>
+                                {artisti.map((artista, i) => 
+                                    <li>
+                                        <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                navigate('/search', {state: {tipo: "Artista", URI: artistiURI[i]}});
+                                            }}>{artista}
+                                        </a>
+                                    </li>
                                 )}
                             </ul>
                         </p>
