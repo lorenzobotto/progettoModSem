@@ -112,10 +112,7 @@ const CaseProdBatterieElement = () => {
                                 <ul>
                                     {strumenti.map((strumento, i) => 
                                         <li>
-                                            <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
-                                                    navigate('/search', {state: {tipo: "StrumentoMusicale", URI: strumentiURI[i]}});
-                                                }}>{strumento}
-                                            </a>
+                                            {strumento}
                                         </li>
                                     )}
                                 </ul>
@@ -124,12 +121,9 @@ const CaseProdBatterieElement = () => {
                         {item.tipoCasa.value === "CasaProduttricePiatti" && 
                             <p>{item.nome.value} produce i piatti:
                                 <ul>
-                                    {strumenti.map((strumento, i) => 
+                                    {strumenti.map((strumento) => 
                                         <li>
-                                            <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
-                                                    navigate('/search', {state: {tipo: "StrumentoMusicale", URI: strumentiURI[i]}});
-                                                }}>{strumento}
-                                            </a>
+                                            {strumento}
                                         </li>
                                     )}
                                 </ul>

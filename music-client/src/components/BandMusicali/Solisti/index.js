@@ -91,8 +91,9 @@ const SolistiElement = () => {
                     <Item>
                     <ItemImage src={item.immagine.value}></ItemImage>
                     <ItemDescription>
-                        <h1>{item.nome.value}</h1>
-                        <p style={{marginBottom: "0px"}}>
+                        <h1 style={{marginBottom: "0px"}}>{item.nome.value}</h1>
+                        <hr style={{paddingTop: "3px"}} />
+                        <p>
                         <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
                                                 navigate('/search', {state: {tipo: "Artista", URI: item.suonatoDaURI.value}});
                                             }}>{nome}</a>{" " + desc}

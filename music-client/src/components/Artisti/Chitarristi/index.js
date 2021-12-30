@@ -52,7 +52,7 @@ const ChitarristiElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT DISTINCT ?chitarrista ?nome ?dataNascita ?genere ?eta ?cognome ?immagine ?groupband ?lavoraIn (group_concat(distinct ?strumentoMusicaleURI;separator=\", \") AS ?suonaURI) (group_concat(distinct ?oggetto;separator=\", \") AS ?suonaCon) (group_concat(distinct ?strumentoMusicale;separator=\", \") AS ?suona) where{\n" +
+                    "SELECT DISTINCT ?chitarrista ?nome ?dataNascita ?genere ?eta ?cognome ?immagine ?bandURI ?groupband ?lavoraIn (group_concat(distinct ?strumentoMusicaleURI;separator=\", \") AS ?suonaURI) (group_concat(distinct ?oggetto;separator=\", \") AS ?suonaCon) (group_concat(distinct ?strumentoMusicale;separator=\", \") AS ?suona) where{\n" +
                     "    ?chitarrista rdf:type music:Chitarrista .\n" +
                     "    ?chitarrista foaf:firstName ?nome .\n" +
                     "    ?chitarrista foaf:lastName ?cognome .\n" +
@@ -60,9 +60,9 @@ const ChitarristiElement = () => {
                     "    ?chitarrista foaf:age ?eta .\n" +
                     "    ?chitarrista foaf:gender ?genere .\n" +
                     "    ?chitarrista music:Immagine ?immagine .\n" +
-                    "    ?chitarrista music:lavoraIn ?gruppo .\n" +
-                    "    ?gruppo music:NomeBandMusicale ?lavoraIn .\n" +
-                    "    ?gruppo rdf:type ?band .\n" +
+                    "    ?chitarrista music:lavoraIn ?bandURI .\n" +
+                    "    ?bandURI music:NomeBandMusicale ?lavoraIn .\n" +
+                    "    ?bandURI rdf:type ?band .\n" +
                     "    FILTER(?band in (music:Solista, music:Gruppo))\n" +
                     "    ?band rdfs:label ?groupband .\n" +
                     "    ?chitarrista music:suona ?strumentoMusicaleURI .\n" +
@@ -72,7 +72,7 @@ const ChitarristiElement = () => {
                     "        ?oggettoCon rdfs:label ?oggetto\n" +
                     "    }\n" +
                     "}\n" +
-                    "GROUP BY ?chitarrista ?nome ?dataNascita ?genere ?eta ?cognome ?immagine ?groupband ?lavoraIn",
+                    "GROUP BY ?chitarrista ?nome ?dataNascita ?genere ?eta ?cognome ?immagine ?bandURI ?groupband ?lavoraIn",
             infer: true,
             sameAs: true
         }
@@ -117,8 +117,16 @@ const ChitarristiElement = () => {
                             </ul>
                         </p>
                         <p>{item.nome.value + " " + item.cognome.value} suona con: "{item.suonaCon.value}"</p>
-                        {item.groupband.value === 'Solista' && <p>Suona come solista e si fa chiamare: "{item.lavoraIn.value}"</p>}
-                        {item.groupband.value === 'Gruppo' && <p>Suona nella band musicale: "{item.lavoraIn.value}"</p>}
+                        {item.groupband.value === 'Solista' && <p>Suona come solista e si fa chiamare: "<a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                                            navigate('/search', {state: {tipo: "Band", URI: item.bandURI.value}});
+                                                                        }}>{item.lavoraIn.value}
+                                                                    </a>"
+                                                              </p>}
+                        {item.groupband.value === 'Gruppo' && <p>Suona nella band musicale: "<a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                                            navigate('/search', {state: {tipo: "Band", URI: item.bandURI.value}});
+                                                                        }}>{item.lavoraIn.value}
+                                                                    </a>"
+                                                              </p>}
                     </ItemDescription>
                     </Item>
                 )

@@ -48,7 +48,6 @@ const SearchElement = () => {
 
     useEffect(() => {
         let query = null;
-        console.log(state);
         if (state.tipo === 'Artista') {
             query =  "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
@@ -107,7 +106,7 @@ const SearchElement = () => {
                         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
                         "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
                         "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                        "select ?nome ?immagine ?descrizione ?numCorde ?body ?ponte ?legni ?prodottoDaFustiURI ?prodottoDaFusti ?produzionePiattiURI ?suonatoDaURI ?suonatoCon ?suonatoIn ?prodottoDaURI ?produzionePiatti ?prodottoDa ?suonatoDa where { \n" +
+                        "select ?nome ?immagine ?descrizione ?numCorde ?body ?ponte ?legni ?prodottoDaFustiURI ?prodottoDaFusti ?fustiNome ?piattiNome ?produzionePiattiURI ?suonatoDaURI ?suonatoCon ?suonatoIn ?prodottoDaURI ?produzionePiatti ?prodottoDa ?suonatoDa where { \n" +
                         "    <" + state.URI + "> ?p ?o .\n" +
                         "    ?o rdf:type music:StrumentoMusicale .\n" +
                         "    ?o rdfs:comment ?descrizione .\n" +
@@ -144,6 +143,29 @@ const SearchElement = () => {
                         "    ?suonatoDaURI foaf:lastName ?artistaCognome .\n" +
                         "    BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?suonatoDa)\n" +
                         "}";
+        } else if (state.tipo === 'Band') {
+            query =  "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+                    "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
+                    "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+                    "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
+                    "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
+                    "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
+                    "SELECT DISTINCT ?descrizione ?nome ?numArtisti ?nomeTipoBand ?immagine (group_concat(distinct ?artistiURI;separator=\", \") AS ?artistiNomeURI) (group_concat(distinct ?artisti;separator=\", \") AS ?artistiNome) where {\n" +
+                    "    <" + state.URI + "> ?p ?o .\n" +
+                    "    ?o rdfs:comment ?descrizione .\n" +
+                    "    ?o rdf:type ?tipoBand .\n" +
+                    "    FILTER(?tipoBand IN (music:Solista, music:Gruppo)) .\n" +
+                    "    ?tipoBand rdfs:label ?nomeTipoBand .\n" +
+                    "    ?o music:NomeBandMusicale ?nome .\n" +
+                    "    ?o music:HaNumeroArtisti ?numArtisti .\n" +
+                    "    ?o music:Immagine ?immagine .\n" +
+                    "    ?citta rdf:type ?origineTipo .\n" +
+                    "    ?o music:haLavoratori ?artistiURI .\n" +
+                    "    ?artistiURI foaf:firstName ?artistaNome .\n" +
+                    "    ?artistiURI foaf:lastName ?artistaCognome .\n" +
+                    "   BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?artisti)\n" +
+                    "}\n" +
+                    "GROUP BY ?descrizione ?nome ?numArtisti ?immagine ?nomeTipoBand";
         }
 
         const requestData = {
@@ -262,11 +284,11 @@ const SearchElement = () => {
                             {item.numCorde != undefined && <p>Numero corde: {item.numCorde.value}</p>}
                             {item.prodottoDaFusti != undefined &&<p>La batteria è composta da: 
                                 <ul>
-                                    <li>Fusti: {item.prodottoDaFusti.value} - Prodotti da: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                    <li>Fusti: {item.fustiNome.value} - Prodotti da: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
                                         setState({tipo: "CasaProduttrice", URI: item.prodottoDaFustiURI.value});
                                         setResults(null);
                             }}>{item.prodottoDaFusti.value}</a></li>
-                                    <li>Piatti: {item.produzionePiatti.value} - Prodotti da: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                    <li>Piatti: {item.piattiNome.value} - Prodotti da: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
                                         setState({tipo: "CasaProduttrice", URI: item.produzionePiattiURI.value});
                                         setResults(null);
                             }}>{item.produzionePiatti.value}</a></li>
@@ -285,6 +307,57 @@ const SearchElement = () => {
             )
         }
         return <ResultsContainer />;
+    } else if (state.tipo === 'Band') {
+        if (results != null) {
+            return(
+                <ResultsContainer>
+                    <ResultsH1>Ricerca URI</ResultsH1>
+                    {results.map((item) => {
+                        const artisti = item.artistiNome.value.split(", ");
+                        const artistiURI = item.artistiNomeURI.value.split(", ");
+                        let nome = null;
+                        let desc = null;
+                        if (item.nomeTipoBand.value === 'Solista') {
+                            let nomeArray = item.descrizione.value.split(" ");
+                            nome = nomeArray.slice(0, 2).join(" ");
+                            desc = nomeArray.slice(2, nomeArray.length).join(" ");
+                        }
+                        return(
+                            <Item>
+                            <ItemImage src={item.immagine.value}></ItemImage>
+                            <ItemDescription>
+                                <h1>{item.nome.value}</h1>
+                                {item.nomeTipoBand === 'Gruppo' && <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>}
+                                <hr style={{paddingTop: "3px"}} />
+                                {item.nomeTipoBand.value === 'Gruppo' && <p>Nella band musicale "{item.nome.value}" suonano {item.numArtisti.value} artisti:
+                                    <ul>
+                                        {artisti.map((artista, i) => 
+                                            <li>
+                                                <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                        setState({tipo: "Artista", URI: artistiURI[i]});
+                                                        setResults(null);
+                                                    }}>{artista}
+                                                </a>
+                                            </li>
+                                        )}
+                                    </ul>
+                                </p>}
+                                {item.nomeTipoBand.value === 'Solista' &&
+                                    <p>
+                                        <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                                setState({tipo: "Artista", URI: item.artistiNomeURI.value});
+                                                                setResults(null);
+                                                            }}>{nome}</a>{" " + desc}
+                                    </p>
+                                }
+                            </ItemDescription>
+                            </Item>
+                        )
+                    })}
+                </ResultsContainer>
+            )
+        }
+        return <ResultsContainer />;   
     }
 }
 
