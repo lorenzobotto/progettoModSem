@@ -53,7 +53,7 @@ const SearchElement = () => {
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
                     "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
-                    "SELECT ?nome ?cognome ?eta ?genere ?dataNascita ?tipoGruppo ?gruppo ?immagine (group_concat(distinct ?strumentoMusicaleURI;separator=\", \") AS ?suonaURI) (group_concat(distinct ?strumento;separator=\", \") AS ?suona) (group_concat(distinct ?oggetto;separator=\", \") AS ?utilizza)\n" +
+                    "SELECT ?nome ?cognome ?eta ?genere ?dataNascita ?tipoGruppo ?gruppoURI ?gruppo ?immagine (group_concat(distinct ?strumentoMusicaleURI;separator=\", \") AS ?suonaURI) (group_concat(distinct ?strumento;separator=\", \") AS ?suona) (group_concat(distinct ?oggetto;separator=\", \") AS ?utilizza)\n" +
                     "WHERE {\n" +
                     "    <" + state.URI + ">  ?p  ?o .\n" +
                     "    ?o foaf:firstName ?nome .\n" +
@@ -64,9 +64,9 @@ const SearchElement = () => {
                     "   ?o music:Immagine ?immagine .\n" +
                     "   ?o music:suona ?strumentoMusicaleURI .\n" +
                     "   ?strumentoMusicaleURI music:NomeStrumentoMusicale ?strumento .\n" +
-                    "   ?o music:lavoraIn ?band .\n" +
-                    "   ?band music:NomeBandMusicale ?gruppo .\n" +
-                    "   ?band rdf:type ?tipoBand .\n" +
+                    "   ?o music:lavoraIn ?gruppoURI .\n" +
+                    "   ?gruppoURI music:NomeBandMusicale ?gruppo .\n" +
+                    "   ?gruppoURI rdf:type ?tipoBand .\n" +
                     "   ?tipoBand rdfs:label ?tipoGruppo .\n" +
                     "   FILTER(?tipoBand IN (music:Gruppo, music:Solista))\n" +
                     "   optional {\n" +
@@ -74,7 +74,7 @@ const SearchElement = () => {
                     "       ?oggettoURI rdfs:label ?oggetto\n" +
                     "    }\n" +
                     "}\n" +
-                    "GROUP BY ?nome ?cognome ?eta ?genere ?dataNascita ?gruppo ?immagine ?tipoGruppo";
+                    "GROUP BY ?nome ?cognome ?eta ?genere ?dataNascita ?gruppo ?immagine ?tipoGruppo ?gruppoURI";
         } else if (state.tipo === 'CasaProduttrice') {
             query =  "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                      "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
@@ -106,10 +106,11 @@ const SearchElement = () => {
                         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
                         "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
                         "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                        "select ?nome ?immagine ?descrizione ?numCorde ?body ?ponte ?legni ?prodottoDaFustiURI ?prodottoDaFusti ?fustiNome ?piattiNome ?produzionePiattiURI ?suonatoDaURI ?suonatoCon ?suonatoIn ?prodottoDaURI ?produzionePiatti ?prodottoDa ?suonatoDa where { \n" +
+                        "select ?nome ?immagine ?commento ?descrizione ?numCorde ?body ?ponte ?legni ?prodottoDaFustiURI ?prodottoDaFusti ?fustiNome ?piattiNome ?produzionePiattiURI ?suonatoDaURI ?suonatoCon ?suonatoIn ?prodottoDaURI ?produzionePiatti ?prodottoDa ?suonatoDa where { \n" +
                         "    <" + state.URI + "> ?p ?o .\n" +
                         "    ?o rdf:type music:StrumentoMusicale .\n" +
-                        "    ?o rdfs:comment ?descrizione .\n" +
+                        "    ?o rdfs:comment ?commento .\n" +
+                        "    optional {?o music:DescrizioneStrumento ?descrizione} .\n" +
                         "    ?o music:NomeStrumentoMusicale ?nome .\n" +
                         "    ?o music:Immagine ?immagine .\n" +
                         "    optional {?o music:HaNumeroCorde ?numCorde} .\n" +
@@ -217,8 +218,18 @@ const SearchElement = () => {
                                 </ul>
                             </p>
                             {item.utilizza.value !== '' && <p>{item.nome.value + " " + item.cognome.value} suona con: "{item.utilizza.value}"</p>}
-                            {item.tipoGruppo.value === 'Solista' && <p>Suona come solista e si fa chiamare: "{item.gruppo.value}"</p>}
-                            {item.tipoGruppo.value === 'Gruppo' && <p>Suona nella band musicale: "{item.gruppo.value}"</p>}
+                            {item.tipoGruppo.value === 'Solista' && <p>Suona come solista e si fa chiamare: "<a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                                            setState({tipo: "Band", URI: item.gruppoURI.value});
+                                                                            setResults(null);
+                                                                        }}>{item.gruppo.value}
+                                                                    </a>"
+                                                              </p>}
+                        {item.tipoGruppo.value === 'Gruppo' && <p>Suona nella band musicale: "<a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                                            setState({tipo: "Band", URI: item.gruppoURI.value});
+                                                                            setResults(null);
+                                                                        }}>{item.gruppo.value}
+                                                                    </a>"
+                                                              </p>}
                         </ItemDescription>
                         </Item>
                     )
@@ -240,7 +251,7 @@ const SearchElement = () => {
                             <ItemImage src={item.immagine.value}></ItemImage>
                             <ItemDescription>
                                 <h1>{item.nome.value}</h1>
-                                <p>{item.descrizione.value}</p>
+                                <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>
                                 <hr style={{paddingTop: "3px"}} />
                                 <p>Data fondazione: {item.fondataNel.value}</p>
                                 <p>Origine: {item.origineTipo.value === "CittaAmericana" ? "Americana" : "Giapponese"}</p>
@@ -276,8 +287,12 @@ const SearchElement = () => {
                         <ItemImage src={item.immagine.value}></ItemImage>
                         <ItemDescription>
                             <h1>{item.nome.value}</h1>
-                            <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>
+                            <p style={{marginBottom: "0px"}}>{item.descrizione !== undefined ? item.descrizione.value : item.commento.value}</p>
                             <hr style={{paddingTop: "3px"}} />
+                            <p>E' prodotto dalla casa produttrice: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                        setState({tipo: "CasaProduttrice", URI: item.prodottoDaURI.value});
+                                        setResults(null);
+                            }}>{item.prodottoDa.value}</a></p>
                             {item.body !== undefined && <p>Body: {item.body.value}</p>}
                             {item.legni !== undefined && <p>Legni: {item.legni.value}</p>}
                             {item.ponte !== undefined &&<p>Ponte: {item.ponte.value}</p>}
@@ -327,7 +342,7 @@ const SearchElement = () => {
                             <ItemImage src={item.immagine.value}></ItemImage>
                             <ItemDescription>
                                 <h1>{item.nome.value}</h1>
-                                {item.nomeTipoBand === 'Gruppo' && <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>}
+                                {item.nomeTipoBand.value === 'Gruppo' && <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>}
                                 <hr style={{paddingTop: "3px"}} />
                                 {item.nomeTipoBand.value === 'Gruppo' && <p>Nella band musicale "{item.nome.value}" suonano {item.numArtisti.value} artisti:
                                     <ul>
