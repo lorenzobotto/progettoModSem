@@ -5,6 +5,7 @@ import NavbarElement from '../components/Navbar'
 const Home = () => {
     return (
         <>
+            {/* Richiamo il render dei componenti */}
             <NavbarElement />
             <HomeElement />
         </>

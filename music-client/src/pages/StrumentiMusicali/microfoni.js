@@ -5,6 +5,7 @@ import NavbarElement from '../../components/Navbar'
 const Microfoni = () => {
     return (
         <>
+            {/* Richiamo il render dei componenti */}
             <NavbarElement />
             <MicrofonoElement />
         </>

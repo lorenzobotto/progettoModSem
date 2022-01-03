@@ -22,6 +22,7 @@ import Search from './pages/Search';
 
 function App() {
   return (
+    /* Renderizzo tutte le pagine necessarie con il relativo percorso e il relativo elemento */
     <Router>
       <Routes>
         <Route path="/" element={<Home />} exact />

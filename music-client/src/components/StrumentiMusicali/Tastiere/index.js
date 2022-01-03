@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {useNavigate} from 'react-router-dom';
 
+/* Codice CSS per tutti gli elementi della pagina */
 
 const ResultsContainer = styled.div`
     min-height: 100vh;
@@ -39,12 +40,16 @@ const ResultsH1 = styled.h1`
     color: #fff;
 `
 
+/* Codice per la pagina delle tastiere */
+
 const TastieraElement = () => {
 
     const [results, setResults] = useState([]);
     const navigate = useNavigate();
 
+    /* useEffect serve per eseguire il codice solo una volta */
     useEffect( () => {
+        /* Costruzione della SPARQL Query per ricercare i dati di tutti i microfoni */
         const requestData = {
           query:    "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" + 
                     "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" + 
@@ -70,6 +75,7 @@ const TastieraElement = () => {
           sameAs: true
         }
       
+        /* Metodo e Headers per la chiamata HTTP */
         const requestOptions = {
           method: 'GET',
           headers: {
@@ -77,25 +83,31 @@ const TastieraElement = () => {
           }
         }
       
+      /* Chiamata HTTP a GraphDB inserendo i parametri precedentemente costruiti. Quando i dati sono restituiti vengono inseriti in un array */
       fetch('http://localhost:7200/repositories/musical-instruments?' + new URLSearchParams(requestData), requestOptions)
       .then(response => response.json())
       .then(data => setResults(data.results.bindings));
       }, []);
 
     return (
+        /* Rendering di tutti i componenti */
         <ResultsContainer>
             <ResultsH1>Tastiere</ResultsH1>
+            {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
             {results.map((item) => 
                 <Item>
                   <ItemImage src={item.immagine.value}></ItemImage>
                   <ItemDescription>
+                    {/* Restituisco le informazioni dello strumento musicale. */}
                     <h1>{item.nome.value}</h1>
                     <p>{item.descrizione.value}</p>
                     <hr style={{paddingTop: "3px"}} />
-                    <p>E' prodotto dalla casa produttrice: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                    <p>E' prodotto dalla casa produttrice: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                        e.preventDefault();
                         navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.prodottoDaURI.value}});
                     }}>{item.prodottoDa.value}</a></p>
-                    <p>E' suonato dall'artista: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                    <p>E' suonato dall'artista: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                        e.preventDefault();
                         navigate('/search', {state: {tipo: "Artista", URI: item.suonatoDaURI.value}});
                     }}>{item.suonatoDa.value}</a></p>
                     <p>E' suonato nel genere musicale: {item.suonatoIn.value}</p>

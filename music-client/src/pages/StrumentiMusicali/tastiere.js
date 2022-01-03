@@ -5,6 +5,7 @@ import TastieraElement from '../../components/StrumentiMusicali/Tastiere'
 const Tastiere = () => {
     return (
         <>
+            {/* Richiamo il render dei componenti */}
             <NavbarElement />
             <TastieraElement />
         </>

@@ -4,6 +4,7 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* Renderizzo l'intera applicazione */}
     <App />
   </React.StrictMode>,
   document.getElementById('root')

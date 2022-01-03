@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import styled from 'styled-components';
-import {useNavigate} from 'react-router-dom'
 
+/* Codice CSS per tutti gli elementi della pagina */
 
 const ResultsContainer = styled.div`
     min-height: 100vh;
@@ -41,13 +41,16 @@ const ResultsH1 = styled.h1`
     color: #fff;
 `
 
+/* Codice per la pagina di ricerca URI per collegare gli artisti, strumenti, case produttrici e band musicali */
+
 const SearchElement = () => {
     const [results, setResults] = useState([]);
     const [state, setState] = useState(useLocation().state);
-    const navigate = useNavigate();
 
+    /* useEffect serve per eseguire il codice solo una volta */
     useEffect(() => {
         let query = null;
+        /* A seconda del tipo di URI, cioè se è un'artista o una casa produttrice o strumento musicale o band musicale viene creata la SPARQL Query */
         if (state.tipo === 'Artista') {
             query =  "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
@@ -175,6 +178,7 @@ const SearchElement = () => {
             sameAs: true
         }
 
+        /* Metodo e Headers per la chiamata HTTP */
         const requestOptions = {
             method: 'GET',
             headers: {
@@ -182,23 +186,38 @@ const SearchElement = () => {
             }
           }
         
+        /* Chiamata HTTP a GraphDB inserendo i parametri precedentemente costruiti. Quando i dati sono restituiti vengono inseriti in un array */
         fetch('http://localhost:7200/repositories/musical-instruments?' + new URLSearchParams(requestData), requestOptions)
         .then(response => response.json())
         .then(data => setResults(data.results.bindings));
     }, [state]);
 
+    /* 
+        A seconda del tipo di URI, cioè se è un'artista o una casa produttrice o strumento musicale o band musicale
+        vengono restituiti i componenti e le informazioni relative.
+    */
     if (state.tipo === 'Artista') {
         if (results != null) {
             return (
                 <ResultsContainer>
                 <ResultsH1>Ricerca URI</ResultsH1>
+                {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
                 {results.map((item) => {
+                    /* Preparo gli array nel caso in cui gli artisti suonino più di uno strumento e li separo */
                     const strumenti = item.suona.value.split(", ");
                     const strumentiURI = item.suonaURI.value.split(", ");
+                    /* 
+                        Restituisco i componenti con le informazioni ricevute dalla SPARQL Query.
+                        Inoltre vengono aggiunti dei link verso una pagina di ricerca, in modo che
+                        alcune informazioni sono collegato e si può andare a vedere la descrizione del link
+                        cliccato. Le informazioni vengono restituite controllando se esistono, altrimenti il 
+                        paragrafo non viene renderizzato.
+                    */
                     return(
                         <Item>
                         <ItemImage src={item.immagine.value}></ItemImage>
                         <ItemDescription>
+                            {/* Restituisco le informazioni dell'artista. */}
                             <h1>{item.nome.value + " " + item.cognome.value}</h1>
                             <p>Data di nascita: {item.dataNascita.value}</p>
                             <p>Età: {item.eta.value}</p>
@@ -206,9 +225,11 @@ const SearchElement = () => {
                             <hr style={{paddingTop: "3px"}} />
                             <p>{item.nome.value + " " + item.cognome.value} utilizza:
                                 <ul>
+                                    {/* Effettuo un ciclo sull'array degli strumenti per creare l'elenco, con ogni strumento linkato. */}
                                     {strumenti.map((strumento, i) => 
                                         <li>
-                                            <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                            <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                    e.preventDefault();
                                                     setState({tipo: "StrumentoMusicale", URI: strumentiURI[i]});
                                                     setResults(null);
                                                 }}>{strumento}
@@ -218,13 +239,16 @@ const SearchElement = () => {
                                 </ul>
                             </p>
                             {item.utilizza.value !== '' && <p>{item.nome.value + " " + item.cognome.value} suona con: "{item.utilizza.value}"</p>}
-                            {item.tipoGruppo.value === 'Solista' && <p>Suona come solista e si fa chiamare: "<a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                            {/* Se è un solista restituisce un certo paragrafo, altrimenti un altro. Il gruppo dove suona sarà linkato. */}
+                            {item.tipoGruppo.value === 'Solista' && <p>Suona come solista e si fa chiamare: "<a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                                            e.preventDefault();
                                                                             setState({tipo: "Band", URI: item.gruppoURI.value});
                                                                             setResults(null);
                                                                         }}>{item.gruppo.value}
                                                                     </a>"
                                                               </p>}
-                        {item.tipoGruppo.value === 'Gruppo' && <p>Suona nella band musicale: "<a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                        {item.tipoGruppo.value === 'Gruppo' && <p>Suona nella band musicale: "<a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                                            e.preventDefault();
                                                                             setState({tipo: "Band", URI: item.gruppoURI.value});
                                                                             setResults(null);
                                                                         }}>{item.gruppo.value}
@@ -241,15 +265,26 @@ const SearchElement = () => {
     } else if (state.tipo === 'CasaProduttrice') {
         if (results != null) {
             return (
+                /* Rendering di tutti i componenti */
                 <ResultsContainer>
                     <ResultsH1>Ricerca URI</ResultsH1>
+                    {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
                     {results.map((item) => {
+                        /* Preparo gli array nel caso in cui le case produttrici producano più di uno strumento */
                         const strumenti = item.produce.value.split(", ");
                         const strumentiURI = item.suonaURI.value.split(", ");
+                        /* 
+                            Restituisco i componenti con le informazioni ricevute dalla SPARQL Query.
+                            Inoltre vengono aggiunti dei link verso una pagina di ricerca, in modo che
+                            alcune informazioni sono collegato e si può andare a vedere la descrizione del link
+                            cliccato. Le informazioni vengono restituite controllando se esistono, altrimenti il 
+                            paragrafo non viene renderizzato.
+                        */
                         return(
                             <Item>
                             <ItemImage src={item.immagine.value}></ItemImage>
                             <ItemDescription>
+                                {/* Restituisco le informazioni della casa produttrice. */}
                                 <h1>{item.nome.value}</h1>
                                 <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>
                                 <hr style={{paddingTop: "3px"}} />
@@ -258,9 +293,11 @@ const SearchElement = () => {
                                 <p>Sede principale: {item.citta.value}</p>
                                 <p>{item.nome.value} produce:
                                     <ul>
+                                        {/* Effettuo un ciclo sull'array degli strumenti per creare l'elenco, con ogni strumento linkato. */}
                                         {strumenti.map((strumento, i) => 
                                             <li>
-                                                <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                        e.preventDefault();
                                                         setState({tipo: "StrumentoMusicale", URI: strumentiURI[i]});
                                                         setResults(null);
                                                     }}>{strumento}
@@ -280,36 +317,46 @@ const SearchElement = () => {
     } else if (state.tipo === 'StrumentoMusicale') {
         if (results != null) {
             return (
+                /* Rendering di tutti i componenti */
                 <ResultsContainer>
                     <ResultsH1>Ricerca URI</ResultsH1>
+                    {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
                     {results.map((item) => 
                         <Item>
                         <ItemImage src={item.immagine.value}></ItemImage>
                         <ItemDescription>
+                            {/* 
+                                Restituisco le informazioni dello strumento musicale, controllando se la proprietà esiste
+                                e linkando le varie informazioni che lo necessitano.
+                            */}
                             <h1>{item.nome.value}</h1>
                             <p style={{marginBottom: "0px"}}>{item.descrizione !== undefined ? item.descrizione.value : item.commento.value}</p>
                             <hr style={{paddingTop: "3px"}} />
-                            <p>E' prodotto dalla casa produttrice: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                            {item.prodottoDa !== undefined && <p>E' prodotto dalla casa produttrice: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                        e.preventDefault();
                                         setState({tipo: "CasaProduttrice", URI: item.prodottoDaURI.value});
                                         setResults(null);
-                            }}>{item.prodottoDa.value}</a></p>
+                            }}>{item.prodottoDa.value}</a></p>}
                             {item.body !== undefined && <p>Body: {item.body.value}</p>}
                             {item.legni !== undefined && <p>Legni: {item.legni.value}</p>}
                             {item.ponte !== undefined &&<p>Ponte: {item.ponte.value}</p>}
-                            {item.numCorde != undefined && <p>Numero corde: {item.numCorde.value}</p>}
-                            {item.prodottoDaFusti != undefined &&<p>La batteria è composta da: 
+                            {item.numCorde !== undefined && <p>Numero corde: {item.numCorde.value}</p>}
+                            {item.prodottoDaFusti !== undefined &&<p>La batteria è composta da: 
                                 <ul>
-                                    <li>Fusti: {item.fustiNome.value} - Prodotti da: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                    <li>Fusti: {item.fustiNome.value} - Prodotti da: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                        e.preventDefault();
                                         setState({tipo: "CasaProduttrice", URI: item.prodottoDaFustiURI.value});
                                         setResults(null);
                             }}>{item.prodottoDaFusti.value}</a></li>
-                                    <li>Piatti: {item.piattiNome.value} - Prodotti da: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                    <li>Piatti: {item.piattiNome.value} - Prodotti da: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                        e.preventDefault();
                                         setState({tipo: "CasaProduttrice", URI: item.produzionePiattiURI.value});
                                         setResults(null);
                             }}>{item.produzionePiatti.value}</a></li>
                                 </ul>    
                             </p>}
-                            <p>E' suonata dall'artista: <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                            <p>E' suonata dall'artista: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                e.preventDefault();
                                 setState({tipo: "Artista", URI: item.suonatoDaURI.value});
                                 setResults(null);
                             }}>{item.suonatoDa.value}</a></p>
@@ -325,30 +372,44 @@ const SearchElement = () => {
     } else if (state.tipo === 'Band') {
         if (results != null) {
             return(
+                /* Rendering di tutti i componenti */
                 <ResultsContainer>
                     <ResultsH1>Ricerca URI</ResultsH1>
+                    {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
                     {results.map((item) => {
+                        /* Preparo gli array perchè ci sono più artisti che suonano nel gruppo musicale */
                         const artisti = item.artistiNome.value.split(", ");
                         const artistiURI = item.artistiNomeURI.value.split(", ");
                         let nome = null;
                         let desc = null;
+                        /* Preparo gli array dividendo il nome dalla descrizione che la segue, così posso linkare il nome dell'artista. */
                         if (item.nomeTipoBand.value === 'Solista') {
                             let nomeArray = item.descrizione.value.split(" ");
                             nome = nomeArray.slice(0, 2).join(" ");
                             desc = nomeArray.slice(2, nomeArray.length).join(" ");
                         }
+                        /* 
+                            Restituisco i componenti con le informazioni ricevute dalla SPARQL Query.
+                            Inoltre vengono aggiunti dei link verso una pagina di ricerca, in modo che
+                            alcune informazioni sono collegato e si può andare a vedere la descrizione del link
+                            cliccato. Le informazioni vengono restituite controllando se esistono, altrimenti il 
+                            paragrafo non viene renderizzato.
+                        */
                         return(
                             <Item>
                             <ItemImage src={item.immagine.value}></ItemImage>
                             <ItemDescription>
+                                {/* Restituisco le informazioni del gruppo musicale o del solista. */}
                                 <h1>{item.nome.value}</h1>
                                 {item.nomeTipoBand.value === 'Gruppo' && <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>}
                                 <hr style={{paddingTop: "3px"}} />
                                 {item.nomeTipoBand.value === 'Gruppo' && <p>Nella band musicale "{item.nome.value}" suonano {item.numArtisti.value} artisti:
                                     <ul>
+                                        {/* Effettuo un ciclo sull'array degli artisti per creare l'elenco, con ogni artista linkato. */}
                                         {artisti.map((artista, i) => 
                                             <li>
-                                                <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                                <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                        e.preventDefault();
                                                         setState({tipo: "Artista", URI: artistiURI[i]});
                                                         setResults(null);
                                                     }}>{artista}
@@ -359,7 +420,8 @@ const SearchElement = () => {
                                 </p>}
                                 {item.nomeTipoBand.value === 'Solista' &&
                                     <p>
-                                        <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                        <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                                e.preventDefault();
                                                                 setState({tipo: "Artista", URI: item.artistiNomeURI.value});
                                                                 setResults(null);
                                                             }}>{nome}</a>{" " + desc}

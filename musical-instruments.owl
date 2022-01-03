@@ -830,7 +830,7 @@ AnnotationAssertion(rdfs:label :DreamTheater "DreamTheater"@en)
 ClassAssertion(:Gruppo :DreamTheater)
 ObjectPropertyAssertion(:haLavoratori :DreamTheater :JohnPetrucci)
 DataPropertyAssertion(:HaNumeroArtisti :DreamTheater "5"^^xsd:integer)
-DataPropertyAssertion(:Immagine :DreamTheater "https://i.pinimg.com/originals/dd/3b/23/dd3b23b99175c33d06d692a17edb6e39.png"^^xsd:string)
+DataPropertyAssertion(:Immagine :DreamTheater "https://i.ibb.co/cNLLx1h/dreamtheater.jpg"^^xsd:string)
 DataPropertyAssertion(:NomeBandMusicale :DreamTheater "Dream Theater"^^xsd:string)
 
 # Individual: :FantomG8 (FantomG8)

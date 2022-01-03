@@ -5,6 +5,7 @@ import CaseProdMicrofoniElement from '../../components/CaseProduttrici/Microfoni
 const CaseProdMicrofoni = () => {
     return (
         <>
+            {/* Richiamo il render dei componenti */}
             <NavbarElement />
             <CaseProdMicrofoniElement />
         </>

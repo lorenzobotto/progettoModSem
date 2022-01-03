@@ -5,6 +5,7 @@ import GruppiElement from '../../components/BandMusicali/Gruppi'
 const Gruppi = () => {
     return (
         <>
+            {/* Richiamo il render dei componenti */}
             <NavbarElement />
             <GruppiElement />
         </>

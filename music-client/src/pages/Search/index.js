@@ -5,6 +5,7 @@ import SearchElement from '../../components/SearchPage'
 const Search = () => {
     return (
         <>
+            {/* Richiamo il render dei componenti */}
             <NavbarElement />
             <SearchElement />
         </>

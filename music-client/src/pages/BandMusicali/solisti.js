@@ -5,6 +5,7 @@ import SolistiElement from '../../components/BandMusicali/Solisti'
 const Solisti = () => {
     return (
         <>
+            {/* Richiamo il render dei componenti */}
             <NavbarElement />
             <SolistiElement />
         </>

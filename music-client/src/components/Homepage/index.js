@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
+/* Codice CSS per tutti gli elementi della pagina */
 
 const HomeContainer = styled.div`
     min-height: 100vh;
@@ -20,8 +21,8 @@ const HomeDescription = styled.div`
 `
 
 const HomeImage = styled.img`
-    width: 50%;
-    max-height: 400px;
+    width: 400px;
+    height: 400px;
     flex-shrink: 1;
     margin-right: 20px;
 `
@@ -29,7 +30,7 @@ const HomeImage = styled.img`
 const Description = styled.div`
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
 `
 
 const HomeH1 = styled.h1`
@@ -39,10 +40,14 @@ const HomeH1 = styled.h1`
     color: #fff;
 `
 
+/* Codice per la homepage */
+
 const HomeElement = () => {
     const [results, setResults] = useState([]);
 
+    /* useEffect serve per eseguire il codice solo una volta */
     useEffect( () => {
+        /* Costruzione della SPARQL Query per ricercare le informazioni dell'ontologia */
         const requestData = {
             query:  "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
                     "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
@@ -65,6 +70,7 @@ const HomeElement = () => {
             sameAs: true
         }
       
+        /* Metodo e Headers per la chiamata HTTP */
         const requestOptions = {
           method: 'GET',
           headers: {
@@ -72,18 +78,22 @@ const HomeElement = () => {
           }
         }
       
+      /* Chiamata HTTP a GraphDB inserendo i parametri precedentemente costruiti. Quando i dati sono restituiti vengono inseriti in un array */
       fetch('http://localhost:7200/repositories/musical-instruments?' + new URLSearchParams(requestData), requestOptions)
       .then(response => response.json())
       .then(data => setResults(data.results.bindings));
       }, []);
 
     return (
+        /* Rendering di tutti i componenti */
         <HomeContainer>
+            {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
             {results.map((item) =>
                 <>
                     <HomeH1>{item.titolo.value}</HomeH1>
                     <HomeDescription>
-                        <HomeImage src={require('../../images/logo_large.png')}></HomeImage>
+                        {/* Restituisco le informazioni dell'ontologia */}
+                        <HomeImage src={require('../../images/logo.jpeg')}></HomeImage>
                             <Description>
                                 <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>
                                 <hr style={{paddingTop: "3px"}} />

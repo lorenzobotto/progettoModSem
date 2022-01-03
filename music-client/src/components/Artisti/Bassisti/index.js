@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
 
-/* Codice CSS per tutti gli elementi della pagine */
+/* Codice CSS per tutti gli elementi della pagina */
 
 const ResultsContainer = styled.div`
     min-height: 100vh;
@@ -91,7 +91,7 @@ const BassistiElement = () => {
           }
         }
       
-        /* Chiamata HTTP a GraphDB inserendo i parametri precedentemente costruiti. Quando i dati sono restituiti vengono inseriti in un array */
+      /* Chiamata HTTP a GraphDB inserendo i parametri precedentemente costruiti. Quando i dati sono restituiti vengono inseriti in un array */
       fetch('http://localhost:7200/repositories/musical-instruments?' + new URLSearchParams(requestData), requestOptions)
       .then(response => response.json())
       .then(data => setResults(data.results.bindings));
@@ -128,7 +128,8 @@ const BassistiElement = () => {
                                 {/* Effettuo un ciclo sull'array degli strumenti per creare l'elenco, con ogni strumento linkato. */}
                                 {strumenti.map((strumento, i) =>
                                     <li>
-                                        <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                                        <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                e.preventDefault();
                                                 navigate('/search', {state: {tipo: "StrumentoMusicale", URI: strumentiURI[i]}});
                                             }}>{strumento}
                                         </a>
@@ -138,12 +139,14 @@ const BassistiElement = () => {
                         </p>
                         <p>{item.nome.value + " " + item.cognome.value} suona con: "{item.suonaCon.value}"</p>
                         {/* Se è un solista restituisce un certo paragrafo, altrimenti un altro. Il gruppo dove suona sarà linkato. */}
-                        {item.groupband.value === 'Solista' && <p>Suona come solista e si fa chiamare: "<a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                        {item.groupband.value === 'Solista' && <p>Suona come solista e si fa chiamare: "<a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                                            e.preventDefault();
                                                                             navigate('/search', {state: {tipo: "Band", URI: item.bandURI.value}});
                                                                         }}>{item.lavoraIn.value}
                                                                     </a>"
                                                               </p>}
-                        {item.groupband.value === 'Gruppo' && <p>Suona nella band musicale: "<a style={{textDecoration: "underline", cursor: "pointer"}} onClick={() => {
+                        {item.groupband.value === 'Gruppo' && <p>Suona nella band musicale: "<a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                                            e.preventDefault();
                                                                             navigate('/search', {state: {tipo: "Band", URI: item.bandURI.value}});
                                                                         }}>{item.lavoraIn.value}
                                                                     </a>"

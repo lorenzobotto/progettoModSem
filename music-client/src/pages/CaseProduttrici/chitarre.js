@@ -5,6 +5,7 @@ import CaseProdChitarreElement from '../../components/CaseProduttrici/Chitarre'
 const CaseProdChitarre = () => {
     return (
         <>
+            {/* Richiamo il render dei componenti */}
             <NavbarElement />
             <CaseProdChitarreElement />
         </>

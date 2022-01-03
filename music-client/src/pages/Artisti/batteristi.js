@@ -5,6 +5,7 @@ import BatteristiElement from '../../components/Artisti/Batteristi'
 const Batteristi = () => {
     return (
         <>
+            {/* Richiamo il render dei componenti */}
             <NavbarElement />
             <BatteristiElement />
         </>

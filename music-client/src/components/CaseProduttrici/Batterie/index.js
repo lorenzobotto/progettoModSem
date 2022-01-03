@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
+/* Codice CSS per tutti gli elementi della pagina */
 
 const ResultsContainer = styled.div`
     min-height: 100vh;
@@ -40,11 +40,14 @@ const ResultsH1 = styled.h1`
     color: #fff;
 `
 
+/* Codice per la pagina delle case produttrici delle batterie */
+
 const CaseProdBatterieElement = () => {
     const [results, setResults] = useState([]);
-    const navigate = useNavigate();
 
+    /* useEffect serve per eseguire il codice solo una volta */
     useEffect( () => {
+        /* Costruzione della SPARQL Query per ricercare i dati di tutte le case produttrici delle batterie */
         const requestData = {
             query:  "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" + 
                     "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" + 
@@ -79,6 +82,7 @@ const CaseProdBatterieElement = () => {
             sameAs: true
         }
       
+        /* Metodo e Headers per la chiamata HTTP */
         const requestOptions = {
           method: 'GET',
           headers: {
@@ -86,27 +90,35 @@ const CaseProdBatterieElement = () => {
           }
         }
       
+      /* Chiamata HTTP a GraphDB inserendo i parametri precedentemente costruiti. Quando i dati sono restituiti vengono inseriti in un array */
       fetch('http://localhost:7200/repositories/musical-instruments?' + new URLSearchParams(requestData), requestOptions)
       .then(response => response.json())
       .then(data => setResults(data.results.bindings));
       }, []);
 
     return (
+        /* Rendering di tutti i componenti */
         <ResultsContainer>
             <ResultsH1>Case Produttrici Batterie</ResultsH1>
+            {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
             {results.map((item) => {
+                /* Preparo gli array nel caso in cui le case produttrici producano più di uno strumento */
                 const strumenti = item.produce.value.split(", ");
-                const strumentiURI = item.suonaURI.value.split(", ");
+                /* 
+                    Restituisco i componenti con le informazioni ricevute dalla SPARQL Query.
+                */
                 return(
                     <Item>
                     <ItemImage src={item.immagine.value}></ItemImage>
                     <ItemDescription>
+                        {/* Restituisco le informazioni della casa produttrice. */}
                         <h1>{item.nome.value}</h1>
                         <p>{item.descrizione.value}</p>
                         <hr style={{paddingTop: "3px"}} />
                         <p>Data fondazione: {item.dataFond.value}</p>
                         <p>Origine: {item.origine.value === "CittaAmericana" ? "Americana" : "Giapponese"}</p>
                         <p>Sede principale: {item.nomecitta.value}</p>
+                        {/* Controllo se è una casa produttrice di fusti o di piatti, e restituisco le informazioni relative */}
                         {item.tipoCasa.value === "CasaProduttriceBatteria" && 
                             <p>{item.nome.value} produce {strumenti.length !== 1 ? "le batterie" : "la batteria"}:
                                 <ul>

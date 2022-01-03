@@ -3,6 +3,12 @@ import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Link} from 'react-router-dom';
 
+/* 
+    Codice per la navbar, importandola da boostrap.
+    Sono inserite le varie voci, con menù a dropdown dove necessario, sempre importati da boostrap.
+    I link sono dei link router di React, in modo che cambino la pagina.
+*/
+
 const NavbarElement = () => {
     return (
         <div>

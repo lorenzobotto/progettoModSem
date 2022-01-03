@@ -5,6 +5,7 @@ import CaseProdBatterieElement from '../../components/CaseProduttrici/Batterie'
 const CaseProdBatterie = () => {
     return (
         <>
+            {/* Richiamo il render dei componenti */}
             <NavbarElement />
             <CaseProdBatterieElement />
         </>

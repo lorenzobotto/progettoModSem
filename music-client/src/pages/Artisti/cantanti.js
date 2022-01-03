@@ -5,6 +5,7 @@ import CantantiElement from '../../components/Artisti/Cantanti'
 const Cantanti = () => {
     return (
         <>
+            {/* Richiamo il render dei componenti */}
             <NavbarElement />
             <CantantiElement />
         </>

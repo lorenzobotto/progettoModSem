@@ -5,6 +5,7 @@ import TastieristiElement from '../../components/Artisti/Tastieristi'
 const Tastieristi = () => {
     return (
         <>
+            {/* Richiamo il render dei componenti */}
             <NavbarElement />
             <TastieristiElement />
         </>
