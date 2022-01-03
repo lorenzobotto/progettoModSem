@@ -56,6 +56,7 @@ const SearchElement = () => {
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
                     "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+                    "PREFIX mo: <http://purl.org/ontology/mo/>\n" +
                     "SELECT ?nome ?cognome ?eta ?genere ?dataNascita ?tipoGruppo ?gruppoURI ?gruppo ?immagine (group_concat(distinct ?strumentoMusicaleURI;separator=\", \") AS ?suonaURI) (group_concat(distinct ?strumento;separator=\", \") AS ?suona) (group_concat(distinct ?oggetto;separator=\", \") AS ?utilizza)\n" +
                     "WHERE {\n" +
                     "    <" + state.URI + ">  ?p  ?o .\n" +
@@ -71,7 +72,7 @@ const SearchElement = () => {
                     "   ?gruppoURI music:NomeBandMusicale ?gruppo .\n" +
                     "   ?gruppoURI rdf:type ?tipoBand .\n" +
                     "   ?tipoBand rdfs:label ?tipoGruppo .\n" +
-                    "   FILTER(?tipoBand IN (music:Gruppo, music:Solista))\n" +
+                    "   FILTER(?tipoBand IN (mo:MusicGroup, mo:SoloMusicArtist))\n" +
                     "   optional {\n" +
                     "       ?o music:utilizza ?oggettoURI .\n" +
                     "       ?oggettoURI rdfs:label ?oggetto\n" +
@@ -109,9 +110,10 @@ const SearchElement = () => {
                         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
                         "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
                         "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
+                        "PREFIX mo: <http://purl.org/ontology/mo/>\n" +
                         "select ?nome ?immagine ?commento ?descrizione ?numCorde ?body ?ponte ?legni ?prodottoDaFustiURI ?prodottoDaFusti ?fustiNome ?piattiNome ?produzionePiattiURI ?suonatoDaURI ?suonatoCon ?suonatoIn ?prodottoDaURI ?produzionePiatti ?prodottoDa ?suonatoDa where { \n" +
                         "    <" + state.URI + "> ?p ?o .\n" +
-                        "    ?o rdf:type music:StrumentoMusicale .\n" +
+                        "    ?o rdf:type mo:Instrument .\n" +
                         "    ?o rdfs:comment ?commento .\n" +
                         "    optional {?o music:DescrizioneStrumento ?descrizione} .\n" +
                         "    ?o music:NomeStrumentoMusicale ?nome .\n" +
@@ -154,11 +156,12 @@ const SearchElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
+                    "PREFIX mo: <http://purl.org/ontology/mo/>\n" +
                     "SELECT DISTINCT ?descrizione ?nome ?numArtisti ?nomeTipoBand ?immagine (group_concat(distinct ?artistiURI;separator=\", \") AS ?artistiNomeURI) (group_concat(distinct ?artisti;separator=\", \") AS ?artistiNome) where {\n" +
                     "    <" + state.URI + "> ?p ?o .\n" +
                     "    ?o rdfs:comment ?descrizione .\n" +
                     "    ?o rdf:type ?tipoBand .\n" +
-                    "    FILTER(?tipoBand IN (music:Solista, music:Gruppo)) .\n" +
+                    "    FILTER(?tipoBand IN (mo:MusicGroup, mo:SoloMusicArtist)) .\n" +
                     "    ?tipoBand rdfs:label ?nomeTipoBand .\n" +
                     "    ?o music:NomeBandMusicale ?nome .\n" +
                     "    ?o music:HaNumeroArtisti ?numArtisti .\n" +

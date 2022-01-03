@@ -56,6 +56,7 @@ const TastieristiElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
+                    "PREFIX mo: <http://purl.org/ontology/mo/>\n" +
                     "SELECT DISTINCT ?tastierista ?nome ?dataNascita ?genere ?eta ?cognome ?immagine ?bandURI ?groupband ?lavoraIn (group_concat(distinct ?strumentoMusicaleURI;separator=\", \") AS ?suonaURI) (group_concat(distinct ?oggetto;separator=\", \") AS ?suonaCon) (group_concat(distinct ?strumentoMusicale;separator=\", \") AS ?suona) where{\n" +
                     "    ?tastierista rdf:type music:Tastierista .\n" +
                     "    ?tastierista foaf:firstName ?nome .\n" +
@@ -67,7 +68,7 @@ const TastieristiElement = () => {
                     "    ?tastierista music:lavoraIn ?bandURI .\n" +
                     "    ?bandURI music:NomeBandMusicale ?lavoraIn .\n" +
                     "    ?bandURI rdf:type ?band .\n" +
-                    "    FILTER(?band in (music:Solista, music:Gruppo))\n" +
+                    "    FILTER(?band in (mo:MusicGroup, mo:SoloMusicArtist))\n" +
                     "    ?band rdfs:label ?groupband .\n" +
                     "    ?tastierista music:suona ?strumentoMusicaleURI .\n" +
                     "    ?strumentoMusicaleURI music:NomeStrumentoMusicale ?strumentoMusicale .\n" +

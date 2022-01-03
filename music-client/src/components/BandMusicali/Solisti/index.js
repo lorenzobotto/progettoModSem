@@ -57,8 +57,9 @@ const SolistiElement = () => {
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
+                    "PREFIX mo: <http://purl.org/ontology/mo/>\n" +
                     "SELECT DISTINCT ?band ?descrizione ?nome ?numArtisti ?suonatoDaURI ?immagine (group_concat(distinct ?artisti;separator=\", \") AS ?artistiNome) where {\n" +
-                    "    ?band rdf:type music:Solista .\n" +
+                    "    ?band rdf:type mo:SoloMusicArtist .\n" +
                     "    ?band rdfs:comment ?descrizione .\n" +
                     "    ?band music:NomeBandMusicale ?nome .\n" +
                     "    ?band music:HaNumeroArtisti ?numArtisti .\n" +
