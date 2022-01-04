@@ -1,5 +1,0 @@
-Da fare:
-
-- Inserire una property chain
-- Una classe deve essere enumerata
-- Inserire individui e data properties

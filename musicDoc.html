@@ -1,0 +1,3571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Strumenti Musicali - Un'enciclopedia per gli amanti della musica</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==">
+    <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1Sew
+EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <style>
+        #pylode {
+            position: fixed;
+            top: 130px;
+            left: -60px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor:help;
+            margin-left: 3px;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-con {
+            color:orange;
+        }
+
+        .sup-col {
+            color:darkred;
+        }
+
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+    </style>
+    
+    <script type="application/ld+json">
+      [
+  {
+    "@id": "http://www.semanticweb.org/musical-instruments",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "<p>L'ontologia \"musical-instruments\" rappresenta l'intera conoscenza di un'enciclopedia per gli amanti della musica. Sono presenti gli strumenti musicali con i relativi artisti che li utilizzano, e le case produttrici degli strumenti musicali. Incorpora il vocabolario FOAF per gli artisti che suonano lo strumento musicale e l'ontologia \"mo\" (The Music Ontology) per rappresentare alcune classi, tra cui il genere musicale, gli strumenti musicali, il gruppo musicale, il solista e l'artista.</p>"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Strumenti Musicali - Un'enciclopedia per gli amanti della musica"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+    <span style="font-size:smaller;">2.9.3</span>
+  </div>
+  <h1>Strumenti Musicali - Un'enciclopedia per gli amanti della musica</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>URI</dt>
+        <dd><code>http://www.semanticweb.org/musical-instruments</code></dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
+        <dd>
+            Lorenzo Botto<br/>
+        </dd>
+        <dt>Ontology RDF</dt>
+        <dd><a href="musical-instruments.ttl">RDF (turtle)</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>L'ontologia "musical-instruments" rappresenta l'intera conoscenza di un'enciclopedia per gli amanti della musica. Sono presenti gli strumenti musicali con i relativi artisti che li utilizzano, e le case produttrici degli strumenti musicali. Incorpora il vocabolario FOAF per gli artisti che suonano lo strumento musicale e l'ontologia "mo" (The Music Ontology) per rappresentare alcune classi, tra cui il genere musicale, gli strumenti musicali, il gruppo musicale, il solista e l'artista.</p>
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
+        <li><a href="#annotationproperties">Annotation Properties</a></li>
+        <li><a href="#namedindividuals">Named Individuals</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+        <li><a href="#legend">Legend</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+  <section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+      <li><a href="http://purl.org/ontology/mo/Genre">mo:Genre</a></li>
+      <li><a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a></li>
+      <li><a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a></li>
+      <li><a href="http://purl.org/ontology/mo/MusicGroup">mo:MusicGroup</a></li>
+      <li><a href="http://purl.org/ontology/mo/SoloMusicArtist">mo:SoloMusicArtist</a></li>
+      <li><a href="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag">http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag</a></li>
+      <li><a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection</a></li>
+      <li><a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Bacchette">Bacchette</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#BandMusicale">BandMusicale</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Bassista">Bassista</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Basso">Basso</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Batteria">Batteria</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#BatteriaAcustica">BatteriaAcustica</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#BatteriaElettronica">BatteriaElettronica</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Batterista">Batterista</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Cantante">Cantante</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceBasso">CasaProduttriceBasso</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceBatteria">CasaProduttriceBatteria</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceChitarra">CasaProduttriceChitarra</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceMicrofono">CasaProduttriceMicrofono</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#CasaProduttricePiatti">CasaProduttricePiatti</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceTastiera">CasaProduttriceTastiera</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Chitarra">Chitarra</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#ChitarraAPiuCorde">ChitarraAPiuCorde</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#ChitarraAcustica">ChitarraAcustica</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#ChitarraElettrica">ChitarraElettrica</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#ChitarraGibson">ChitarraGibson</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#ChitarraStratocaster">ChitarraStratocaster</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#ChitarraTelecaster">ChitarraTelecaster</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Chitarrista">Chitarrista</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Citta">Citta</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#CittaAmericana">CittaAmericana</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#CittaGiapponese">CittaGiapponese</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Microfono">Microfono</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Oggetto">Oggetto</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Origine">Origine</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#OrigineAmericana">OrigineAmericana</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#OrigineGiapponese">OrigineGiapponese</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#PezziBatteria">PezziBatteria</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Piatti">Piatti</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Plettro">Plettro</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Tastiera">Tastiera</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#Tastierista">Tastierista</a></li>
+      <li><a href="http://www.semanticweb.org/musical-instruments#TuttiFusti">TuttiFusti</a></li>
+    </ul>
+    <div class="entity class" id="Genre">
+        <h3>
+          Genre<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Genre" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/ontology/mo/Genre</code></td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#NomeGenereMusicale">NomeGenereMusicale</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#suonatoIn">suonatoIn</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#ProgressiveMetal">ProgressiveMetal</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Rock">Rock</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Blues">Blues</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Instrument">
+        <h3>
+          Instrument<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Instrument" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/ontology/mo/Instrument</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Microfono">Microfono</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Basso">Basso</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Batteria">Batteria</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Tastiera">Tastiera</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Chitarra">Chitarra</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#suonatoCon">suonatoCon</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#suonatoDa">suonatoDa</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#prodottoDa">prodottoDa</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#suonatoIn">suonatoIn</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#produce">produce</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#suona">suona</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="MusicArtist">
+        <h3>
+          MusicArtist<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#MusicArtist" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/ontology/mo/MusicArtist</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Cantante">Cantante</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Bassista">Bassista</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Tastierista">Tastierista</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Chitarrista">Chitarrista</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Batterista">Batterista</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#lavoraIn">lavoraIn</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/firstName">foaf:firstName</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/lastName">foaf:lastName</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#suona">suona</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/age">foaf:age</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/member">foaf:member</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/gender">foaf:gender</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#utilizza">utilizza</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/birthday">foaf:birthday</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#haLavoratori">haLavoratori</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#suonatoDa">suonatoDa</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#utilizzatoDa">utilizzatoDa</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="MusicGroup">
+        <h3>
+          MusicGroup<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#MusicGroup" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/ontology/mo/MusicGroup</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#BandMusicale">BandMusicale</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#DreamTheater">DreamTheater</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="SoloMusicArtist">
+        <h3>
+          SoloMusicArtist<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#SoloMusicArtist" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/ontology/mo/SoloMusicArtist</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#BandMusicale">BandMusicale</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#SolistaJoe">SolistaJoe</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#SolistaEric">SolistaEric</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="(collections)Bag">
+        <h3>
+          (collections) Bag<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#(collections)Bag" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Bag - Collection that can have a number of copies of each object</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem">http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf">http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Collection">
+        <h3>
+          Collection<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Collection" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Any container for entities that share one or more common properties. E.g. "stone objects", "the nurses", "the Louvre Aegyptian collection". A collection is not a logical class: a collection is a first-order entity, while a class is a second-order one.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#PezziBatteria">PezziBatteria</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag">http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Masterworks">Masterworks</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#PiattiMike">PiattiMike</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="item">
+        <h3>
+          item<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#item" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Item - Element belonging to a Bag</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent">http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent">http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf">http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem">http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Bacchette">
+        <h3>
+          Bacchette<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Bacchette" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Bacchette</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Oggetto">Oggetto</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#BacchetteMike">BacchetteMike</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="BandMusicale">
+        <h3>
+          BandMusicale<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#BandMusicale" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#BandMusicale</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/SoloMusicArtist">mo:SoloMusicArtist</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/ontology/mo/MusicGroup">mo:MusicGroup</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#HaNumeroArtisti">HaNumeroArtisti</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#NomeBandMusicale">NomeBandMusicale</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#haLavoratori">haLavoratori</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/member">foaf:member</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#lavoraIn">lavoraIn</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Bassista">
+        <h3>
+          Bassista<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Bassista" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Bassista</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#JohnMyung">JohnMyung</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Basso">
+        <h3>
+          Basso<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Basso" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Basso</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Bongo6">Bongo6</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Batteria">
+        <h3>
+          Batteria<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Batteria" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Batteria</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#BatteriaElettronica">BatteriaElettronica</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#BatteriaAcustica">BatteriaAcustica</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#compostoDa">compostoDa</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#compone">compone</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="BatteriaAcustica">
+        <h3>
+          BatteriaAcustica<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#BatteriaAcustica" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#BatteriaAcustica</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Batteria">Batteria</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#BatteriaMike">BatteriaMike</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="BatteriaElettronica">
+        <h3>
+          BatteriaElettronica<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#BatteriaElettronica" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#BatteriaElettronica</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Batteria">Batteria</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Batterista">
+        <h3>
+          Batterista<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Batterista" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Batterista</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#MikeMangini">MikeMangini</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Cantante">
+        <h3>
+          Cantante<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Cantante" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Cantante</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#JamesLabrie">JamesLabrie</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CasaProduttrice">
+        <h3>
+          CasaProduttrice<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#CasaProduttrice" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#CasaProduttrice</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceBatteria">CasaProduttriceBatteria</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceBasso">CasaProduttriceBasso</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceTastiera">CasaProduttriceTastiera</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Origine">Origine</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceChitarra">CasaProduttriceChitarra</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttricePiatti">CasaProduttricePiatti</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceMicrofono">CasaProduttriceMicrofono</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#producePezzi">producePezzi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#NomeCasaProduttrice">NomeCasaProduttrice</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#ubicataIn">ubicataIn</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#FondataNel">FondataNel</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#produce">produce</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#ubicataDa">ubicataDa</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#pezziProdottiDa">pezziProdottiDa</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#prodottoDa">prodottoDa</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CasaProduttriceBasso">
+        <h3>
+          CasaProduttriceBasso<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#CasaProduttriceBasso" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#CasaProduttriceBasso</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#MusicMan">MusicMan</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CasaProduttriceBatteria">
+        <h3>
+          CasaProduttriceBatteria<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#CasaProduttriceBatteria" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#CasaProduttriceBatteria</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Pearl">Pearl</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CasaProduttriceChitarra">
+        <h3>
+          CasaProduttriceChitarra<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#CasaProduttriceChitarra" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#CasaProduttriceChitarra</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#GibsonGuitar">GibsonGuitar</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Fender">Fender</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#MusicMan">MusicMan</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CasaProduttriceMicrofono">
+        <h3>
+          CasaProduttriceMicrofono<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#CasaProduttriceMicrofono" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#CasaProduttriceMicrofono</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Mojave">Mojave</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CasaProduttricePiatti">
+        <h3>
+          CasaProduttricePiatti<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#CasaProduttricePiatti" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#CasaProduttricePiatti</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Zildjian">Zildjian</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CasaProduttriceTastiera">
+        <h3>
+          CasaProduttriceTastiera<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#CasaProduttriceTastiera" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#CasaProduttriceTastiera</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Roland">Roland</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Chitarra">
+        <h3>
+          Chitarra<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Chitarra" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Chitarra</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#ChitarraAcustica">ChitarraAcustica</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#ChitarraElettrica">ChitarraElettrica</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ChitarraAPiuCorde">
+        <h3>
+          ChitarraAPiuCorde<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ChitarraAPiuCorde" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#ChitarraAPiuCorde</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#ChitarraElettrica">ChitarraElettrica</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Majesty7">Majesty7</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Majesty8">Majesty8</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ChitarraAcustica">
+        <h3>
+          ChitarraAcustica<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ChitarraAcustica" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#ChitarraAcustica</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Chitarra">Chitarra</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ChitarraElettrica">
+        <h3>
+          ChitarraElettrica<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ChitarraElettrica" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#ChitarraElettrica</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Chitarra">Chitarra</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#ChitarraGibson">ChitarraGibson</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#ChitarraStratocaster">ChitarraStratocaster</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#ChitarraAPiuCorde">ChitarraAPiuCorde</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#ChitarraTelecaster">ChitarraTelecaster</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ChitarraGibson">
+        <h3>
+          ChitarraGibson<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ChitarraGibson" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#ChitarraGibson</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#ChitarraElettrica">ChitarraElettrica</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#GoldTop">GoldTop</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ChitarraStratocaster">
+        <h3>
+          ChitarraStratocaster<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ChitarraStratocaster" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#ChitarraStratocaster</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#ChitarraElettrica">ChitarraElettrica</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Brownie">Brownie</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ChitarraTelecaster">
+        <h3>
+          ChitarraTelecaster<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#ChitarraTelecaster" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#ChitarraTelecaster</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#ChitarraElettrica">ChitarraElettrica</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Chitarrista">
+        <h3>
+          Chitarrista<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Chitarrista" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Chitarrista</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#JoeBonamassa">JoeBonamassa</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#EricClapton">EricClapton</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Citta">
+        <h3>
+          Citta<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Citta" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Citta</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CittaAmericana">CittaAmericana</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#CittaGiapponese">CittaGiapponese</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#NomeCitta">NomeCitta</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#ubicataDa">ubicataDa</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#ubicataIn">ubicataIn</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CittaAmericana">
+        <h3>
+          CittaAmericana<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#CittaAmericana" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#CittaAmericana</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Citta">Citta</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#SanLuisObispo">SanLuisObispo</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Norwell">Norwell</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Fullerton">Fullerton</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#LosAngeles">LosAngeles</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Nashville">Nashville</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CittaGiapponese">
+        <h3>
+          CittaGiapponese<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#CittaGiapponese" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#CittaGiapponese</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Citta">Citta</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Chiba">Chiba</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Hamamatsu">Hamamatsu</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Microfono">
+        <h3>
+          Microfono<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Microfono" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Microfono</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Ma1000">Ma1000</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Oggetto">
+        <h3>
+          Oggetto<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Oggetto" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Oggetto</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Plettro">Plettro</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#Bacchette">Bacchette</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#utilizzatoDa">utilizzatoDa</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#suonatoCon">suonatoCon</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#utilizza">utilizza</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Origine">
+        <h3>
+          Origine<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Origine" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Origine</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#OrigineGiapponese">OrigineGiapponese</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#OrigineAmericana">OrigineAmericana</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="OrigineAmericana">
+        <h3>
+          OrigineAmericana<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#OrigineAmericana" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#OrigineAmericana</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Origine">Origine</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="OrigineGiapponese">
+        <h3>
+          OrigineGiapponese<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#OrigineGiapponese" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#OrigineGiapponese</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Origine">Origine</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="PezziBatteria">
+        <h3>
+          PezziBatteria<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#PezziBatteria" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#PezziBatteria</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Piatti">Piatti</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#TuttiFusti">TuttiFusti</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#compone">compone</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#pezziProdottiDa">pezziProdottiDa</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#compostoDa">compostoDa</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#producePezzi">producePezzi</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Piatti">
+        <h3>
+          Piatti<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Piatti" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Piatti</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#PezziBatteria">PezziBatteria</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#PiattiMike">PiattiMike</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Plettro">
+        <h3>
+          Plettro<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Plettro" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Plettro</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Oggetto">Oggetto</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#PlettroJohnMyung">PlettroJohnMyung</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#PlettroJoe">PlettroJoe</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#PlettroJohnPetrucci">PlettroJohnPetrucci</a><br/>
+                    <a href="http://www.semanticweb.org/musical-instruments#PlettroEric">PlettroEric</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Tastiera">
+        <h3>
+          Tastiera<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Tastiera" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Tastiera</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#FantomG8">FantomG8</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Tastierista">
+        <h3>
+          Tastierista<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Tastierista" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Tastierista</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#JordanRudess">JordanRudess</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="TuttiFusti">
+        <h3>
+          TuttiFusti<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#TuttiFusti" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#TuttiFusti</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#PezziBatteria">PezziBatteria</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Masterworks">Masterworks</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#hasitem">has item</a></li>
+        <li><a href="#itemcontent">item content</a></li>
+        <li><a href="#itemof">item of</a></li>
+        <li><a href="#hasmember">has member</a></li>
+        <li><a href="#ismemberof">is member of</a></li>
+        <li><a href="#compone">compone</a></li>
+        <li><a href="#compostoDa">compostoDa</a></li>
+        <li><a href="#haLavoratori">haLavoratori</a></li>
+        <li><a href="#lavoraIn">lavoraIn</a></li>
+        <li><a href="#pezziProdottiDa">pezziProdottiDa</a></li>
+        <li><a href="#prodottoDa">prodottoDa</a></li>
+        <li><a href="#produce">produce</a></li>
+        <li><a href="#producePezzi">producePezzi</a></li>
+        <li><a href="#suona">suona</a></li>
+        <li><a href="#suonatoCon">suonatoCon</a></li>
+        <li><a href="#suonatoDa">suonatoDa</a></li>
+        <li><a href="#suonatoIn">suonatoIn</a></li>
+        <li><a href="#ubicataDa">ubicataDa</a></li>
+        <li><a href="#ubicataIn">ubicataIn</a></li>
+        <li><a href="#utilizza">utilizza</a></li>
+        <li><a href="#utilizzatoDa">utilizzatoDa</a></li>
+        <li><a href="#(foaf)member">(foaf) member</a></li>
+    </ul>
+    <div class="entity property" id="hasitem">
+        <h3>has item<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#hasitem" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>has item - The link to every item of the Bag</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf">http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag">http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="itemcontent">
+        <h3>item content<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#itemcontent" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>itemContent - The link to the actual resource to which the item refers.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="itemof">
+        <h3>item of<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#itemof" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>item of - The link from an item to the Bag where it is contained</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag">http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasmember">
+        <h3>has member<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#hasmember" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>A relation between collections and entities, e.g. 'my collection of saxophones includes an old Adolphe Sax original alto' (i.e. my collection has member an Adolphe Sax alto).</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ismemberof">
+        <h3>is member of<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#ismemberof" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="compone">
+        <h3>compone<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#compone" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#compone</code></td>
+            </tr>
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#compostoDa">compostoDa</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#PezziBatteria">PezziBatteria</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Batteria">Batteria</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="compostoDa">
+        <h3>compostoDa<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#compostoDa" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#compostoDa</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Batteria">Batteria</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#PezziBatteria">PezziBatteria</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="haLavoratori">
+        <h3>haLavoratori<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#haLavoratori" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#haLavoratori</code></td>
+            </tr>
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#lavoraIn">lavoraIn</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#BandMusicale">BandMusicale</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="lavoraIn">
+        <h3>lavoraIn<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#lavoraIn" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#lavoraIn</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#BandMusicale">BandMusicale</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="pezziProdottiDa">
+        <h3>pezziProdottiDa<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#pezziProdottiDa" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#pezziProdottiDa</code></td>
+            </tr>
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#producePezzi">producePezzi</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#PezziBatteria">PezziBatteria</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="prodottoDa">
+        <h3>prodottoDa<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#prodottoDa" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#prodottoDa</code></td>
+            </tr>
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#produce">produce</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="produce">
+        <h3>produce<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#produce" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#produce</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="producePezzi">
+        <h3>producePezzi<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#producePezzi" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#producePezzi</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#PezziBatteria">PezziBatteria</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="suona">
+        <h3>suona<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#suona" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#suona</code></td>
+            </tr>
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#suonatoDa">suonatoDa</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="suonatoCon">
+        <h3>suonatoCon<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#suonatoCon" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#suonatoCon</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Oggetto">Oggetto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="suonatoDa">
+        <h3>suonatoDa<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#suonatoDa" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#suonatoDa</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="suonatoIn">
+        <h3>suonatoIn<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#suonatoIn" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#suonatoIn</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Genre">mo:Genre</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ubicataDa">
+        <h3>ubicataDa<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#ubicataDa" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#ubicataDa</code></td>
+            </tr>
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#ubicataIn">ubicataIn</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Citta">Citta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ubicataIn">
+        <h3>ubicataIn<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#ubicataIn" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#ubicataIn</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Citta">Citta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="utilizza">
+        <h3>utilizza<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#utilizza" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#utilizza</code></td>
+            </tr>
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#utilizzatoDa">utilizzatoDa</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Oggetto">Oggetto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="utilizzatoDa">
+        <h3>utilizzatoDa<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#utilizzatoDa" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#utilizzatoDa</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Oggetto">Oggetto</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="(foaf)member">
+        <h3>(foaf) member<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#(foaf)member" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://xmlns.com/foaf/0.1/member</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>member - Indicates a member of a Group</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#BandMusicale">BandMusicale</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#Body">Body</a></li>
+        <li><a href="#DescrizioneStrumento">DescrizioneStrumento</a></li>
+        <li><a href="#FondataNel">FondataNel</a></li>
+        <li><a href="#HaNumeroArtisti">HaNumeroArtisti</a></li>
+        <li><a href="#HaNumeroCorde">HaNumeroCorde</a></li>
+        <li><a href="#Immagine">Immagine</a></li>
+        <li><a href="#Legni">Legni</a></li>
+        <li><a href="#NomeBandMusicale">NomeBandMusicale</a></li>
+        <li><a href="#NomeCasaProduttrice">NomeCasaProduttrice</a></li>
+        <li><a href="#NomeCitta">NomeCitta</a></li>
+        <li><a href="#NomeGenereMusicale">NomeGenereMusicale</a></li>
+        <li><a href="#NomeStrumentoMusicale">NomeStrumentoMusicale</a></li>
+        <li><a href="#Ponte">Ponte</a></li>
+        <li><a href="#age">age</a></li>
+        <li><a href="#birthday">birthday</a></li>
+        <li><a href="#firstName">firstName</a></li>
+        <li><a href="#gender">gender</a></li>
+        <li><a href="#lastName">lastName</a></li>
+    </ul>
+    <div class="entity property" id="Body">
+        <h3>Body<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#Body" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Body</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="http://www.semanticweb.org/musical-instruments#Basso">Basso</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.semanticweb.org/musical-instruments#Chitarra">Chitarra</a><sup class="sup-c" title="class">c</sup>)
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="DescrizioneStrumento">
+        <h3>DescrizioneStrumento<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#DescrizioneStrumento" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#DescrizioneStrumento</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.semanticweb.org/musical-instruments#PezziBatteria">PezziBatteria</a><sup class="sup-c" title="class">c</sup>)
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="FondataNel">
+        <h3>FondataNel<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#FondataNel" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#FondataNel</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="HaNumeroArtisti">
+        <h3>HaNumeroArtisti<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#HaNumeroArtisti" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#HaNumeroArtisti</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#BandMusicale">BandMusicale</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="HaNumeroCorde">
+        <h3>HaNumeroCorde<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#HaNumeroCorde" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#HaNumeroCorde</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="http://www.semanticweb.org/musical-instruments#Basso">Basso</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.semanticweb.org/musical-instruments#Chitarra">Chitarra</a><sup class="sup-c" title="class">c</sup>)
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="Immagine">
+        <h3>Immagine<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#Immagine" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Immagine</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.semanticweb.org/musical-instruments#BandMusicale">BandMusicale</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.semanticweb.org/musical-instruments#PezziBatteria">PezziBatteria</a><sup class="sup-c" title="class">c</sup>)
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="Legni">
+        <h3>Legni<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#Legni" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Legni</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.semanticweb.org/musical-instruments#PezziBatteria">PezziBatteria</a><sup class="sup-c" title="class">c</sup>)
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="NomeBandMusicale">
+        <h3>NomeBandMusicale<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#NomeBandMusicale" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#NomeBandMusicale</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#BandMusicale">BandMusicale</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="NomeCasaProduttrice">
+        <h3>NomeCasaProduttrice<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#NomeCasaProduttrice" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#NomeCasaProduttrice</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#CasaProduttrice">CasaProduttrice</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="NomeCitta">
+        <h3>NomeCitta<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#NomeCitta" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#NomeCitta</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.semanticweb.org/musical-instruments#Citta">Citta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="NomeGenereMusicale">
+        <h3>NomeGenereMusicale<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#NomeGenereMusicale" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#NomeGenereMusicale</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/Genre">mo:Genre</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="NomeStrumentoMusicale">
+        <h3>NomeStrumentoMusicale<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#NomeStrumentoMusicale" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#NomeStrumentoMusicale</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="http://purl.org/ontology/mo/Instrument">mo:Instrument</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.semanticweb.org/musical-instruments#PezziBatteria">PezziBatteria</a><sup class="sup-c" title="class">c</sup>)
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="Ponte">
+        <h3>Ponte<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#Ponte" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.semanticweb.org/musical-instruments#Ponte</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="http://www.semanticweb.org/musical-instruments#Basso">Basso</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.semanticweb.org/musical-instruments#Chitarra">Chitarra</a><sup class="sup-c" title="class">c</sup>)
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="age">
+        <h3>age<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#age" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://xmlns.com/foaf/0.1/age</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">xsd:nonNegativeInteger</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="birthday">
+        <h3>birthday<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#birthday" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://xmlns.com/foaf/0.1/birthday</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="firstName">
+        <h3>firstName<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#firstName" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://xmlns.com/foaf/0.1/firstName</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="gender">
+        <h3>gender<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#gender" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://xmlns.com/foaf/0.1/gender</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="lastName">
+        <h3>lastName<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#lastName" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://xmlns.com/foaf/0.1/lastName</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/ontology/mo/MusicArtist">mo:MusicArtist</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="annotationproperties">
+    <h2>Annotation Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#creator">creator</a></li>
+        <li><a href="#date">date</a></li>
+        <li><a href="#description">description</a></li>
+        <li><a href="#title">title</a></li>
+        <li><a href="#vann:preferredNamespacePrefix">vann:preferredNamespacePrefix</a></li>
+        <li><a href="#vann:preferredNamespaceUri">vann:preferredNamespaceUri</a></li>
+    </ul>
+    <div class="entity property" id="creator">
+        <h3>creator<sup title="annotation property" class="sup-ap">ap</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#creator" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/dc/elements/1.1/creator</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="date">
+        <h3>date<sup title="annotation property" class="sup-ap">ap</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#date" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/dc/elements/1.1/date</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="description">
+        <h3>description<sup title="annotation property" class="sup-ap">ap</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#description" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/dc/elements/1.1/description</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="title">
+        <h3>title<sup title="annotation property" class="sup-ap">ap</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#title" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/dc/elements/1.1/title</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="vann:preferredNamespacePrefix">
+        <h3>vann:preferredNamespacePrefix<sup title="annotation property" class="sup-ap">ap</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#vann:preferredNamespacePrefix" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/vocab/vann/preferredNamespacePrefix</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="vann:preferredNamespaceUri">
+        <h3>vann:preferredNamespaceUri<sup title="annotation property" class="sup-ap">ap</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#vann:preferredNamespaceUri" title="fragment link to here">#</a>&nbsp;<a href="#annotationproperties" title="Annotation Properties Index">APs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/vocab/vann/preferredNamespaceUri</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+  
+    <section id="namedindividuals">
+        <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+        <ul class="hlist">
+            <li><a href="#BacchetteMike">BacchetteMike</a></li>
+            <li><a href="#BatteriaMike">BatteriaMike</a></li>
+            <li><a href="#Blues">Blues</a></li>
+            <li><a href="#Bongo6">Bongo6</a></li>
+            <li><a href="#Brownie">Brownie</a></li>
+            <li><a href="#Chiba">Chiba</a></li>
+            <li><a href="#DreamTheater">DreamTheater</a></li>
+            <li><a href="#EricClapton">EricClapton</a></li>
+            <li><a href="#FantomG8">FantomG8</a></li>
+            <li><a href="#Fender">Fender</a></li>
+            <li><a href="#Fullerton">Fullerton</a></li>
+            <li><a href="#GibsonGuitar">GibsonGuitar</a></li>
+            <li><a href="#GoldTop">GoldTop</a></li>
+            <li><a href="#Hamamatsu">Hamamatsu</a></li>
+            <li><a href="#JamesLabrie">JamesLabrie</a></li>
+            <li><a href="#JoeBonamassa">JoeBonamassa</a></li>
+            <li><a href="#JohnMyung">JohnMyung</a></li>
+            <li><a href="#JohnPetrucci">JohnPetrucci</a></li>
+            <li><a href="#JordanRudess">JordanRudess</a></li>
+            <li><a href="#LosAngeles">LosAngeles</a></li>
+            <li><a href="#Ma1000">Ma1000</a></li>
+            <li><a href="#Majesty7">Majesty7</a></li>
+            <li><a href="#Majesty8">Majesty8</a></li>
+            <li><a href="#Masterworks">Masterworks</a></li>
+            <li><a href="#MikeMangini">MikeMangini</a></li>
+            <li><a href="#Mojave">Mojave</a></li>
+            <li><a href="#MusicMan">MusicMan</a></li>
+            <li><a href="#Nashville">Nashville</a></li>
+            <li><a href="#Norwell">Norwell</a></li>
+            <li><a href="#Pearl">Pearl</a></li>
+            <li><a href="#PiattiMike">PiattiMike</a></li>
+            <li><a href="#PlettroEric">PlettroEric</a></li>
+            <li><a href="#PlettroJoe">PlettroJoe</a></li>
+            <li><a href="#PlettroJohnMyung">PlettroJohnMyung</a></li>
+            <li><a href="#PlettroJohnPetrucci">PlettroJohnPetrucci</a></li>
+            <li><a href="#ProgressiveMetal">ProgressiveMetal</a></li>
+            <li><a href="#Rock">Rock</a></li>
+            <li><a href="#Roland">Roland</a></li>
+            <li><a href="#SanLuisObispo">SanLuisObispo</a></li>
+            <li><a href="#SolistaEric">SolistaEric</a></li>
+            <li><a href="#SolistaJoe">SolistaJoe</a></li>
+            <li><a href="#Zildjian">Zildjian</a></li>
+        </ul>
+            <div class="entity named_individual" id="BacchetteMike">
+        <h3>BacchetteMike<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#BacchetteMike
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Bacchette">Bacchette</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="BatteriaMike">
+        <h3>BatteriaMike<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#BatteriaMike
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#BatteriaAcustica">BatteriaAcustica</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Blues">
+        <h3>Blues<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Blues
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://purl.org/ontology/mo/Genre">mo:Genre</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Bongo6">
+        <h3>Bongo6<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Bongo6
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Basso">Basso</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Brownie">
+        <h3>Brownie<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Brownie
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#ChitarraStratocaster">ChitarraStratocaster</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Chiba">
+        <h3>Chiba<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Chiba
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CittaGiapponese">CittaGiapponese</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="DreamTheater">
+        <h3>DreamTheater<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#DreamTheater
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://purl.org/ontology/mo/MusicGroup">mo:MusicGroup</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="EricClapton">
+        <h3>EricClapton<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#EricClapton
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Chitarrista">Chitarrista</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="FantomG8">
+        <h3>FantomG8<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#FantomG8
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Tastiera">Tastiera</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Fender">
+        <h3>Fender<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Fender
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceChitarra">CasaProduttriceChitarra</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Fullerton">
+        <h3>Fullerton<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Fullerton
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CittaAmericana">CittaAmericana</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="GibsonGuitar">
+        <h3>GibsonGuitar<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#GibsonGuitar
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceChitarra">CasaProduttriceChitarra</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="GoldTop">
+        <h3>GoldTop<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#GoldTop
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#ChitarraGibson">ChitarraGibson</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Hamamatsu">
+        <h3>Hamamatsu<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Hamamatsu
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CittaGiapponese">CittaGiapponese</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="JamesLabrie">
+        <h3>JamesLabrie<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#JamesLabrie
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Cantante">Cantante</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="JoeBonamassa">
+        <h3>JoeBonamassa<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#JoeBonamassa
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Chitarrista">Chitarrista</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="JohnMyung">
+        <h3>JohnMyung<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#JohnMyung
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Bassista">Bassista</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="JohnPetrucci">
+        <h3>JohnPetrucci<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#JohnPetrucci
+                  
+                  </code>
+                </td>
+            </tr>
+        </table>
+    </div>
+            <div class="entity named_individual" id="JordanRudess">
+        <h3>JordanRudess<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#JordanRudess
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Tastierista">Tastierista</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="LosAngeles">
+        <h3>LosAngeles<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#LosAngeles
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CittaAmericana">CittaAmericana</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Ma1000">
+        <h3>Ma1000<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Ma1000
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Microfono">Microfono</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Majesty7">
+        <h3>Majesty7<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Majesty7
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#ChitarraAPiuCorde">ChitarraAPiuCorde</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Majesty8">
+        <h3>Majesty8<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Majesty8
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#ChitarraAPiuCorde">ChitarraAPiuCorde</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Masterworks">
+        <h3>Masterworks<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Masterworks
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection</a><br/>
+                <a href="http://www.semanticweb.org/musical-instruments#TuttiFusti">TuttiFusti</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="MikeMangini">
+        <h3>MikeMangini<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#MikeMangini
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Batterista">Batterista</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Mojave">
+        <h3>Mojave<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Mojave
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceMicrofono">CasaProduttriceMicrofono</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="MusicMan">
+        <h3>MusicMan<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#MusicMan
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceBasso">CasaProduttriceBasso</a><br/>
+                <a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceChitarra">CasaProduttriceChitarra</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Nashville">
+        <h3>Nashville<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Nashville
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CittaAmericana">CittaAmericana</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Norwell">
+        <h3>Norwell<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Norwell
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CittaAmericana">CittaAmericana</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Pearl">
+        <h3>Pearl<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Pearl
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceBatteria">CasaProduttriceBatteria</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="PiattiMike">
+        <h3>PiattiMike<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#PiattiMike
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection">http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection</a><br/>
+                <a href="http://www.semanticweb.org/musical-instruments#Piatti">Piatti</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="PlettroEric">
+        <h3>PlettroEric<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#PlettroEric
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Plettro">Plettro</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="PlettroJoe">
+        <h3>PlettroJoe<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#PlettroJoe
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Plettro">Plettro</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="PlettroJohnMyung">
+        <h3>PlettroJohnMyung<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#PlettroJohnMyung
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Plettro">Plettro</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="PlettroJohnPetrucci">
+        <h3>PlettroJohnPetrucci<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#PlettroJohnPetrucci
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#Plettro">Plettro</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="ProgressiveMetal">
+        <h3>ProgressiveMetal<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#ProgressiveMetal
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://purl.org/ontology/mo/Genre">mo:Genre</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Rock">
+        <h3>Rock<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Rock
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://purl.org/ontology/mo/Genre">mo:Genre</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Roland">
+        <h3>Roland<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Roland
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CasaProduttriceTastiera">CasaProduttriceTastiera</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="SanLuisObispo">
+        <h3>SanLuisObispo<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#SanLuisObispo
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CittaAmericana">CittaAmericana</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="SolistaEric">
+        <h3>SolistaEric<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#SolistaEric
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://purl.org/ontology/mo/SoloMusicArtist">mo:SoloMusicArtist</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="SolistaJoe">
+        <h3>SolistaJoe<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#SolistaJoe
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://purl.org/ontology/mo/SoloMusicArtist">mo:SoloMusicArtist</a><br/>
+            </dd>
+        </table>
+    </div>
+            <div class="entity named_individual" id="Zildjian">
+        <h3>Zildjian<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      http://www.semanticweb.org/musical-instruments#Zildjian
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Class(es)</dt>
+            <dd>
+                <a href="http://www.semanticweb.org/musical-instruments#CasaProduttricePiatti">CasaProduttricePiatti</a><br/>
+            </dd>
+        </table>
+    </div>
+    </section>
+
+  <section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt>default (musical-instruments)</dt>
+        <dd><code>http://www.music.com/musical-instruments</code></dd>
+        <dt>:</dt>
+        <dd><code>http://www.semanticweb.org/musical-instruments#</code></dd>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>foaf</dt>
+        <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
+        <dt>mo</dt>
+        <dd><code>http://purl.org/ontology/mo/</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>vann</dt>
+        <dd><code>http://purl.org/vocab/vann/</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+  <section id="legend">
+      <h2>Legend</h2>
+      <table class="entity">
+          <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+          <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+          <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+          <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+          <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+          <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+          <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+      </table>
+  </section>
+</body>
+</html>

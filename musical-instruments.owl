@@ -9,7 +9,7 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 Ontology(<http://www.semanticweb.org/musical-instruments>
 Annotation(<http://purl.org/dc/elements/1.1/creator> "Lorenzo Botto")
 Annotation(<http://purl.org/dc/elements/1.1/date> "25/01/2021")
-Annotation(<http://purl.org/dc/elements/1.1/description> "L'ontologia \"musical-instruments\" rappresenta l'intera conoscenza di un'enciclopedia per gli amanti della musica. Oltre gli strumenti musicali, incorpora anche gli artisti e le case produttrici relativi agli strumenti musicali. Incorpora il vocabolario FOAF per gli artisti che suonano lo strumento musicale.")
+Annotation(<http://purl.org/dc/elements/1.1/description> "L'ontologia \"musical-instruments\" rappresenta l'intera conoscenza di un'enciclopedia per gli amanti della musica. Sono presenti gli strumenti musicali con i relativi artisti che li utilizzano, e le case produttrici degli strumenti musicali. Incorpora il vocabolario FOAF per gli artisti che suonano lo strumento musicale e l'ontologia \"mo\" (The Music Ontology) per rappresentare alcune classi, tra cui il genere musicale, gli strumenti musicali, il gruppo musicale, il solista e l'artista.")
 Annotation(<http://purl.org/dc/elements/1.1/title> "Strumenti Musicali - Un'enciclopedia per gli amanti della musica")
 Annotation(<http://purl.org/vocab/vann/preferredNamespacePrefix> "musical-instruments")
 Annotation(<http://purl.org/vocab/vann/preferredNamespaceUri> "http://www.music.com/musical-instruments")
@@ -691,7 +691,7 @@ AnnotationAssertion(rdfs:label :Citta "Citta"@it)
 
 AnnotationAssertion(rdfs:comment :CittaAmericana "Città americana dove è ubicata una casa produttrice"@it)
 AnnotationAssertion(rdfs:label :CittaAmericana "CittaAmericana"@it)
-EquivalentClasses(:CittaAmericana ObjectOneOf(:LosAngeles :Nashville :Norwell :SanLuisObispo))
+EquivalentClasses(:CittaAmericana ObjectOneOf(:Fullerton :LosAngeles :Nashville :Norwell :SanLuisObispo))
 SubClassOf(:CittaAmericana :Citta)
 DisjointClasses(:CittaAmericana :CittaGiapponese)
 
@@ -974,7 +974,6 @@ DataPropertyAssertion(<http://xmlns.com/foaf/0.1/lastName> :JohnMyung "Myung"^^x
 
 AnnotationAssertion(rdfs:comment :JohnPetrucci "Chitarrista \"John Petrucci\""@it)
 AnnotationAssertion(rdfs:label :JohnPetrucci "JohnPetrucci"@en)
-ClassAssertion(:Chitarrista :JohnPetrucci)
 ObjectPropertyAssertion(:suona :JohnPetrucci :Majesty7)
 DataPropertyAssertion(:Immagine :JohnPetrucci "https://independentmusicawards.com/wp-content/uploads/2019/09/John-Petrucci.jpg"^^xsd:string)
 DataPropertyAssertion(<http://xmlns.com/foaf/0.1/age> :JohnPetrucci "54"^^xsd:integer)

@@ -203,7 +203,7 @@ const SearchElement = () => {
         if (results != null) {
             return (
                 <ResultsContainer>
-                <ResultsH1>Ricerca URI</ResultsH1>
+                <ResultsH1>Ricerca IRI</ResultsH1>
                 {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
                 {results.map((item) => {
                     /* Preparo gli array nel caso in cui gli artisti suonino più di uno strumento e li separo */
@@ -270,7 +270,7 @@ const SearchElement = () => {
             return (
                 /* Rendering di tutti i componenti */
                 <ResultsContainer>
-                    <ResultsH1>Ricerca URI</ResultsH1>
+                    <ResultsH1>Ricerca IRI</ResultsH1>
                     {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
                     {results.map((item) => {
                         /* Preparo gli array nel caso in cui le case produttrici producano più di uno strumento */
@@ -322,7 +322,7 @@ const SearchElement = () => {
             return (
                 /* Rendering di tutti i componenti */
                 <ResultsContainer>
-                    <ResultsH1>Ricerca URI</ResultsH1>
+                    <ResultsH1>Ricerca IRI</ResultsH1>
                     {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
                     {results.map((item) => 
                         <Item>
@@ -377,7 +377,7 @@ const SearchElement = () => {
             return(
                 /* Rendering di tutti i componenti */
                 <ResultsContainer>
-                    <ResultsH1>Ricerca URI</ResultsH1>
+                    <ResultsH1>Ricerca IRI</ResultsH1>
                     {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
                     {results.map((item) => {
                         /* Preparo gli array perchè ci sono più artisti che suonano nel gruppo musicale */
