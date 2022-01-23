@@ -58,19 +58,21 @@ const SolistiElement = () => {
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
                     "PREFIX mo: <http://purl.org/ontology/mo/>\n" +
-                    "SELECT DISTINCT ?band ?descrizione ?nome ?numArtisti ?suonatoDaURI ?immagine (group_concat(distinct ?artisti;separator=\", \") AS ?artistiNome) where {\n" +
+                    "SELECT DISTINCT ?band ?descrizione ?nome ?numArtisti ?immagine (group_concat(distinct ?artistiURI;separator=\", \") AS ?artistiNomeURI) (group_concat(distinct ?artisti;separator=\", \") AS ?artistiNome) (group_concat(distinct ?listaStrumenti;separator=\", \") AS ?strumentiSuonatiURI) (group_concat(distinct ?listaStrumentiNome;separator=\", \") AS ?strumentiSuonatiNome) where {\n" +
                     "    ?band rdf:type mo:SoloMusicArtist .\n" +
                     "    ?band rdfs:comment ?descrizione .\n" +
                     "    ?band music:NomeBandMusicale ?nome .\n" +
                     "    ?band music:HaNumeroArtisti ?numArtisti .\n" +
                     "    ?band music:Immagine ?immagine .\n" +
+                    "    ?band music:bandSuonano ?listaStrumenti .\n" +
+                    "    ?listaStrumenti music:NomeStrumentoMusicale ?listaStrumentiNome .\n" +
                     "    ?citta rdf:type ?origineTipo .\n" +
-                    "    ?band music:haLavoratori ?suonatoDaURI .\n" +
-                    "    ?suonatoDaURI foaf:firstName ?artistaNome .\n" +
-                    "    ?suonatoDaURI foaf:lastName ?artistaCognome .\n" +
-                    "   BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?artisti)\n" +
+                    "    ?band music:haLavoratori ?artistiURI .\n" +
+                    "    ?artistiURI foaf:firstName ?artistaNome .\n" +
+                    "    ?artistiURI foaf:lastName ?artistaCognome .\n" +
+                    "    BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?artisti)\n" +
                     "}\n" +
-                    "GROUP BY ?band ?descrizione ?nome ?numArtisti ?immagine ?suonatoDaURI",
+                    "GROUP BY ?band ?descrizione ?nome ?numArtisti ?immagine",
             infer: true,
             sameAs: true
         }
@@ -99,6 +101,8 @@ const SolistiElement = () => {
                 let nomeArray = item.descrizione.value.split(" ");
                 let nome = nomeArray.slice(0, 2).join(" ");
                 let desc = nomeArray.slice(2, nomeArray.length).join(" ");
+                const strumenti = item.strumentiSuonatiNome.value.split(", ");
+                const strumentiURI = item.strumentiSuonatiURI.value.split(", ");
                 /* 
                     Restituisco i componenti con le informazioni ricevute dalla SPARQL Query.
                     Inoltre vengono aggiunti dei link verso una pagina di ricerca, in modo che
@@ -113,10 +117,24 @@ const SolistiElement = () => {
                         <h1 style={{marginBottom: "0px"}}>{item.nome.value}</h1>
                         <hr style={{paddingTop: "3px"}} />
                         <p>
-                        <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                            <a href="/#" style={{color: 'black'}} onClick={(e) => {
                                                 e.preventDefault();
-                                                navigate('/search', {state: {tipo: "Artista", URI: item.suonatoDaURI.value}});
+                                                navigate('/search', {state: {tipo: "Artista", URI: item.artistiNomeURI.value}});
                                             }}>{nome}</a>{" " + desc}
+                        </p>
+                        <p>Suona gli strumenti:
+                            <ul>
+                                {/* Effettuo un ciclo sull'array degli artisti per creare l'elenco, con ogni artista linkato. */}
+                                {strumenti.map((strumento, i) => 
+                                    <li>
+                                        <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                e.preventDefault();
+                                                navigate('/search', {state: {tipo: "StrumentoMusicale", URI: strumentiURI[i]}});
+                                            }}>{strumento}
+                                        </a>
+                                    </li>
+                                )}
+                            </ul>
                         </p>
                     </ItemDescription>
                     </Item>

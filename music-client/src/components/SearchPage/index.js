@@ -111,7 +111,8 @@ const SearchElement = () => {
                         "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
                         "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
                         "PREFIX mo: <http://purl.org/ontology/mo/>\n" +
-                        "select ?nome ?immagine ?commento ?descrizione ?numCorde ?body ?ponte ?legni ?prodottoDaFustiURI ?prodottoDaFusti ?fustiNome ?piattiNome ?produzionePiattiURI ?suonatoDaURI ?suonatoCon ?suonatoIn ?prodottoDaURI ?produzionePiatti ?prodottoDa ?suonatoDa where { \n" +
+                        "PREFIX bag: <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>\n" +
+                        "select ?nome ?immagine ?commento ?descrizione ?numCorde ?body ?ponte ?legni ?prodottoDaFustiURI ?prodottoDaFusti ?fustiNome ?piattiNome ?produzionePiattiURI ?suonatoDaURI ?suonatoCon ?suonatoIn ?prodottoDaURI ?produzionePiatti ?prodottoDa ?suonatoDa (group_concat(distinct ?nomeFusti;separator=\", \") AS ?listaNomeFusti) (group_concat(distinct ?nomePiatti;separator=\", \") AS ?listaNomePiatti) where { \n" +
                         "    <" + state.URI + "> ?p ?o .\n" +
                         "    ?o rdf:type mo:Instrument .\n" +
                         "    ?o rdfs:comment ?commento .\n" +
@@ -134,11 +135,15 @@ const SearchElement = () => {
                         "    }\n" +
                         "    optional {\n" +
                         "        ?o music:compostoDa ?fusti .   \n" +
+                        "        ?fusti bag:hasItem ?listaFusti .\n" +
+                        "        ?listaFusti music:NomeStrumentoMusicale ?nomeFusti .\n" +
                         "        ?fusti music:NomeStrumentoMusicale ?fustiNome .\n" +
                         "        ?fusti rdf:type music:TuttiFusti .\n" +
                         "        ?fusti music:pezziProdottiDa ?prodottoDaFustiURI .\n" +
                         "        ?prodottoDaFustiURI music:NomeCasaProduttrice ?prodottoDaFusti .\n" +
                         "        ?o music:compostoDa ?piatti .\n" +
+                        "        ?piatti bag:hasItem ?listaPiatti .\n" +
+                        "        ?listaPiatti music:NomeStrumentoMusicale ?nomePiatti .\n" +
                         "        ?piatti music:NomeStrumentoMusicale ?piattiNome .\n" +
                         "        ?piatti rdf:type music:Piatti .\n" +
                         "        ?piatti music:pezziProdottiDa ?produzionePiattiURI .\n" +
@@ -148,7 +153,8 @@ const SearchElement = () => {
                         "    ?suonatoDaURI foaf:firstName ?artistaNome .\n" +
                         "    ?suonatoDaURI foaf:lastName ?artistaCognome .\n" +
                         "    BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?suonatoDa)\n" +
-                        "}";
+                        "}\n" +
+                        "GROUP BY ?nome ?immagine ?commento ?descrizione ?numCorde ?body ?ponte ?legni ?prodottoDaFustiURI ?prodottoDaFusti ?fustiNome ?piattiNome ?produzionePiattiURI ?suonatoDaURI ?suonatoCon ?suonatoIn ?prodottoDaURI ?produzionePiatti ?prodottoDa ?suonatoDa";
         } else if (state.tipo === 'Band') {
             query =  "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
                     "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
@@ -157,7 +163,7 @@ const SearchElement = () => {
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
                     "PREFIX mo: <http://purl.org/ontology/mo/>\n" +
-                    "SELECT DISTINCT ?descrizione ?nome ?numArtisti ?nomeTipoBand ?immagine (group_concat(distinct ?artistiURI;separator=\", \") AS ?artistiNomeURI) (group_concat(distinct ?artisti;separator=\", \") AS ?artistiNome) where {\n" +
+                    "SELECT DISTINCT ?descrizione ?nome ?numArtisti ?nomeTipoBand ?immagine (group_concat(distinct ?artistiURI;separator=\", \") AS ?artistiNomeURI) (group_concat(distinct ?artisti;separator=\", \") AS ?artistiNome) (group_concat(distinct ?listaStrumenti;separator=\", \") AS ?strumentiSuonatiURI) (group_concat(distinct ?listaStrumentiNome;separator=\", \") AS ?strumentiSuonatiNome) where {\n" +
                     "    <" + state.URI + "> ?p ?o .\n" +
                     "    ?o rdfs:comment ?descrizione .\n" +
                     "    ?o rdf:type ?tipoBand .\n" +
@@ -166,6 +172,8 @@ const SearchElement = () => {
                     "    ?o music:NomeBandMusicale ?nome .\n" +
                     "    ?o music:HaNumeroArtisti ?numArtisti .\n" +
                     "    ?o music:Immagine ?immagine .\n" +
+                    "    ?o music:bandSuonano ?listaStrumenti .\n" +
+                    "    ?listaStrumenti music:NomeStrumentoMusicale ?listaStrumentiNome .\n" +
                     "    ?citta rdf:type ?origineTipo .\n" +
                     "    ?o music:haLavoratori ?artistiURI .\n" +
                     "    ?artistiURI foaf:firstName ?artistaNome .\n" +
@@ -324,50 +332,66 @@ const SearchElement = () => {
                 <ResultsContainer>
                     <ResultsH1>Ricerca IRI</ResultsH1>
                     {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
-                    {results.map((item) => 
-                        <Item>
-                        <ItemImage src={item.immagine.value}></ItemImage>
-                        <ItemDescription>
-                            {/* 
-                                Restituisco le informazioni dello strumento musicale, controllando se la proprietà esiste
-                                e linkando le varie informazioni che lo necessitano.
-                            */}
-                            <h1>{item.nome.value}</h1>
-                            <p style={{marginBottom: "0px"}}>{item.descrizione !== undefined ? item.descrizione.value : item.commento.value}</p>
-                            <hr style={{paddingTop: "3px"}} />
-                            {item.prodottoDa !== undefined && <p>E' prodotto dalla casa produttrice: <a href="/#" style={{color: 'black'}} onClick={(e) => {
-                                        e.preventDefault();
-                                        setState({tipo: "CasaProduttrice", URI: item.prodottoDaURI.value});
-                                        setResults(null);
-                            }}>{item.prodottoDa.value}</a></p>}
-                            {item.body !== undefined && <p>Body: {item.body.value}</p>}
-                            {item.legni !== undefined && <p>Legni: {item.legni.value}</p>}
-                            {item.ponte !== undefined &&<p>Ponte: {item.ponte.value}</p>}
-                            {item.numCorde !== undefined && <p>Numero corde: {item.numCorde.value}</p>}
-                            {item.prodottoDaFusti !== undefined &&<p>La batteria è composta da: 
-                                <ul>
-                                    <li>Fusti: {item.fustiNome.value} - Prodotti da: <a href="/#" style={{color: 'black'}} onClick={(e) => {
-                                        e.preventDefault();
-                                        setState({tipo: "CasaProduttrice", URI: item.prodottoDaFustiURI.value});
-                                        setResults(null);
-                            }}>{item.prodottoDaFusti.value}</a></li>
-                                    <li>Piatti: {item.piattiNome.value} - Prodotti da: <a href="/#" style={{color: 'black'}} onClick={(e) => {
-                                        e.preventDefault();
-                                        setState({tipo: "CasaProduttrice", URI: item.produzionePiattiURI.value});
-                                        setResults(null);
-                            }}>{item.produzionePiatti.value}</a></li>
-                                </ul>    
-                            </p>}
-                            <p>E' suonata dall'artista: <a href="/#" style={{color: 'black'}} onClick={(e) => {
-                                e.preventDefault();
-                                setState({tipo: "Artista", URI: item.suonatoDaURI.value});
-                                setResults(null);
-                            }}>{item.suonatoDa.value}</a></p>
-                            {item.suonatoCon !== undefined &&<p>L'artista {item.suonatoDa.value} suona la "{item.nome.value}" con: "{item.suonatoCon.value}"</p>}
-                            <p>E' suonato nel genere musicale: {item.suonatoIn.value}</p>
-                        </ItemDescription>
-                        </Item>
-                    )}
+                    {results.map((item) => {
+                        const fusti = item.listaNomeFusti.value.split(", ");
+                        const piatti = item.listaNomePiatti.value.split(", ");
+                        return (
+                            <Item>
+                            <ItemImage src={item.immagine.value}></ItemImage>
+                            <ItemDescription>
+                                {/* 
+                                    Restituisco le informazioni dello strumento musicale, controllando se la proprietà esiste
+                                    e linkando le varie informazioni che lo necessitano.
+                                */}
+                                <h1>{item.nome.value}</h1>
+                                <p style={{marginBottom: "0px"}}>{item.descrizione !== undefined ? item.descrizione.value : item.commento.value}</p>
+                                <hr style={{paddingTop: "3px"}} />
+                                {item.prodottoDa !== undefined && <p>E' prodotto dalla casa produttrice: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                            e.preventDefault();
+                                            setState({tipo: "CasaProduttrice", URI: item.prodottoDaURI.value});
+                                            setResults(null);
+                                }}>{item.prodottoDa.value}</a></p>}
+                                {item.body !== undefined && <p>Body: {item.body.value}</p>}
+                                {item.legni !== undefined && <p>Legni: {item.legni.value}</p>}
+                                {item.ponte !== undefined &&<p>Ponte: {item.ponte.value}</p>}
+                                {item.numCorde !== undefined && <p>Numero corde: {item.numCorde.value}</p>}
+                                {item.prodottoDaFusti !== undefined &&<p>La batteria è composta da: 
+                                    <ul>
+                                        <li>Fusti: {item.fustiNome.value} - Prodotti da: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                            e.preventDefault();
+                                            setState({tipo: "CasaProduttrice", URI: item.prodottoDaFustiURI.value});
+                                            setResults(null);
+                                }}>{item.prodottoDaFusti.value}</a>:
+                                    <ul>
+                                        {fusti.map((fusto, i) =>
+                                            <li>{fusto}</li>
+                                        )}
+                                    </ul>
+                                </li>
+                                        <li>Piatti: {item.piattiNome.value} - Prodotti da: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                            e.preventDefault();
+                                            setState({tipo: "CasaProduttrice", URI: item.produzionePiattiURI.value});
+                                            setResults(null);
+                                }}>{item.produzionePiatti.value}</a>:
+                                    <ul>
+                                        {piatti.map((piatto, i) =>
+                                            <li>{piatto}</li>
+                                        )}
+                                    </ul>
+                                </li>
+                                    </ul>    
+                                </p>}
+                                <p>E' suonata dall'artista: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                    e.preventDefault();
+                                    setState({tipo: "Artista", URI: item.suonatoDaURI.value});
+                                    setResults(null);
+                                }}>{item.suonatoDa.value}</a></p>
+                                {item.suonatoCon !== undefined &&<p>L'artista {item.suonatoDa.value} suona la "{item.nome.value}" con: "{item.suonatoCon.value}"</p>}
+                                <p>E' suonato nel genere musicale: {item.suonatoIn.value}</p>
+                            </ItemDescription>
+                            </Item>
+                        )
+                    })}
                 </ResultsContainer>
             )
         }
@@ -383,6 +407,8 @@ const SearchElement = () => {
                         /* Preparo gli array perchè ci sono più artisti che suonano nel gruppo musicale */
                         const artisti = item.artistiNome.value.split(", ");
                         const artistiURI = item.artistiNomeURI.value.split(", ");
+                        const strumenti = item.strumentiSuonatiNome.value.split(", ");
+                        const strumentiURI = item.strumentiSuonatiURI.value.split(", ");
                         let nome = null;
                         let desc = null;
                         /* Preparo gli array dividendo il nome dalla descrizione che la segue, così posso linkare il nome dell'artista. */
@@ -421,6 +447,21 @@ const SearchElement = () => {
                                         )}
                                     </ul>
                                 </p>}
+                                {item.nomeTipoBand.value === 'Gruppo' && <p>Nella band musicale "{item.nome.value}" suonano gli strumenti:
+                                    <ul>
+                                        {/* Effettuo un ciclo sull'array degli artisti per creare l'elenco, con ogni artista linkato. */}
+                                        {strumenti.map((strumento, i) => 
+                                            <li>
+                                                <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setState({tipo: "StrumentoMusicale", URI: strumentiURI[i]});
+                                                        setResults(null);
+                                                    }}>{strumento}
+                                                </a>
+                                            </li>
+                                        )}
+                                    </ul>
+                                </p>}
                                 {item.nomeTipoBand.value === 'Solista' &&
                                     <p>
                                         <a href="/#" style={{color: 'black'}} onClick={(e) => {
@@ -428,7 +469,22 @@ const SearchElement = () => {
                                                                 setState({tipo: "Artista", URI: item.artistiNomeURI.value});
                                                                 setResults(null);
                                                             }}>{nome}</a>{" " + desc}
-                                    </p>
+                                    </p> &&
+                                    <p>Suona gli strumenti:
+                                    <ul>
+                                        {/* Effettuo un ciclo sull'array degli artisti per creare l'elenco, con ogni artista linkato. */}
+                                        {strumenti.map((strumento, i) => 
+                                            <li>
+                                                <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setState({tipo: "StrumentoMusicale", URI: strumentiURI[i]});
+                                                        setResults(null);
+                                                    }}>{strumento}
+                                                </a>
+                                            </li>
+                                        )}
+                                    </ul>
+                                </p>
                                 }
                             </ItemDescription>
                             </Item>

@@ -96,6 +96,15 @@
                                                                                rdfs:label "is member of"@en .
 
 
+###  http://www.semanticweb.org/musical-instruments#bandSuonano
+:bandSuonano rdf:type owl:ObjectProperty ;
+             rdfs:domain :BandMusicale ;
+             rdfs:range <http://purl.org/ontology/mo/Instrument> ;
+             owl:propertyChainAxiom ( :haLavoratori
+                                      :suona
+                                    ) .
+
+
 ###  http://www.semanticweb.org/musical-instruments#compone
 :compone rdf:type owl:ObjectProperty ;
          owl:inverseOf :compostoDa ;
@@ -361,7 +370,9 @@
 :NomeStrumentoMusicale rdf:type owl:DatatypeProperty ;
                        rdfs:domain [ rdf:type owl:Class ;
                                      owl:unionOf ( <http://purl.org/ontology/mo/Instrument>
+                                                   :Fusto
                                                    :PezziBatteria
+                                                   :Piatto
                                                  )
                                    ] ;
                        rdfs:range xsd:string ;
@@ -825,6 +836,13 @@
                  rdfs:label "CittaGiapponese"@it .
 
 
+###  http://www.semanticweb.org/musical-instruments#Fusto
+:Fusto rdf:type owl:Class ;
+       rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item> ;
+       rdfs:comment "Fusto della batteria"@it ;
+       rdfs:label "Fusto"@it .
+
+
 ###  http://www.semanticweb.org/musical-instruments#Microfono
 :Microfono rdf:type owl:Class ;
            owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
@@ -883,7 +901,7 @@
 
 ###  http://www.semanticweb.org/musical-instruments#PezziBatteria
 :PezziBatteria rdf:type owl:Class ;
-               rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+               rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag> ;
                rdfs:comment "I pezzi della batteria necessari per comporla"@it ;
                rdfs:label "PezziBatteria"@it .
 
@@ -897,6 +915,13 @@
         rdfs:subClassOf :PezziBatteria ;
         rdfs:comment "Tutti i piatti che compongono la batteria"@it ;
         rdfs:label "Piatti"@it .
+
+
+###  http://www.semanticweb.org/musical-instruments#Piatto
+:Piatto rdf:type owl:Class ;
+        rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item> ;
+        rdfs:comment "Piatto della batteria"@it ;
+        rdfs:label "Piatto"@it .
 
 
 ###  http://www.semanticweb.org/musical-instruments#Plettro
@@ -1084,6 +1109,33 @@
            :NomeCitta "Fullerton"^^xsd:string ;
            rdfs:comment "Città americana \"Fullerton\""@it ;
            rdfs:label "Fullerton"@en .
+
+
+###  http://www.semanticweb.org/musical-instruments#Fusto10Mike
+:Fusto10Mike rdf:type owl:NamedIndividual ,
+                      :Fusto ;
+             <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf> :Masterworks ;
+             :NomeStrumentoMusicale "10 x 8 tom"^^xsd:string ;
+             rdfs:comment "10 x 8 tom"@en ;
+             rdfs:label "Fusto10Mike"@it .
+
+
+###  http://www.semanticweb.org/musical-instruments#Fusto14Mike
+:Fusto14Mike rdf:type owl:NamedIndividual ,
+                      :Fusto ;
+             <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf> :Masterworks ;
+             :NomeStrumentoMusicale "14 x 5.5 snare"^^xsd:string ;
+             rdfs:comment "14 x 5.5 snare"@en ;
+             rdfs:label "Fusto14Mike"@en .
+
+
+###  http://www.semanticweb.org/musical-instruments#Fusto22Mike
+:Fusto22Mike rdf:type owl:NamedIndividual ,
+                      :Fusto ;
+             <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf> :Masterworks ;
+             :NomeStrumentoMusicale "22 x 18 Bass Drum"^^xsd:string ;
+             rdfs:label "22 x 18 Bass Drum"@en ,
+                        "Fusto22Mike"@it .
 
 
 ###  http://www.semanticweb.org/musical-instruments#GibsonGuitar
@@ -1331,6 +1383,33 @@
             :NomeStrumentoMusicale "Piatti Zildjian A-K Series"^^xsd:string ;
             rdfs:comment "Tutti i piatti della batteria di Mike Mangini"@it ;
             rdfs:label "PiattiMike"@it .
+
+
+###  http://www.semanticweb.org/musical-instruments#Piatto14Mike
+:Piatto14Mike rdf:type owl:NamedIndividual ,
+                       :Piatto ;
+              <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf> :PiattiMike ;
+              :NomeStrumentoMusicale "14\" K Special HiHats"^^xsd:string ;
+              rdfs:comment "14\" K Special HiHats"@en ;
+              rdfs:label "Piatto14Mike"@it .
+
+
+###  http://www.semanticweb.org/musical-instruments#Piatto19Mike
+:Piatto19Mike rdf:type owl:NamedIndividual ,
+                       :Piatto ;
+              <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf> :PiattiMike ;
+              :NomeStrumentoMusicale "19\" A Custom Crash"^^xsd:string ;
+              rdfs:comment "19\" A Custom Crash"@en ;
+              rdfs:label "Piatto19Mike"@it .
+
+
+###  http://www.semanticweb.org/musical-instruments#Piatto20Mike
+:Piatto20Mike rdf:type owl:NamedIndividual ,
+                       :Piatto ;
+              <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf> :PiattiMike ;
+              :NomeStrumentoMusicale "20\" A Zildjian Ping Ride"^^xsd:string ;
+              rdfs:comment "20\" A Zildjian Ping Ride"@it ;
+              rdfs:label "Piatto20Mike"@it .
 
 
 ###  http://www.semanticweb.org/musical-instruments#PlettroEric

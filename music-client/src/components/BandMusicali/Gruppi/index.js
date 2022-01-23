@@ -58,17 +58,19 @@ const GruppiElement = () => {
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
                     "PREFIX mo: <http://purl.org/ontology/mo/>\n" +
-                    "SELECT DISTINCT ?band ?descrizione ?nome ?numArtisti ?immagine (group_concat(distinct ?artistiURI;separator=\", \") AS ?artistiNomeURI) (group_concat(distinct ?artisti;separator=\", \") AS ?artistiNome) where {\n" +
+                    "SELECT DISTINCT ?band ?descrizione ?nome ?numArtisti ?immagine (group_concat(distinct ?artistiURI;separator=\", \") AS ?artistiNomeURI) (group_concat(distinct ?artisti;separator=\", \") AS ?artistiNome) (group_concat(distinct ?listaStrumenti;separator=\", \") AS ?strumentiSuonatiURI) (group_concat(distinct ?listaStrumentiNome;separator=\", \") AS ?strumentiSuonatiNome) where {\n" +
                     "    ?band rdf:type mo:MusicGroup .\n" +
                     "    ?band rdfs:comment ?descrizione .\n" +
                     "    ?band music:NomeBandMusicale ?nome .\n" +
                     "    ?band music:HaNumeroArtisti ?numArtisti .\n" +
                     "    ?band music:Immagine ?immagine .\n" +
+                    "    ?band music:bandSuonano ?listaStrumenti .\n" +
+                    "    ?listaStrumenti music:NomeStrumentoMusicale ?listaStrumentiNome .\n" +
                     "    ?citta rdf:type ?origineTipo .\n" +
                     "    ?band music:haLavoratori ?artistiURI .\n" +
                     "    ?artistiURI foaf:firstName ?artistaNome .\n" +
                     "    ?artistiURI foaf:lastName ?artistaCognome .\n" +
-                    "   BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?artisti)\n" +
+                    "    BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?artisti)\n" +
                     "}\n" +
                     "GROUP BY ?band ?descrizione ?nome ?numArtisti ?immagine",
             infer: true,
@@ -98,6 +100,8 @@ const GruppiElement = () => {
                 /* Preparo gli array perchè ci sono più artisti che suonano nel gruppo musicale */
                 const artisti = item.artistiNome.value.split(", ");
                 const artistiURI = item.artistiNomeURI.value.split(", ");
+                const strumenti = item.strumentiSuonatiNome.value.split(", ");
+                const strumentiURI = item.strumentiSuonatiURI.value.split(", ");
                 /* 
                     Restituisco i componenti con le informazioni ricevute dalla SPARQL Query.
                     Inoltre vengono aggiunti dei link verso una pagina di ricerca, in modo che
@@ -122,6 +126,20 @@ const GruppiElement = () => {
                                                 e.preventDefault();
                                                 navigate('/search', {state: {tipo: "Artista", URI: artistiURI[i]}});
                                             }}>{artista}
+                                        </a>
+                                    </li>
+                                )}
+                            </ul>
+                        </p>
+                        <p>Nella band musicale "{item.nome.value}" suonano gli strumenti:
+                            <ul>
+                                {/* Effettuo un ciclo sull'array degli artisti per creare l'elenco, con ogni artista linkato. */}
+                                {strumenti.map((strumento, i) => 
+                                    <li>
+                                        <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                                                e.preventDefault();
+                                                navigate('/search', {state: {tipo: "StrumentoMusicale", URI: strumentiURI[i]}});
+                                            }}>{strumento}
                                         </a>
                                     </li>
                                 )}

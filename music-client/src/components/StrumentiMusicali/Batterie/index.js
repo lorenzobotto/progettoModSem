@@ -51,36 +51,42 @@ const BatteriaElement = () => {
     useEffect( () => {
         /* Costruzione della SPARQL Query per ricercare i dati di tutte le batterie */
         const requestData = {
-            query:  "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" + 
+            query:  "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
                     "PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
                     "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
                     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
                     "PREFIX music: <http://www.semanticweb.org/musical-instruments#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
-                    "SELECT ?batteria ?nome ?immagine ?descrizione ?suonatoIn ?fustiNome ?produzioneFustiURI ?produzioneFusti ?piattiNome ?produzionePiattiURI ?produzionePiatti ?suonatoDaURI ?suonatoDa ?suonatoCon\n" +
-                        "WHERE { ?batteria rdf:type music:Batteria .\n" +
-                            "?batteria music:DescrizioneStrumento ?descrizione .\n" +
-                            "?batteria music:Immagine ?immagine .\n" +
-                            "?batteria music:NomeStrumentoMusicale ?nome .\n" +
-                            "?batteria music:suonatoCon ?suonato .\n" +
-                            "?suonato rdfs:label ?suonatoCon .\n" +
-                            "?batteria music:suonatoIn ?genere . \n" +
-                            "?genere music:NomeGenereMusicale ?suonatoIn .\n" +
-                            "?batteria music:suonatoDa ?suonatoDaURI .\n" +
-                            "?suonatoDaURI foaf:firstName ?artistaNome .\n" +
-                            "?suonatoDaURI foaf:lastName ?artistaCognome .\n" +
-                            "BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?suonatoDa) .\n" +
-                            "?batteria music:compostoDa ?fusti .\n" +
-                            "?fusti music:NomeStrumentoMusicale ?fustiNome .\n" +
-                            "?fusti rdf:type music:TuttiFusti .\n" +
-                            "?fusti music:pezziProdottiDa ?produzioneFustiURI . \n" +
-                            "?produzioneFustiURI music:NomeCasaProduttrice ?produzioneFusti .\n" +
-                            "?batteria music:compostoDa ?piatti .\n" +
-                            "?piatti music:NomeStrumentoMusicale ?piattiNome . \n" +
-                            "?piatti rdf:type music:Piatti .\n" +
-                            "?piatti music:pezziProdottiDa ?produzionePiattiURI . \n" +
-                            "?produzionePiattiURI music:NomeCasaProduttrice ?produzionePiatti\n" +
-                    "}",
+                    "PREFIX bag: <http://www.ontologydesignpatterns.org/cp/owl/bag.owl#>\n" +
+                    "SELECT ?batteria ?nome ?immagine ?descrizione ?suonatoIn ?fustiNome (group_concat(distinct ?nomeFusti;separator=\", \") AS ?listaNomeFusti) (group_concat(distinct ?nomePiatti;separator=\", \") AS ?listaNomePiatti) ?produzioneFustiURI ?produzioneFusti ?piattiNome ?produzionePiattiURI ?produzionePiatti ?suonatoDaURI ?suonatoDa ?suonatoCon\n" +
+                    "                       WHERE { ?batteria rdf:type music:Batteria .\n" +
+                    "                           ?batteria music:DescrizioneStrumento ?descrizione .\n" +
+                    "                            ?batteria music:Immagine ?immagine .\n" +
+                    "                            ?batteria music:NomeStrumentoMusicale ?nome .\n" +
+                    "                            ?batteria music:suonatoCon ?suonato .\n" +
+                    "                            ?suonato rdfs:label ?suonatoCon .\n" +
+                    "                            ?batteria music:suonatoIn ?genere .\n" +
+                    "                            ?genere music:NomeGenereMusicale ?suonatoIn .\n" +
+                    "                            ?batteria music:suonatoDa ?suonatoDaURI .\n" +
+                    "                            ?suonatoDaURI foaf:firstName ?artistaNome .\n" +
+                    "                            ?suonatoDaURI foaf:lastName ?artistaCognome .\n" +
+                    "                            BIND(CONCAT(?artistaNome, \" \", ?artistaCognome) AS ?suonatoDa) .\n" +
+                    "                            ?batteria music:compostoDa ?fusti .\n" +
+                    "                            ?fusti bag:hasItem ?listaFusti .\n" +
+                    "                            ?listaFusti music:NomeStrumentoMusicale ?nomeFusti .\n" +
+                    "                            ?fusti music:NomeStrumentoMusicale ?fustiNome .\n" +
+                    "                            ?fusti rdf:type music:TuttiFusti .\n" +
+                    "                            ?fusti music:pezziProdottiDa ?produzioneFustiURI .\n" +
+                    "                            ?produzioneFustiURI music:NomeCasaProduttrice ?produzioneFusti .\n" +
+                    "                            ?batteria music:compostoDa ?piatti .\n" +
+                    "                            ?piatti bag:hasItem ?listaPiatti .\n" +
+                    "                            ?listaPiatti music:NomeStrumentoMusicale ?nomePiatti .\n" +
+                    "                            ?piatti music:NomeStrumentoMusicale ?piattiNome .\n" +
+                    "                            ?piatti rdf:type music:Piatti .\n" +
+                    "                            ?piatti music:pezziProdottiDa ?produzionePiattiURI .\n" +
+                    "                            ?produzionePiattiURI music:NomeCasaProduttrice ?produzionePiatti\n" +
+                    "}\n" +
+                    "GROUP BY ?batteria ?nome ?immagine ?descrizione ?suonatoIn ?fustiNome ?produzioneFustiURI ?produzioneFusti ?piattiNome ?produzionePiattiURI ?produzionePiatti ?suonatoDaURI ?suonatoDa ?suonatoCon",
             infer: true,
             sameAs: true
         }
@@ -104,35 +110,51 @@ const BatteriaElement = () => {
         <ResultsContainer>
             <ResultsH1>Batterie</ResultsH1>
             {/* Effettuo un ciclo sull'array dei risultati dove per ogni elemento mi restituisce i componenti */}
-            {results.map((item) => 
-                <Item>
-                  <ItemImage src={item.immagine.value}></ItemImage>
-                  <ItemDescription>
-                    {/* Restituisco le informazioni dello strumento musicale. */}
-                    <h1>{item.nome.value}</h1>
-                    <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>
-                    <hr style={{paddingTop: "3px"}} />
-                    <p>La batteria è composta da: 
-                        <ul>
-                            <li>Fusti: {item.fustiNome.value} - Prodotti da: <a href="/#" style={{color: 'black'}} onClick={(e) => {
-                        e.preventDefault();
-                        navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.produzioneFustiURI.value}});
-                    }}>{item.produzioneFusti.value}</a></li>
-                            <li>Piatti: {item.piattiNome.value} - Prodotti da: <a href="/#" style={{color: 'black'}} onClick={(e) => {
-                        e.preventDefault();
-                        navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.produzionePiattiURI.value}});
-                    }}>{item.produzionePiatti.value}</a></li>
-                        </ul>    
-                    </p>
-                    <p>E' suonata dall'artista: <a href="/#" style={{color: 'black'}} onClick={(e) => {
-                        e.preventDefault();
-                        navigate('/search', {state: {tipo: "Artista", URI: item.suonatoDaURI.value}});
-                    }}>{item.suonatoDa.value}</a></p>
-                    <p>L'artista {item.suonatoDa.value} suona la "{item.nome.value}" con: "{item.suonatoCon.value}"</p>
-                    <p>E' suonato nel genere musicale: {item.suonatoIn.value}</p>
-                  </ItemDescription>
-                </Item>
-            )}
+            {results.map((item) => {
+                const fusti = item.listaNomeFusti.value.split(", ");
+                const piatti = item.listaNomePiatti.value.split(", ");
+                return (
+                    <Item>
+                    <ItemImage src={item.immagine.value}></ItemImage>
+                    <ItemDescription>
+                        {/* Restituisco le informazioni dello strumento musicale. */}
+                        <h1>{item.nome.value}</h1>
+                        <p style={{marginBottom: "0px"}}>{item.descrizione.value}</p>
+                        <hr style={{paddingTop: "3px"}} />
+                        <p>La batteria è composta da: 
+                            <ul>
+                                <li>Fusti: {item.fustiNome.value} - Prodotti da: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                            e.preventDefault();
+                            navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.produzioneFustiURI.value}});
+                        }}>{item.produzioneFusti.value}</a>:
+                            <ul>
+                                {fusti.map((fusto, i) =>
+                                    <li>{fusto}</li>
+                                )}
+                            </ul>
+                        </li>
+                                <li>Piatti: {item.piattiNome.value} - Prodotti da: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                            e.preventDefault();
+                            navigate('/search', {state: {tipo: "CasaProduttrice", URI: item.produzionePiattiURI.value}});
+                        }}>{item.produzionePiatti.value}</a>:
+                            <ul>
+                                {piatti.map((piatto, i) =>
+                                    <li>{piatto}</li>
+                                )}
+                            </ul>
+                        </li>
+                            </ul>    
+                        </p>
+                        <p>E' suonata dall'artista: <a href="/#" style={{color: 'black'}} onClick={(e) => {
+                            e.preventDefault();
+                            navigate('/search', {state: {tipo: "Artista", URI: item.suonatoDaURI.value}});
+                        }}>{item.suonatoDa.value}</a></p>
+                        <p>L'artista {item.suonatoDa.value} suona la "{item.nome.value}" con: "{item.suonatoCon.value}"</p>
+                        <p>E' suonato nel genere musicale: {item.suonatoIn.value}</p>
+                    </ItemDescription>
+                    </Item>
+                )
+            })}
         </ResultsContainer>
     )
 }
