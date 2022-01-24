@@ -8,7 +8,7 @@
 
 <http://www.semanticweb.org/musical-instruments> rdf:type owl:Ontology ;
                                                   <http://purl.org/dc/elements/1.1/creator> "Lorenzo Botto" ;
-                                                  <http://purl.org/dc/elements/1.1/date> "25/01/2021" ;
+                                                  <http://purl.org/dc/elements/1.1/date> "27/01/2021" ;
                                                   <http://purl.org/dc/elements/1.1/description> "L'ontologia \"musical-instruments\" rappresenta l'intera conoscenza di un'enciclopedia per gli amanti della musica. Sono presenti gli strumenti musicali con i relativi artisti che li utilizzano, e le case produttrici degli strumenti musicali. Incorpora il vocabolario FOAF per gli artisti che suonano lo strumento musicale e l'ontologia \"mo\" (The Music Ontology) per rappresentare alcune classi, tra cui il genere musicale, gli strumenti musicali, il gruppo musicale, il solista e l'artista." ;
                                                   <http://purl.org/dc/elements/1.1/title> "Strumenti Musicali - Un'enciclopedia per gli amanti della musica" ;
                                                   <http://purl.org/vocab/vann/preferredNamespacePrefix> "musical-instruments" ;
@@ -1001,7 +1001,7 @@
               :suonatoDa :MikeMangini ;
               :suonatoIn :ProgressiveMetal ;
               :DescrizioneStrumento "Batteria di Mike Mangini completa di piatti Zildjian e fusti Pearl."^^xsd:string ;
-              :Immagine "http://www.metalsucks.net/wp-content/uploads/2011/09/DSC01870.jpeg"^^xsd:string ;
+              :Immagine "https://i.ibb.co/Jz0tvMh/Mangini-300x300px.png"^^xsd:string ;
               :NomeStrumentoMusicale "Mike Mangini Masterworks Kit and Zildjian Cymbals"^^xsd:string ;
               rdfs:comment "Batteria di Mike Mangini compresa di Piatti e Fusti"@it ;
               rdfs:label "BatteriaMike"@it .
