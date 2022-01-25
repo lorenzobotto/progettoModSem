@@ -1,0 +1,2102 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/musical-instruments#"
+     xml:base="http://www.semanticweb.org/musical-instruments"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:bag="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/musical-instruments">
+        <dc:creator>Lorenzo Botto</dc:creator>
+        <dc:date>27/01/2021</dc:date>
+        <dc:description>L&apos;ontologia &quot;musical-instruments&quot; rappresenta l&apos;intera conoscenza di un&apos;enciclopedia per gli amanti della musica. Sono presenti gli strumenti musicali con i relativi artisti che li utilizzano, e le case produttrici degli strumenti musicali. Incorpora il vocabolario FOAF per gli artisti che suonano lo strumento musicale e l&apos;ontologia &quot;mo&quot; (The Music Ontology) per rappresentare alcune classi, tra cui il genere musicale, gli strumenti musicali, il gruppo musicale, il solista e l&apos;artista.</dc:description>
+        <dc:title>Strumenti Musicali - Un&apos;enciclopedia per gli amanti della musica</dc:title>
+        <vann:preferredNamespacePrefix>musical-instruments</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>http://www.music.com/musical-instruments</vann:preferredNamespaceUri>
+        <rdfs:label>musical-instruments</rdfs:label>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
+        <rdfs:label>vann:preferredNamespacePrefix</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
+        <rdfs:label>vann:preferredNamespaceUri</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#hasItem">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember"/>
+        <owl:inverseOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has item - The link to every item of the Bag</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has item</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent">
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:complementOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item"/>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">itemContent - The link to the actual resource to which the item refers.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">item content</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">item of - The link from an item to the Bag where it is contained</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">item of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember">
+        <owl:inverseOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">A relation between collections and entities, e.g. &apos;my collection of saxophones includes an old Adolphe Sax original alto&apos; (i.e. my collection has member an Adolphe Sax alto).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl"/>
+        <rdfs:label xml:lang="en">has member</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl"/>
+        <rdfs:label xml:lang="en">is member of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#bandSuonano -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#bandSuonano">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#BandMusicale"/>
+        <rdfs:range rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#haLavoratori"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#suona"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#compone -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#compone">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/musical-instruments#compostoDa"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#PezziBatteria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/musical-instruments#Batteria"/>
+        <rdfs:comment xml:lang="it">I pezzi della batteria che compongono la batteria (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">compone</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#compostoDa -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#compostoDa">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#Batteria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/musical-instruments#PezziBatteria"/>
+        <rdfs:comment xml:lang="it">La batteria (strumento musicale) da che pezzi è composta</rdfs:comment>
+        <rdfs:label xml:lang="it">compostoDa</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#haLavoratori -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#haLavoratori">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/musical-instruments#lavoraIn"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#BandMusicale"/>
+        <rdfs:range rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:comment xml:lang="it">Una band musicale è rappresentata dagli artisti che suonano</rdfs:comment>
+        <rdfs:label xml:lang="it">haLavoratori</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#lavoraIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#lavoraIn">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/musical-instruments#BandMusicale"/>
+        <rdfs:comment xml:lang="it">Rappresenta gli artisti che suonano in una band musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">lavoraIn</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#pezziProdottiDa -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#pezziProdottiDa">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/musical-instruments#producePezzi"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#PezziBatteria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:comment xml:lang="it">I pezzi della batteria da quale casa produttrice sono prodotti</rdfs:comment>
+        <rdfs:label xml:lang="it">pezziProdottiDa</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#prodottoDa -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#prodottoDa">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/musical-instruments#produce"/>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:comment xml:lang="it">Rappresenta lo strumento musicale da quale casa produttrice è prodotto</rdfs:comment>
+        <rdfs:label xml:lang="it">prodottoDa</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#produce -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#produce">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:range rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+        <rdfs:comment xml:lang="it">Rappresenta la casa produttrice che produce uno strumento musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">produce</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#producePezzi -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#producePezzi">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/musical-instruments#PezziBatteria"/>
+        <rdfs:comment xml:lang="it">Casa produttrice che produce pezzi per la batteria (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">producePezzi</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#suona -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#suona">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/musical-instruments#suonatoDa"/>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:range rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+        <rdfs:comment xml:lang="it">Rappresenta l&apos;artista che suona lo strumento musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">suona</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#suonatoCon -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#suonatoCon">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/musical-instruments#Oggetto"/>
+        <rdfs:comment xml:lang="it">Rappresenta con quale ogetto è suonato lo strumento musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">suonatoCon</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#suonatoDa -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#suonatoDa">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+        <rdfs:range rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:comment xml:lang="it">Lo strumento musicale è rappresentato dagli artisti che lo suonano</rdfs:comment>
+        <rdfs:label xml:lang="it">suonatoDa</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#suonatoIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#suonatoIn">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+        <rdfs:range rdf:resource="http://purl.org/ontology/mo/Genre"/>
+        <rdfs:comment xml:lang="it">Rappresenta in quale genere musicali si suonano gli strumenti musicali</rdfs:comment>
+        <rdfs:label xml:lang="it">suonatoIn</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#ubicataDa -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#ubicataDa">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/musical-instruments#ubicataIn"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#Citta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:comment xml:lang="it">Rappresenta una città che è ubicata da una casa produttrice</rdfs:comment>
+        <rdfs:label xml:lang="it">ubicataDa</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#ubicataIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#ubicataIn">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/musical-instruments#Citta"/>
+        <rdfs:comment xml:lang="it">Rappresenta una casa produttrice ubicata in una città</rdfs:comment>
+        <rdfs:label xml:lang="it">ubicataIn</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#utilizza -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#utilizza">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/musical-instruments#utilizzatoDa"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/musical-instruments#Oggetto"/>
+        <rdfs:comment xml:lang="it">Rappresenta l&apos;artiche che utilizza un oggetto per suonare uno strumento musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">utilizza</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#utilizzatoDa -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/musical-instruments#utilizzatoDa">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#Oggetto"/>
+        <rdfs:range rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:comment xml:lang="it">Rappresenta un oggetto che è utilizzato da un&apos;artista per suonare uno strumento musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">utilizzatoDa</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/member -->
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/member">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/musical-instruments#BandMusicale"/>
+        <rdfs:comment xml:lang="en">member - Indicates a member of a Group</rdfs:comment>
+        <rdfs:label xml:lang="en">(foaf) member</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Body -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#Body">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Basso"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Chitarra"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Tipo del body della chitarra o del basso</rdfs:comment>
+        <rdfs:label xml:lang="en">Body</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#DescrizioneStrumento -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#DescrizioneStrumento">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/ontology/mo/Instrument"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#PezziBatteria"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Descrizione dello strumento musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">DescrizioneStrumento</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#FondataNel -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#FondataNel">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="it">Anno di fondazione della casa produttrice</rdfs:comment>
+        <rdfs:label xml:lang="it">FondataNel</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#HaNumeroArtisti -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#HaNumeroArtisti">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#BandMusicale"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="it">Rappresenta un dato di tipo intero per indicare il numero degli artisti</rdfs:comment>
+        <rdfs:label xml:lang="it">HaNumeroArtisti</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#HaNumeroCorde -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#HaNumeroCorde">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Basso"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Chitarra"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="it">Numero delle corde di una chitarra</rdfs:comment>
+        <rdfs:label xml:lang="it">HaNumeroCorde</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Immagine -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#Immagine">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/ontology/mo/Instrument"/>
+                    <rdf:Description rdf:about="http://purl.org/ontology/mo/MusicArtist"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#BandMusicale"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#PezziBatteria"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Immagine di uno strumento musicale, artista, casa produttrice, pezzi batteria o band musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">Immagine</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Legni -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#Legni">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/ontology/mo/Instrument"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#PezziBatteria"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">I legni utilizzati per la chitarra o un basso</rdfs:comment>
+        <rdfs:label xml:lang="it">Legni</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#NomeBandMusicale -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#NomeBandMusicale">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#BandMusicale"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Nome della band musicale o solista</rdfs:comment>
+        <rdfs:label xml:lang="it">NomeBandMusicale</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#NomeCasaProduttrice -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#NomeCasaProduttrice">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Nome della casa produttrice</rdfs:comment>
+        <rdfs:label xml:lang="it">NomeCasaProduttrice</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#NomeCitta -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#NomeCitta">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/musical-instruments#Citta"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Nome della città</rdfs:comment>
+        <rdfs:label xml:lang="it">NomeCitta</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#NomeGenereMusicale -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#NomeGenereMusicale">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/Genre"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Nome del genere musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">NomeGenereMusicale</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#NomeStrumentoMusicale -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#NomeStrumentoMusicale">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/ontology/mo/Instrument"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Fusto"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#PezziBatteria"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Piatto"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Nome di uno strumento musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">NomeStrumentoMusicale</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Ponte -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/musical-instruments#Ponte">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Basso"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Chitarra"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Ponte della chitarra o del basso</rdfs:comment>
+        <rdfs:label xml:lang="it">Ponte</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/age -->
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/foaf/0.1/age">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="it">Età dell&apos;artista</rdfs:comment>
+        <rdfs:label xml:lang="it">(foaf) età</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/birthday -->
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/foaf/0.1/birthday">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Data di nascita dell&apos;artista</rdfs:comment>
+        <rdfs:label xml:lang="it">(foaf) data di nascita</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/firstName -->
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/foaf/0.1/firstName">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Nome dell&apos;artista</rdfs:comment>
+        <rdfs:label xml:lang="it">(foaf) nome</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/gender -->
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/foaf/0.1/gender">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Genere dell&apos;artista</rdfs:comment>
+        <rdfs:label xml:lang="it">(foaf) genere</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/lastName -->
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/foaf/0.1/lastName">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">Cognome dell&apos;artista</rdfs:comment>
+        <rdfs:label xml:lang="it">(foaf) cognome</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/ontology/mo/Genre -->
+
+    <owl:Class rdf:about="http://purl.org/ontology/mo/Genre">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Blues"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#ProgressiveMetal"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Rock"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="it">I generi musicali della musica</rdfs:comment>
+        <rdfs:label xml:lang="it">GenereMusicale</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/mo/Instrument -->
+
+    <owl:Class rdf:about="http://purl.org/ontology/mo/Instrument">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suonatoIn"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/ontology/mo/Genre"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="it">Un&apos;entità per descrivere gli strumenti musicali.</rdfs:comment>
+        <rdfs:label xml:lang="it">StrumentoMusicale</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/mo/MusicArtist -->
+
+    <owl:Class rdf:about="http://purl.org/ontology/mo/MusicArtist">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#lavoraIn"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#BandMusicale"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suona"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="it">Artista in campo musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">Artista</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/mo/MusicGroup -->
+
+    <owl:Class rdf:about="http://purl.org/ontology/mo/MusicGroup">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#HaNumeroArtisti"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</xsd:minExclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#BandMusicale"/>
+        <rdfs:comment xml:lang="it">Band musicale formata da almeno 2 artisti</rdfs:comment>
+        <rdfs:label xml:lang="it">Gruppo</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/mo/SoloMusicArtist -->
+
+    <owl:Class rdf:about="http://purl.org/ontology/mo/SoloMusicArtist">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#HaNumeroArtisti"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:hasValue>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#BandMusicale"/>
+        <rdfs:comment xml:lang="it">Band musicale formata da un solo artista</rdfs:comment>
+        <rdfs:label xml:lang="it">Solista</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bag - Collection that can have a number of copies of each object</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(collections) Bag</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection">
+        <owl:disjointWith rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item"/>
+        <rdfs:comment>Any container for entities that share one or more common properties. E.g. &quot;stone objects&quot;, &quot;the nurses&quot;, &quot;the Louvre Aegyptian collection&quot;. A collection is not a logical class: a collection is a first-order entity, while a class is a second-order one.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl"/>
+        <rdfs:label xml:lang="en">Collection</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#itemContent"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Item - Element belonging to a Bag</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">item</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Bacchette -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Bacchette">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#utilizzatoDa"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Batterista"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#Oggetto"/>
+        <rdfs:comment xml:lang="it">Oggetto utilizzato per suonare la batteria (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">Bacchette</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#BandMusicale -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#BandMusicale">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#haLavoratori"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="it">Band musicale che si ebisce o suona</rdfs:comment>
+        <rdfs:label xml:lang="it">BandMusicale</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Bassista -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Bassista">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suona"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/musical-instruments#Basso"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:comment xml:lang="it">Artista che suona il basso (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">Bassista</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Basso -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Basso">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#prodottoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttriceBasso"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suonatoCon"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Plettro"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suonatoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Bassista"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+        <rdfs:comment xml:lang="it">Descrive il Basso (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">Basso</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Batteria -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Batteria">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suonatoCon"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Bacchette"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suonatoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Batterista"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+        <rdfs:comment xml:lang="it">Descrive la batteria (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">Batteria</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#BatteriaAcustica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#BatteriaAcustica">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#compostoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Piatti"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#compostoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#TuttiFusti"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#Batteria"/>
+        <rdfs:comment xml:lang="it">Descrive la categoria delle batterie acustiche</rdfs:comment>
+        <rdfs:label xml:lang="it">BatteriaAcustica</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#BatteriaElettronica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#BatteriaElettronica">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#Batteria"/>
+        <rdfs:comment xml:lang="it">Descrive la categoria delle batterie elettroniche</rdfs:comment>
+        <rdfs:label xml:lang="it">BatteriaElettronica</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Batterista -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Batterista">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suona"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/musical-instruments#Batteria"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:comment xml:lang="it">Artista che suona la batteria (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">Batterista</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Cantante -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Cantante">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suona"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/musical-instruments#Microfono"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:comment xml:lang="it">Artista che canta in una band musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">Cantante</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#CasaProduttrice -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#CasaProduttrice">
+        <rdfs:comment xml:lang="it">Descrive la casa produttrice di uno strumento musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">CasaProduttrice</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#CasaProduttriceBasso -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#CasaProduttriceBasso">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#produce"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Basso"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:comment xml:lang="it">Case produttrici di bassi (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">CasaProduttriceBasso</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#CasaProduttriceBatteria -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#CasaProduttriceBatteria">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#producePezzi"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#TuttiFusti"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:comment xml:lang="it">Case produttrici delle batterie (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">CasaProduttriceBatteria</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#CasaProduttriceChitarra -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#CasaProduttriceChitarra">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#produce"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Chitarra"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:comment xml:lang="it">Case produttrici di chitarre</rdfs:comment>
+        <rdfs:label xml:lang="it">CasaProduttriceChitarra</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#CasaProduttriceMicrofono -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#CasaProduttriceMicrofono">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#produce"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Microfono"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:label xml:lang="it">Casa che produce i microfoni (strumento musicale)</rdfs:label>
+        <rdfs:label xml:lang="it">CasaProduttriceMicrofono</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#CasaProduttricePiatti -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#CasaProduttricePiatti">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#producePezzi"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Piatti"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:comment xml:lang="it">Case produttrici dei piatti per la batteria (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">CasaProduttricePiatti</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#CasaProduttriceTastiera -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#CasaProduttriceTastiera">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#produce"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Tastiera"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:comment xml:lang="it">Case produttrici di tastiere (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">CasaProduttriceTastiera</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Chitarra -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Chitarra">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#prodottoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttriceChitarra"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suonatoCon"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Plettro"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suonatoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Chitarrista"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+        <rdfs:comment xml:lang="it">Descrive la chitarra</rdfs:comment>
+        <rdfs:label xml:lang="it">Chitarra</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#ChitarraAPiuCorde -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#ChitarraAPiuCorde">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#HaNumeroCorde"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</xsd:minExclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#ChitarraElettrica"/>
+        <rdfs:comment xml:lang="it">Descrive la categoria delle chitarre &quot;a più corde&quot;</rdfs:comment>
+        <rdfs:label xml:lang="it">ChitarraAPiuCorde</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#ChitarraAcustica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#ChitarraAcustica">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#Chitarra"/>
+        <rdfs:comment xml:lang="it">Descrive la categoria delle chitarre acustiche</rdfs:comment>
+        <rdfs:label xml:lang="it">ChitarraAcustica</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#ChitarraElettrica -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#ChitarraElettrica">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#Chitarra"/>
+        <rdfs:comment xml:lang="it">Descrive la categoria delle chitarre elettriche</rdfs:comment>
+        <rdfs:label xml:lang="it">ChitarraElettrica</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#ChitarraGibson -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#ChitarraGibson">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#ChitarraElettrica"/>
+        <rdfs:comment xml:lang="it">Descrive la categoria delle chitarre &quot;Gibson&quot;</rdfs:comment>
+        <rdfs:label xml:lang="it">ChitarraGibson</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#ChitarraStratocaster -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#ChitarraStratocaster">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#ChitarraElettrica"/>
+        <rdfs:comment xml:lang="it">Descrive la categoria delle chitarre &quot;Stratocaster&quot;</rdfs:comment>
+        <rdfs:label xml:lang="it">ChitarraStratocaster</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#ChitarraTelecaster -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#ChitarraTelecaster">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#ChitarraElettrica"/>
+        <rdfs:comment xml:lang="it">Descrive la categoria delle chitarre &quot;Telecaster&quot;</rdfs:comment>
+        <rdfs:label xml:lang="it">ChitarraTelecaster</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Chitarrista -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Chitarrista">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suona"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/musical-instruments#Chitarra"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:comment xml:lang="it">Artista che suona la chitarra</rdfs:comment>
+        <rdfs:label xml:lang="it">Chitarrista</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Citta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Citta">
+        <rdfs:comment xml:lang="it">Città dove è ubicata una casa produttrice</rdfs:comment>
+        <rdfs:label xml:lang="it">Citta</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#CittaAmericana -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#CittaAmericana">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Fullerton"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#LosAngeles"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Nashville"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Norwell"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#SanLuisObispo"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#Citta"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/musical-instruments#CittaGiapponese"/>
+        <rdfs:comment xml:lang="it">Città americana dove è ubicata una casa produttrice</rdfs:comment>
+        <rdfs:label xml:lang="it">CittaAmericana</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#CittaGiapponese -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#CittaGiapponese">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Chiba"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Hamamatsu"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#Citta"/>
+        <rdfs:comment xml:lang="it">Città giapponese dove è ubicata una casa produttrice</rdfs:comment>
+        <rdfs:label xml:lang="it">CittaGiapponese</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Fusto -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Fusto">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item"/>
+        <rdfs:comment xml:lang="it">Fusto della batteria</rdfs:comment>
+        <rdfs:label xml:lang="it">Fusto</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Microfono -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Microfono">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#prodottoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttriceMicrofono"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suonatoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Cantante"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+        <rdfs:comment xml:lang="it">Descrive il microfono (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">Microfono</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Oggetto -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Oggetto">
+        <rdfs:comment xml:lang="it">Ogetto con il quale si suona uno strumento musicale</rdfs:comment>
+        <rdfs:label xml:lang="it">Oggetto</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Origine -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Origine">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+        <rdfs:comment xml:lang="it">Stato di origine della casa produttrice</rdfs:comment>
+        <rdfs:label xml:lang="it">Origine</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#OrigineAmericana -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#OrigineAmericana">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#ubicataIn"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/musical-instruments#CittaAmericana"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#Origine"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/musical-instruments#OrigineGiapponese"/>
+        <rdfs:comment xml:lang="it">Casa produttrice di origine americana</rdfs:comment>
+        <rdfs:label xml:lang="it">OrigineAmericana</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#OrigineGiapponese -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#OrigineGiapponese">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#ubicataIn"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/musical-instruments#CittaGiapponese"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#Origine"/>
+        <rdfs:comment xml:lang="it">Casa produttrice di origine giapponese</rdfs:comment>
+        <rdfs:label xml:lang="it">OrigineGiapponese</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#PezziBatteria -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#PezziBatteria">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/bag.owl#Bag"/>
+        <rdfs:comment xml:lang="it">I pezzi della batteria necessari per comporla</rdfs:comment>
+        <rdfs:label xml:lang="it">PezziBatteria</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Piatti -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Piatti">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#pezziProdottiDa"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttricePiatti"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#PezziBatteria"/>
+        <rdfs:comment xml:lang="it">Tutti i piatti che compongono la batteria</rdfs:comment>
+        <rdfs:label xml:lang="it">Piatti</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Piatto -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Piatto">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item"/>
+        <rdfs:comment xml:lang="it">Piatto della batteria</rdfs:comment>
+        <rdfs:label xml:lang="it">Piatto</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Plettro -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Plettro">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#utilizzatoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Bassista"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#utilizzatoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Chitarrista"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#Oggetto"/>
+        <rdfs:comment xml:lang="it">Oggetto utilizzato per suonare la chitarra e il basso (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">Plettro</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Tastiera -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Tastiera">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#prodottoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttriceTastiera"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suonatoDa"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#Tastierista"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/mo/Instrument"/>
+        <rdfs:comment xml:lang="it">Descrive la tastiera (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">Tastiera</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Tastierista -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#Tastierista">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#suona"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/musical-instruments#Tastiera"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/mo/MusicArtist"/>
+        <rdfs:comment xml:lang="it">Artista che suona la tastiera (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">Tastierista</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#TuttiFusti -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/musical-instruments#TuttiFusti">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/musical-instruments#pezziProdottiDa"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttriceBatteria"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/musical-instruments#PezziBatteria"/>
+        <rdfs:comment xml:lang="it">Tutti i fusti che compongono la batteria. In pratica viene inserito il nome della batteria esclusi i piatti</rdfs:comment>
+        <rdfs:label xml:lang="it">TuttiFusti</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#BacchetteMike -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#BacchetteMike">
+        <utilizzatoDa rdf:resource="http://www.semanticweb.org/musical-instruments#MikeMangini"/>
+        <rdfs:comment xml:lang="it">Bacchette usate da Mike Mangini per suonare la batteria</rdfs:comment>
+        <rdfs:label xml:lang="it">BacchetteMike</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#BatteriaMike -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#BatteriaMike">
+        <compostoDa rdf:resource="http://www.semanticweb.org/musical-instruments#Masterworks"/>
+        <compostoDa rdf:resource="http://www.semanticweb.org/musical-instruments#PiattiMike"/>
+        <suonatoCon rdf:resource="http://www.semanticweb.org/musical-instruments#BacchetteMike"/>
+        <suonatoDa rdf:resource="http://www.semanticweb.org/musical-instruments#MikeMangini"/>
+        <suonatoIn rdf:resource="http://www.semanticweb.org/musical-instruments#ProgressiveMetal"/>
+        <DescrizioneStrumento rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Batteria di Mike Mangini completa di piatti Zildjian e fusti Pearl.</DescrizioneStrumento>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://i.ibb.co/Jz0tvMh/Mangini-300x300px.png</Immagine>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mike Mangini Masterworks Kit and Zildjian Cymbals</NomeStrumentoMusicale>
+        <rdfs:comment xml:lang="it">Batteria di Mike Mangini compresa di Piatti e Fusti</rdfs:comment>
+        <rdfs:label xml:lang="it">BatteriaMike</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Blues -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Blues">
+        <NomeGenereMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blues</NomeGenereMusicale>
+        <rdfs:comment xml:lang="it">Genere musicale chiamato &quot;Blues&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Blues</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Bongo6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Bongo6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Basso"/>
+        <prodottoDa rdf:resource="http://www.semanticweb.org/musical-instruments#MusicMan"/>
+        <suonatoCon rdf:resource="http://www.semanticweb.org/musical-instruments#PlettroJohnMyung"/>
+        <suonatoDa rdf:resource="http://www.semanticweb.org/musical-instruments#JohnMyung"/>
+        <suonatoIn rdf:resource="http://www.semanticweb.org/musical-instruments#ProgressiveMetal"/>
+        <HaNumeroCorde rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</HaNumeroCorde>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://shop.music-man.com/media/catalog/product/cache/203b24419cd48b22c95677b2694a4cb5/w/e/web-myung-bongo6-_0000_1.jpg</Immagine>
+        <Legni rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tiglio e Acero</Legni>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bongo John Myung 6 HH</NomeStrumentoMusicale>
+        <Ponte rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ponte Music Man in acciaio temprato</Ponte>
+        <rdfs:comment xml:lang="it">Basso chiamato &quot;Bongo John Myung 6 HH&quot; utilizzato da John Myung</rdfs:comment>
+        <rdfs:label xml:lang="en">Bongo6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Brownie -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Brownie">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#ChitarraStratocaster"/>
+        <suonatoCon rdf:resource="http://www.semanticweb.org/musical-instruments#PlettroEric"/>
+        <suonatoDa rdf:resource="http://www.semanticweb.org/musical-instruments#EricClapton"/>
+        <suonatoIn rdf:resource="http://www.semanticweb.org/musical-instruments#Rock"/>
+        <Body rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solid Body</Body>
+        <HaNumeroCorde rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</HaNumeroCorde>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.tomassone.it/media/catalog/product/cache/4/image/9df78eab33525d08d6e5fb8d27136e95/P/R/PRO_FENCUSSTRECLASIGMB_01.jpg</Immagine>
+        <Legni rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Acero</Legni>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fender Custom Eric Clapton &quot;Brownie&quot;</NomeStrumentoMusicale>
+        <Ponte rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tremolo “Blocked” American Vintage Synchronized</Ponte>
+        <rdfs:comment xml:lang="it">La chitarra Fender Custom &quot;Brownie&quot; suonata da Eric Clapton</rdfs:comment>
+        <rdfs:label xml:lang="en">Brownie</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Chiba -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Chiba">
+        <NomeCitta rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chiba</NomeCitta>
+        <rdfs:comment xml:lang="it">Citta giapponese &quot;Chiba&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Chiba</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#DreamTheater -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#DreamTheater">
+        <rdf:type rdf:resource="http://purl.org/ontology/mo/MusicGroup"/>
+        <haLavoratori rdf:resource="http://www.semanticweb.org/musical-instruments#JohnPetrucci"/>
+        <HaNumeroArtisti rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</HaNumeroArtisti>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://i.ibb.co/cNLLx1h/dreamtheater.jpg</Immagine>
+        <NomeBandMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dream Theater</NomeBandMusicale>
+        <rdfs:comment xml:lang="it">Band musicale &quot;Dream Theater&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">DreamTheater</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#EricClapton -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#EricClapton">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Chitarrista"/>
+        <lavoraIn rdf:resource="http://www.semanticweb.org/musical-instruments#SolistaEric"/>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://d24jnm9llkb1ub.cloudfront.net/icpn/00602537803453/00602537803453-cover-zoom.jpg</Immagine>
+        <foaf:age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">76</foaf:age>
+        <foaf:birthday rdf:datatype="http://www.w3.org/2001/XMLSchema#string">30/03/1945</foaf:birthday>
+        <foaf:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Eric</foaf:firstName>
+        <foaf:gender rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Uomo</foaf:gender>
+        <foaf:lastName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clapton</foaf:lastName>
+        <rdfs:comment xml:lang="it">Il chitarrista &quot;Eric Clapton&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">EricClapton</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#FantomG8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#FantomG8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Tastiera"/>
+        <suonatoIn rdf:resource="http://www.semanticweb.org/musical-instruments#ProgressiveMetal"/>
+        <DescrizioneStrumento rdf:datatype="http://www.w3.org/2001/XMLSchema#string">La workstation live più potente e lussuosa nella storia di Roland. Il Fantom-G è uno strumento da sogno che ridefinisce i confini della suonabilità e della creatività con il suo motore sonoro avanzato, il rivoluzionario alloggiamento di espansione ARX SuperNATURAL, LCD a colori di grandi dimensioni, nuovo potente sequencer audio/MIDI e tasti pesati &quot;Ivory Feel&quot; di prima classe.</DescrizioneStrumento>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://d1aeri3ty3izns.cloudfront.net/media/1/19048/600/preview.jpg</Immagine>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fantom-G8</NomeStrumentoMusicale>
+        <rdfs:comment xml:lang="it">Tastiera Roland &quot;Fantom G8&quot; utilizzata da Jordan Rudess</rdfs:comment>
+        <rdfs:label xml:lang="en">FantomG8</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Fender -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Fender">
+        <produce rdf:resource="http://www.semanticweb.org/musical-instruments#Brownie"/>
+        <ubicataIn rdf:resource="http://www.semanticweb.org/musical-instruments#Fullerton"/>
+        <FondataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1946</FondataNel>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.butlermusic.com/image/cache/1000x1000/catalog/products/391904748955-2-1000x1000.jpg</Immagine>
+        <NomeCasaProduttrice rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fender Musical Instruments Corporation</NomeCasaProduttrice>
+        <rdfs:comment xml:lang="it">La casa produttrice di chitarre &quot;Fender&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Fender</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Fullerton -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Fullerton">
+        <NomeCitta rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fullerton</NomeCitta>
+        <rdfs:comment xml:lang="it">Città americana &quot;Fullerton&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Fullerton</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Fusto10Mike -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Fusto10Mike">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Fusto"/>
+        <bag:itemOf rdf:resource="http://www.semanticweb.org/musical-instruments#Masterworks"/>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10 x 8 tom</NomeStrumentoMusicale>
+        <rdfs:comment xml:lang="en">10 x 8 tom</rdfs:comment>
+        <rdfs:label xml:lang="it">Fusto10Mike</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Fusto14Mike -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Fusto14Mike">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Fusto"/>
+        <bag:itemOf rdf:resource="http://www.semanticweb.org/musical-instruments#Masterworks"/>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14 x 5.5 snare</NomeStrumentoMusicale>
+        <rdfs:comment xml:lang="en">14 x 5.5 snare</rdfs:comment>
+        <rdfs:label xml:lang="en">Fusto14Mike</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Fusto22Mike -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Fusto22Mike">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Fusto"/>
+        <bag:itemOf rdf:resource="http://www.semanticweb.org/musical-instruments#Masterworks"/>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22 x 18 Bass Drum</NomeStrumentoMusicale>
+        <rdfs:label xml:lang="en">22 x 18 Bass Drum</rdfs:label>
+        <rdfs:label xml:lang="it">Fusto22Mike</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#GibsonGuitar -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#GibsonGuitar">
+        <ubicataIn rdf:resource="http://www.semanticweb.org/musical-instruments#Nashville"/>
+        <FondataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1902</FondataNel>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://static.gibson.com/product-images/Gibson/GA-LED1/GA-LED1_Lit_front.png</Immagine>
+        <NomeCasaProduttrice rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gibson Guitar Corporation</NomeCasaProduttrice>
+        <rdfs:comment xml:lang="it">Casa produttrice &quot;Gibson&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">GibsonGuitar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#GoldTop -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#GoldTop">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#ChitarraGibson"/>
+        <prodottoDa rdf:resource="http://www.semanticweb.org/musical-instruments#GibsonGuitar"/>
+        <suonatoCon rdf:resource="http://www.semanticweb.org/musical-instruments#PlettroJoe"/>
+        <suonatoIn rdf:resource="http://www.semanticweb.org/musical-instruments#Blues"/>
+        <Body rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solid Body</Body>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://d1aeri3ty3izns.cloudfront.net/media/47/473415/600/preview.jpg</Immagine>
+        <Legni rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mogano, Ebano o Palissandro</Legni>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gold Top Personalizzata</NomeStrumentoMusicale>
+        <Ponte rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fisso, raramente tremolo</Ponte>
+        <rdfs:comment xml:lang="it">Chittarra Gibson con il nome &quot;Gold Top&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">GoldTop</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Hamamatsu -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Hamamatsu">
+        <NomeCitta rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hamamatsu</NomeCitta>
+        <rdfs:comment xml:lang="it">Città giapponese &quot;Hamamatsu&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Hamamatsu</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#JamesLabrie -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#JamesLabrie">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Cantante"/>
+        <lavoraIn rdf:resource="http://www.semanticweb.org/musical-instruments#DreamTheater"/>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://hardforce.com/img/generated/Artists/2014/01/JamesLaBrie_bestFit_600x600.png</Immagine>
+        <foaf:age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">58</foaf:age>
+        <foaf:birthday rdf:datatype="http://www.w3.org/2001/XMLSchema#string">05/05/1963</foaf:birthday>
+        <foaf:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">James</foaf:firstName>
+        <foaf:gender rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Uomo</foaf:gender>
+        <foaf:lastName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Labrie</foaf:lastName>
+        <rdfs:comment xml:lang="it">Cantante &quot;James Labrie&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">JamesLabrie</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#JoeBonamassa -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#JoeBonamassa">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Chitarrista"/>
+        <lavoraIn rdf:resource="http://www.semanticweb.org/musical-instruments#SolistaJoe"/>
+        <suona rdf:resource="http://www.semanticweb.org/musical-instruments#GoldTop"/>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.debaser.it/resize.aspx?ARTIST_ID=119462</Immagine>
+        <foaf:age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">44</foaf:age>
+        <foaf:birthday rdf:datatype="http://www.w3.org/2001/XMLSchema#string">08/05/1977</foaf:birthday>
+        <foaf:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joe</foaf:firstName>
+        <foaf:gender rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Uomo</foaf:gender>
+        <foaf:lastName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bonamassa</foaf:lastName>
+        <rdfs:comment xml:lang="it">Il chitarrista &quot;Joe Bonamassa&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">JoeBonamassa</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#JohnMyung -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#JohnMyung">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Bassista"/>
+        <lavoraIn rdf:resource="http://www.semanticweb.org/musical-instruments#DreamTheater"/>
+        <suona rdf:resource="http://www.semanticweb.org/musical-instruments#Bongo6"/>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://arrowlordsofmetal.nl/wp-content/uploads/2021/10/202110_band_Dream-Theater-John-Myung.jpg</Immagine>
+        <foaf:age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">54</foaf:age>
+        <foaf:birthday rdf:datatype="http://www.w3.org/2001/XMLSchema#string">24/01/1967</foaf:birthday>
+        <foaf:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">John</foaf:firstName>
+        <foaf:gender rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Uomo</foaf:gender>
+        <foaf:lastName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Myung</foaf:lastName>
+        <rdfs:comment xml:lang="it">Bassista &quot;John Myung&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">JohnMyung</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#JohnPetrucci -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#JohnPetrucci">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Chitarrista"/>
+        <suona rdf:resource="http://www.semanticweb.org/musical-instruments#Majesty7"/>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://independentmusicawards.com/wp-content/uploads/2019/09/John-Petrucci.jpg</Immagine>
+        <foaf:age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">54</foaf:age>
+        <foaf:birthday rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12/07/1967</foaf:birthday>
+        <foaf:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">John</foaf:firstName>
+        <foaf:gender rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Uomo</foaf:gender>
+        <foaf:lastName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Petrucci</foaf:lastName>
+        <rdfs:comment xml:lang="it">Chitarrista &quot;John Petrucci&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">JohnPetrucci</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#JordanRudess -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#JordanRudess">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Tastierista"/>
+        <lavoraIn rdf:resource="http://www.semanticweb.org/musical-instruments#DreamTheater"/>
+        <suona rdf:resource="http://www.semanticweb.org/musical-instruments#FantomG8"/>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://i.scdn.co/image/ab6761610000e5eb67422e82214a66f18cd5091c</Immagine>
+        <foaf:age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">65</foaf:age>
+        <foaf:birthday rdf:datatype="http://www.w3.org/2001/XMLSchema#string">04/11/1956</foaf:birthday>
+        <foaf:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jordan</foaf:firstName>
+        <foaf:gender rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Uomo</foaf:gender>
+        <foaf:lastName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rudess</foaf:lastName>
+        <rdfs:comment xml:lang="it">Tastierista &quot;JordanRudess&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">JordanRudess</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#LosAngeles -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#LosAngeles">
+        <NomeCitta rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Los Angeles</NomeCitta>
+        <rdfs:comment xml:lang="it">Città di &quot;Los Angeles&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">LosAngeles</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Ma1000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Ma1000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Microfono"/>
+        <suonatoDa rdf:resource="http://www.semanticweb.org/musical-instruments#JamesLabrie"/>
+        <suonatoIn rdf:resource="http://www.semanticweb.org/musical-instruments#ProgressiveMetal"/>
+        <DescrizioneStrumento rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Traendo ispirazione da alcuni dei microfoni più apprezzati del passato, il designer di microfoni TECHNICAL GRAMMY® David Royer, vincitore del premio TECHNICAL GRAMMY®, ha creato un microfono a tubo completamente moderno che presenta un nuovo tubo 5840 originale, una capsula in stile 251 e un trasformatore progettato su misura costruito da Coast Magnetica. Il risultato? Una fascia alta dolce e ariosa, realismo &quot;tu-sei-qui&quot; nei medi e una fascia bassa precisa ma autorevole.</DescrizioneStrumento>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://shop.funky-junk.com/it/wp-content/uploads/sites/2/2020/12/MA-1000.jpg</Immagine>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MA-1000DS</NomeStrumentoMusicale>
+        <rdfs:comment xml:lang="it">Il microfono &quot;MA-1000DS&quot; della Mojave</rdfs:comment>
+        <rdfs:label xml:lang="en">Ma1000</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Majesty7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Majesty7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#ChitarraAPiuCorde"/>
+        <suonatoCon rdf:resource="http://www.semanticweb.org/musical-instruments#PlettroJohnPetrucci"/>
+        <suonatoIn rdf:resource="http://www.semanticweb.org/musical-instruments#ProgressiveMetal"/>
+        <Body rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solid Body</Body>
+        <HaNumeroCorde rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</HaNumeroCorde>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://d1aeri3ty3izns.cloudfront.net/media/29/292871/600/preview.jpg</Immagine>
+        <Legni rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mogano, Acero, Ebano</Legni>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Music Man Majesty 7 Hydrospace</NomeStrumentoMusicale>
+        <Ponte rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tremolo Fluttuante</Ponte>
+        <rdfs:comment xml:lang="it">La chitarra &quot;Majesty 7&quot; utilizzata da John Petrucci</rdfs:comment>
+        <rdfs:label xml:lang="en">Majesty7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Majesty8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Majesty8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#ChitarraAPiuCorde"/>
+        <prodottoDa rdf:resource="http://www.semanticweb.org/musical-instruments#MusicMan"/>
+        <suonatoCon rdf:resource="http://www.semanticweb.org/musical-instruments#PlettroJohnPetrucci"/>
+        <suonatoDa rdf:resource="http://www.semanticweb.org/musical-instruments#JohnPetrucci"/>
+        <suonatoIn rdf:resource="http://www.semanticweb.org/musical-instruments#ProgressiveMetal"/>
+        <Body rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solid body</Body>
+        <HaNumeroCorde rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</HaNumeroCorde>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://media.guitarcenter.com/is/image/MMGS7/L88819000001000-00-720x720.jpg</Immagine>
+        <Legni rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tiglio, Mogano ed Ebano</Legni>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Music Man Majesty 8 Mystic Dream</NomeStrumentoMusicale>
+        <Ponte rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ponte fisso Music Man</Ponte>
+        <rdfs:comment xml:lang="it">La chitarra &quot;Majesty 8&quot; che utilizza John Petrucci</rdfs:comment>
+        <rdfs:label xml:lang="en">Majesty8</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Masterworks -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Masterworks">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
+        <pezziProdottiDa rdf:resource="http://www.semanticweb.org/musical-instruments#Pearl"/>
+        <DescrizioneStrumento rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Masterworks è l&apos;obiettivo finale. Una dichiarazione di cimelio senza tempo realizzato per elevare la visione della batteria personalizzata in realtà.</DescrizioneStrumento>
+        <Legni rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Acero, Betulla o Gomma</Legni>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Masterworks Kit Mike Mangini</NomeStrumentoMusicale>
+        <rdfs:comment xml:lang="it">Batteria della Pearl &quot;Masterworks&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Masterworks</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#MikeMangini -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#MikeMangini">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Batterista"/>
+        <lavoraIn rdf:resource="http://www.semanticweb.org/musical-instruments#DreamTheater"/>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://metalitalia.com/wp-content/uploads/2017/01/dream-theater-mike-mangini-2017.jpg</Immagine>
+        <foaf:age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">58</foaf:age>
+        <foaf:birthday rdf:datatype="http://www.w3.org/2001/XMLSchema#string">18/04/1963</foaf:birthday>
+        <foaf:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mike</foaf:firstName>
+        <foaf:gender rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Uomo</foaf:gender>
+        <foaf:lastName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mangini</foaf:lastName>
+        <rdfs:comment xml:lang="it">Batterista &quot;Mike Mangini&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">MikeMangini</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Mojave -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Mojave">
+        <produce rdf:resource="http://www.semanticweb.org/musical-instruments#Ma1000"/>
+        <ubicataIn rdf:resource="http://www.semanticweb.org/musical-instruments#Fullerton"/>
+        <FondataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1985</FondataNel>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://mojaveaudio.com/audiovideo/wp-content/uploads/2020/07/Mojave-Logo-Red.png</Immagine>
+        <NomeCasaProduttrice rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mojave</NomeCasaProduttrice>
+        <rdfs:comment xml:lang="it">Casa produttrice di microfoni &quot;Mojave&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Mojave</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#MusicMan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#MusicMan">
+        <produce rdf:resource="http://www.semanticweb.org/musical-instruments#Majesty7"/>
+        <ubicataIn rdf:resource="http://www.semanticweb.org/musical-instruments#SanLuisObispo"/>
+        <FondataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1974</FondataNel>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://media.hatsline.com/unsafe/600x600/img.hatsline.com/art/1/600/600/ffffff/50144/88e12572249252cf67195c29dc6ca2d6.png.jpg</Immagine>
+        <NomeCasaProduttrice rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ernie Ball Music Man</NomeCasaProduttrice>
+        <rdfs:comment xml:lang="it">La casa produttrice di chitarre e bassi elettrici &quot;Ernie Ball Music Man&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">MusicMan</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Nashville -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Nashville">
+        <NomeCitta rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nashville</NomeCitta>
+        <rdfs:comment xml:lang="it">Città di Nashville</rdfs:comment>
+        <rdfs:label xml:lang="en">Nashville</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Norwell -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Norwell">
+        <NomeCitta rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Norwell</NomeCitta>
+        <rdfs:comment xml:lang="it">Città americana &quot;Norwell&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Norwell</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Pearl -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Pearl">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttriceBatteria"/>
+        <producePezzi rdf:resource="http://www.semanticweb.org/musical-instruments#Masterworks"/>
+        <ubicataIn rdf:resource="http://www.semanticweb.org/musical-instruments#Chiba"/>
+        <FondataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1946</FondataNel>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://ih1.redbubble.net/image.816370860.4238/pp,504x498-pad,600x600,f8f8f8.jpg</Immagine>
+        <NomeCasaProduttrice rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pearl Drums</NomeCasaProduttrice>
+        <rdfs:comment xml:lang="it">Casa produttrice di batterie &quot;Pearl&quot; (strumento musicale)</rdfs:comment>
+        <rdfs:label xml:lang="it">Pearl</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#PiattiMike -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#PiattiMike">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
+        <DescrizioneStrumento rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tutti i piatti della batteria di Mike Mangini che comprendono la Serie A e la Serie K della Avedis Zildjian Company.</DescrizioneStrumento>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Piatti Zildjian A-K Series</NomeStrumentoMusicale>
+        <rdfs:comment xml:lang="it">Tutti i piatti della batteria di Mike Mangini</rdfs:comment>
+        <rdfs:label xml:lang="it">PiattiMike</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Piatto14Mike -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Piatto14Mike">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Piatto"/>
+        <bag:itemOf rdf:resource="http://www.semanticweb.org/musical-instruments#PiattiMike"/>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">14&quot; K Special HiHats</NomeStrumentoMusicale>
+        <rdfs:comment xml:lang="en">14&quot; K Special HiHats</rdfs:comment>
+        <rdfs:label xml:lang="it">Piatto14Mike</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Piatto19Mike -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Piatto19Mike">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Piatto"/>
+        <bag:itemOf rdf:resource="http://www.semanticweb.org/musical-instruments#PiattiMike"/>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">19&quot; A Custom Crash</NomeStrumentoMusicale>
+        <rdfs:comment xml:lang="en">19&quot; A Custom Crash</rdfs:comment>
+        <rdfs:label xml:lang="it">Piatto19Mike</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Piatto20Mike -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Piatto20Mike">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#Piatto"/>
+        <bag:itemOf rdf:resource="http://www.semanticweb.org/musical-instruments#PiattiMike"/>
+        <NomeStrumentoMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">20&quot; A Zildjian Ping Ride</NomeStrumentoMusicale>
+        <rdfs:comment xml:lang="it">20&quot; A Zildjian Ping Ride</rdfs:comment>
+        <rdfs:label xml:lang="it">Piatto20Mike</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#PlettroEric -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#PlettroEric">
+        <utilizzatoDa rdf:resource="http://www.semanticweb.org/musical-instruments#EricClapton"/>
+        <rdfs:comment xml:lang="it">Il plettro utilizzato da Eric Clapton per suonare la chitarra</rdfs:comment>
+        <rdfs:label xml:lang="it">PlettroEric</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#PlettroJoe -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#PlettroJoe">
+        <utilizzatoDa rdf:resource="http://www.semanticweb.org/musical-instruments#JoeBonamassa"/>
+        <rdfs:comment xml:lang="it">Plettro che usa Joe Bonamassa per suonare la chitarra</rdfs:comment>
+        <rdfs:label xml:lang="it">PlettroJoe</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#PlettroJohnMyung -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#PlettroJohnMyung">
+        <utilizzatoDa rdf:resource="http://www.semanticweb.org/musical-instruments#JohnMyung"/>
+        <rdfs:comment xml:lang="it">Pletto utilizzato da John Myung per suonare</rdfs:comment>
+        <rdfs:label xml:lang="it">PlettroJohnMyung</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#PlettroJohnPetrucci -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#PlettroJohnPetrucci">
+        <utilizzatoDa rdf:resource="http://www.semanticweb.org/musical-instruments#JohnPetrucci"/>
+        <rdfs:comment xml:lang="it">Il plettro utilizzato da John Petrucci per suonare</rdfs:comment>
+        <rdfs:label xml:lang="it">PlettroJohnPetrucci</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#ProgressiveMetal -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#ProgressiveMetal">
+        <NomeGenereMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Progressive Metal</NomeGenereMusicale>
+        <rdfs:comment xml:lang="it">Genere musicale &quot;Progressive Metal&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">ProgressiveMetal</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Rock -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Rock">
+        <NomeGenereMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rock</NomeGenereMusicale>
+        <rdfs:comment xml:lang="it">Genere musicale &quot;Rock&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Rock</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Roland -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Roland">
+        <produce rdf:resource="http://www.semanticweb.org/musical-instruments#FantomG8"/>
+        <ubicataIn rdf:resource="http://www.semanticweb.org/musical-instruments#Hamamatsu"/>
+        <FondataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1972</FondataNel>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://ih1.redbubble.net/image.1867923600.0770/st,small,507x507-pad,600x600,f8f8f8.jpg</Immagine>
+        <NomeCasaProduttrice rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Roland Corporation</NomeCasaProduttrice>
+        <rdfs:comment xml:lang="it">Casa produttrice di tastiere &quot;Roland Corporation&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Roland</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#SanLuisObispo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#SanLuisObispo">
+        <NomeCitta rdf:datatype="http://www.w3.org/2001/XMLSchema#string">San Luis Obispo</NomeCitta>
+        <rdfs:comment xml:lang="it">Città americana &quot;San Luis Obispo&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">SanLuisObispo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#SolistaEric -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#SolistaEric">
+        <HaNumeroArtisti rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</HaNumeroArtisti>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.femalefirst.co.uk/image-library/square/1000/e/eric-clapton-thinkstock-b.jpg</Immagine>
+        <NomeBandMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Eric Clapton Solista</NomeBandMusicale>
+        <rdfs:comment xml:lang="it">Eric Clapton è un solista</rdfs:comment>
+        <rdfs:label xml:lang="it">SolistaEric</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#SolistaJoe -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#SolistaJoe">
+        <HaNumeroArtisti rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</HaNumeroArtisti>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://media1.fdncms.com/clevescene/imager/u/original/36058990/unnamed-27.jpg</Immagine>
+        <NomeBandMusicale rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joe Bonamassa Solista</NomeBandMusicale>
+        <rdfs:comment xml:lang="it">Joe Bonamassa è un solista</rdfs:comment>
+        <rdfs:label xml:lang="it">SolistaJoe</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/musical-instruments#Zildjian -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/musical-instruments#Zildjian">
+        <rdf:type rdf:resource="http://www.semanticweb.org/musical-instruments#CasaProduttricePiatti"/>
+        <producePezzi rdf:resource="http://www.semanticweb.org/musical-instruments#PiattiMike"/>
+        <ubicataIn rdf:resource="http://www.semanticweb.org/musical-instruments#Norwell"/>
+        <FondataNel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1623</FondataNel>
+        <Immagine rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://media.musicalstore2005.com/media/catalog/product/cache/1/image/600x600/a4e40ebdc3e371adff845072e1c73f37/p/r/pr_9080401699025.jpg</Immagine>
+        <NomeCasaProduttrice rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Avedis Zildjian Company</NomeCasaProduttrice>
+        <rdfs:comment xml:lang="it">Casa produttrice di piatti per la batteria &quot;Zildjian&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Zildjian</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/ontology/mo/Genre"/>
+            <rdf:Description rdf:about="http://purl.org/ontology/mo/Instrument"/>
+            <rdf:Description rdf:about="http://purl.org/ontology/mo/MusicArtist"/>
+            <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection"/>
+            <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#BandMusicale"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#CasaProduttrice"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Citta"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/musical-instruments#Oggetto"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

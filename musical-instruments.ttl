@@ -496,8 +496,7 @@
 <http://purl.org/ontology/mo/SoloMusicArtist> rdf:type owl:Class ;
                                               owl:equivalentClass [ rdf:type owl:Restriction ;
                                                                     owl:onProperty :HaNumeroArtisti ;
-                                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                    owl:onDataRange xsd:integer
+                                                                    owl:hasValue 1
                                                                   ] ;
                                               rdfs:subClassOf :BandMusicale ;
                                               rdfs:comment "Band musicale formata da un solo artista"@it ;
@@ -607,13 +606,11 @@
 :BatteriaAcustica rdf:type owl:Class ;
                   owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                                owl:onProperty :compostoDa ;
-                                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                               owl:onClass :Piatti
+                                                               owl:someValuesFrom :Piatti
                                                              ]
                                                              [ rdf:type owl:Restriction ;
                                                                owl:onProperty :compostoDa ;
-                                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                               owl:onClass :TuttiFusti
+                                                               owl:someValuesFrom :TuttiFusti
                                                              ]
                                                            ) ;
                                         rdf:type owl:Class
@@ -750,6 +747,15 @@
 
 ###  http://www.semanticweb.org/musical-instruments#ChitarraAPiuCorde
 :ChitarraAPiuCorde rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty :HaNumeroCorde ;
+                                         owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                              owl:onDatatype xsd:integer ;
+                                                              owl:withRestrictions ( [ xsd:minExclusive 6
+                                                                                     ]
+                                                                                   )
+                                                            ]
+                                       ] ;
                    rdfs:subClassOf :ChitarraElettrica ;
                    rdfs:comment "Descrive la categoria delle chitarre \"a più corde\""@it ;
                    rdfs:label "ChitarraAPiuCorde"@it .
@@ -926,13 +932,16 @@
 
 ###  http://www.semanticweb.org/musical-instruments#Plettro
 :Plettro rdf:type owl:Class ;
-         owl:equivalentClass [ rdf:type owl:Restriction ;
-                               owl:onProperty :utilizzatoDa ;
-                               owl:someValuesFrom :Bassista
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :utilizzatoDa ;
-                               owl:someValuesFrom :Chitarrista
+         owl:equivalentClass [ rdf:type owl:Class ;
+                               owl:unionOf ( [ rdf:type owl:Restriction ;
+                                               owl:onProperty :utilizzatoDa ;
+                                               owl:someValuesFrom :Bassista
+                                             ]
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :utilizzatoDa ;
+                                               owl:someValuesFrom :Chitarrista
+                                             ]
+                                           )
                              ] ;
          rdfs:subClassOf :Oggetto ;
          rdfs:comment "Oggetto utilizzato per suonare la chitarra e il basso (strumento musicale)"@it ;
@@ -985,16 +994,14 @@
 #################################################################
 
 ###  http://www.semanticweb.org/musical-instruments#BacchetteMike
-:BacchetteMike rdf:type owl:NamedIndividual ,
-                        :Bacchette ;
+:BacchetteMike rdf:type owl:NamedIndividual ;
                :utilizzatoDa :MikeMangini ;
                rdfs:comment "Bacchette usate da Mike Mangini per suonare la batteria"@it ;
                rdfs:label "BacchetteMike"@it .
 
 
 ###  http://www.semanticweb.org/musical-instruments#BatteriaMike
-:BatteriaMike rdf:type owl:NamedIndividual ,
-                       :BatteriaAcustica ;
+:BatteriaMike rdf:type owl:NamedIndividual ;
               :compostoDa :Masterworks ,
                           :PiattiMike ;
               :suonatoCon :BacchetteMike ;
@@ -1008,8 +1015,7 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#Blues
-:Blues rdf:type owl:NamedIndividual ,
-                <http://purl.org/ontology/mo/Genre> ;
+:Blues rdf:type owl:NamedIndividual ;
        :NomeGenereMusicale "Blues"^^xsd:string ;
        rdfs:comment "Genere musicale chiamato \"Blues\""@it ;
        rdfs:label "Blues"@en .
@@ -1048,8 +1054,7 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#Chiba
-:Chiba rdf:type owl:NamedIndividual ,
-                :CittaGiapponese ;
+:Chiba rdf:type owl:NamedIndividual ;
        :NomeCitta "Chiba"^^xsd:string ;
        rdfs:comment "Citta giapponese \"Chiba\""@it ;
        rdfs:label "Chiba"@en .
@@ -1092,8 +1097,7 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#Fender
-:Fender rdf:type owl:NamedIndividual ,
-                 :CasaProduttriceChitarra ;
+:Fender rdf:type owl:NamedIndividual ;
         :produce :Brownie ;
         :ubicataIn :Fullerton ;
         :FondataNel 1946 ;
@@ -1104,8 +1108,7 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#Fullerton
-:Fullerton rdf:type owl:NamedIndividual ,
-                    :CittaAmericana ;
+:Fullerton rdf:type owl:NamedIndividual ;
            :NomeCitta "Fullerton"^^xsd:string ;
            rdfs:comment "Città americana \"Fullerton\""@it ;
            rdfs:label "Fullerton"@en .
@@ -1139,8 +1142,7 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#GibsonGuitar
-:GibsonGuitar rdf:type owl:NamedIndividual ,
-                       :CasaProduttriceChitarra ;
+:GibsonGuitar rdf:type owl:NamedIndividual ;
               :ubicataIn :Nashville ;
               :FondataNel 1902 ;
               :Immagine "https://static.gibson.com/product-images/Gibson/GA-LED1/GA-LED1_Lit_front.png"^^xsd:string ;
@@ -1165,8 +1167,7 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#Hamamatsu
-:Hamamatsu rdf:type owl:NamedIndividual ,
-                    :CittaGiapponese ;
+:Hamamatsu rdf:type owl:NamedIndividual ;
            :NomeCitta "Hamamatsu"^^xsd:string ;
            rdfs:comment "Città giapponese \"Hamamatsu\""@it ;
            rdfs:label "Hamamatsu"@en .
@@ -1217,7 +1218,8 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#JohnPetrucci
-:JohnPetrucci rdf:type owl:NamedIndividual ;
+:JohnPetrucci rdf:type owl:NamedIndividual ,
+                       :Chitarrista ;
               :suona :Majesty7 ;
               :Immagine "https://independentmusicawards.com/wp-content/uploads/2019/09/John-Petrucci.jpg"^^xsd:string ;
               <http://xmlns.com/foaf/0.1/age> 54 ;
@@ -1245,8 +1247,7 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#LosAngeles
-:LosAngeles rdf:type owl:NamedIndividual ,
-                     :CittaAmericana ;
+:LosAngeles rdf:type owl:NamedIndividual ;
             :NomeCitta "Los Angeles"^^xsd:string ;
             rdfs:comment "Città di \"Los Angeles\""@it ;
             rdfs:label "LosAngeles"@en .
@@ -1298,8 +1299,7 @@
 
 ###  http://www.semanticweb.org/musical-instruments#Masterworks
 :Masterworks rdf:type owl:NamedIndividual ,
-                      <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ,
-                      :TuttiFusti ;
+                      <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
              :pezziProdottiDa :Pearl ;
              :DescrizioneStrumento "Masterworks è l'obiettivo finale. Una dichiarazione di cimelio senza tempo realizzato per elevare la visione della batteria personalizzata in realtà."^^xsd:string ;
              :Legni "Acero, Betulla o Gomma"^^xsd:string ;
@@ -1323,8 +1323,7 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#Mojave
-:Mojave rdf:type owl:NamedIndividual ,
-                 :CasaProduttriceMicrofono ;
+:Mojave rdf:type owl:NamedIndividual ;
         :produce :Ma1000 ;
         :ubicataIn :Fullerton ;
         :FondataNel 1985 ;
@@ -1335,9 +1334,7 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#MusicMan
-:MusicMan rdf:type owl:NamedIndividual ,
-                   :CasaProduttriceBasso ,
-                   :CasaProduttriceChitarra ;
+:MusicMan rdf:type owl:NamedIndividual ;
           :produce :Majesty7 ;
           :ubicataIn :SanLuisObispo ;
           :FondataNel 1974 ;
@@ -1348,16 +1345,14 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#Nashville
-:Nashville rdf:type owl:NamedIndividual ,
-                    :CittaAmericana ;
+:Nashville rdf:type owl:NamedIndividual ;
            :NomeCitta "Nashville"^^xsd:string ;
            rdfs:comment "Città di Nashville"@it ;
            rdfs:label "Nashville"@en .
 
 
 ###  http://www.semanticweb.org/musical-instruments#Norwell
-:Norwell rdf:type owl:NamedIndividual ,
-                  :CittaAmericana ;
+:Norwell rdf:type owl:NamedIndividual ;
          :NomeCitta "Norwell"^^xsd:string ;
          rdfs:comment "Città americana \"Norwell\""@it ;
          rdfs:label "Norwell"@en .
@@ -1377,8 +1372,7 @@
 
 ###  http://www.semanticweb.org/musical-instruments#PiattiMike
 :PiattiMike rdf:type owl:NamedIndividual ,
-                     <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ,
-                     :Piatti ;
+                     <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
             :DescrizioneStrumento "Tutti i piatti della batteria di Mike Mangini che comprendono la Serie A e la Serie K della Avedis Zildjian Company."^^xsd:string ;
             :NomeStrumentoMusicale "Piatti Zildjian A-K Series"^^xsd:string ;
             rdfs:comment "Tutti i piatti della batteria di Mike Mangini"@it ;
@@ -1413,56 +1407,49 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#PlettroEric
-:PlettroEric rdf:type owl:NamedIndividual ,
-                      :Plettro ;
+:PlettroEric rdf:type owl:NamedIndividual ;
              :utilizzatoDa :EricClapton ;
              rdfs:comment "Il plettro utilizzato da Eric Clapton per suonare la chitarra"@it ;
              rdfs:label "PlettroEric"@it .
 
 
 ###  http://www.semanticweb.org/musical-instruments#PlettroJoe
-:PlettroJoe rdf:type owl:NamedIndividual ,
-                     :Plettro ;
+:PlettroJoe rdf:type owl:NamedIndividual ;
             :utilizzatoDa :JoeBonamassa ;
             rdfs:comment "Plettro che usa Joe Bonamassa per suonare la chitarra"@it ;
             rdfs:label "PlettroJoe"@it .
 
 
 ###  http://www.semanticweb.org/musical-instruments#PlettroJohnMyung
-:PlettroJohnMyung rdf:type owl:NamedIndividual ,
-                           :Plettro ;
+:PlettroJohnMyung rdf:type owl:NamedIndividual ;
                   :utilizzatoDa :JohnMyung ;
                   rdfs:comment "Pletto utilizzato da John Myung per suonare"@it ;
                   rdfs:label "PlettroJohnMyung"@it .
 
 
 ###  http://www.semanticweb.org/musical-instruments#PlettroJohnPetrucci
-:PlettroJohnPetrucci rdf:type owl:NamedIndividual ,
-                              :Plettro ;
+:PlettroJohnPetrucci rdf:type owl:NamedIndividual ;
                      :utilizzatoDa :JohnPetrucci ;
                      rdfs:comment "Il plettro utilizzato da John Petrucci per suonare"@it ;
                      rdfs:label "PlettroJohnPetrucci"@it .
 
 
 ###  http://www.semanticweb.org/musical-instruments#ProgressiveMetal
-:ProgressiveMetal rdf:type owl:NamedIndividual ,
-                           <http://purl.org/ontology/mo/Genre> ;
+:ProgressiveMetal rdf:type owl:NamedIndividual ;
                   :NomeGenereMusicale "Progressive Metal"^^xsd:string ;
                   rdfs:comment "Genere musicale \"Progressive Metal\""@it ;
                   rdfs:label "ProgressiveMetal"@en .
 
 
 ###  http://www.semanticweb.org/musical-instruments#Rock
-:Rock rdf:type owl:NamedIndividual ,
-               <http://purl.org/ontology/mo/Genre> ;
+:Rock rdf:type owl:NamedIndividual ;
       :NomeGenereMusicale "Rock"^^xsd:string ;
       rdfs:comment "Genere musicale \"Rock\""@it ;
       rdfs:label "Rock"@en .
 
 
 ###  http://www.semanticweb.org/musical-instruments#Roland
-:Roland rdf:type owl:NamedIndividual ,
-                 :CasaProduttriceTastiera ;
+:Roland rdf:type owl:NamedIndividual ;
         :produce :FantomG8 ;
         :ubicataIn :Hamamatsu ;
         :FondataNel 1972 ;
@@ -1473,16 +1460,14 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#SanLuisObispo
-:SanLuisObispo rdf:type owl:NamedIndividual ,
-                        :CittaAmericana ;
+:SanLuisObispo rdf:type owl:NamedIndividual ;
                :NomeCitta "San Luis Obispo"^^xsd:string ;
                rdfs:comment "Città americana \"San Luis Obispo\""@it ;
                rdfs:label "SanLuisObispo"@en .
 
 
 ###  http://www.semanticweb.org/musical-instruments#SolistaEric
-:SolistaEric rdf:type owl:NamedIndividual ,
-                      <http://purl.org/ontology/mo/SoloMusicArtist> ;
+:SolistaEric rdf:type owl:NamedIndividual ;
              :HaNumeroArtisti 1 ;
              :Immagine "https://www.femalefirst.co.uk/image-library/square/1000/e/eric-clapton-thinkstock-b.jpg"^^xsd:string ;
              :NomeBandMusicale "Eric Clapton Solista"^^xsd:string ;
@@ -1491,8 +1476,7 @@
 
 
 ###  http://www.semanticweb.org/musical-instruments#SolistaJoe
-:SolistaJoe rdf:type owl:NamedIndividual ,
-                     <http://purl.org/ontology/mo/SoloMusicArtist> ;
+:SolistaJoe rdf:type owl:NamedIndividual ;
             :HaNumeroArtisti 1 ;
             :Immagine "https://media1.fdncms.com/clevescene/imager/u/original/36058990/unnamed-27.jpg"^^xsd:string ;
             :NomeBandMusicale "Joe Bonamassa Solista"^^xsd:string ;
@@ -1510,6 +1494,24 @@
           :NomeCasaProduttrice "Avedis Zildjian Company"^^xsd:string ;
           rdfs:comment "Casa produttrice di piatti per la batteria \"Zildjian\""@it ;
           rdfs:label "Zildjian"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://purl.org/ontology/mo/Genre>
+                <http://purl.org/ontology/mo/Instrument>
+                <http://purl.org/ontology/mo/MusicArtist>
+                <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection>
+                <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Item>
+                :BandMusicale
+                :CasaProduttrice
+                :Citta
+                :Oggetto
+              )
+] .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
