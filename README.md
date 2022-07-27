@@ -10,7 +10,7 @@ Il dominio di applicazione riguarda il fornire agli utenti, appassionati
 di musica, tutte le informazioni sugli strumenti musicali, sugli artisti 
 che suonano lo strumento musicale, sulle case produttrici degli 
 strumenti musicali e sulle band musicali (o solisti) in cui gli artisti 
-suonano. Vengono anche descritte le case produttrici degli strumenti musicali.
+suonano.
 
 ## Come eseguire l'applicazione client
 
