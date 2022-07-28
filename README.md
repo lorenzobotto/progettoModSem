@@ -1,5 +1,5 @@
 # progettoModSem
-Progetto in RDF/OWL Ontology per il corso di Modellazzione Concetuale per il Web Semantico - Unito 2022.
+Progetto in RDF/OWL Ontology per il corso di Modellazzione Concetuale per il Web Semantico - Unito 2021.
 
 ## Descrizione progetto
 
