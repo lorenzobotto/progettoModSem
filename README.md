@@ -12,6 +12,10 @@ che suonano lo strumento musicale, sulle case produttrici degli
 strumenti musicali e sulle band musicali (o solisti) in cui gli artisti 
 suonano.
 
+## Come visualizzare l'ontologia
+
+Installare Protégé da https://protege.stanford.edu/ e caricare l'ontologia.
+
 ## Come eseguire l'applicazione client
 
 Installare GraphDB da https://graphdb.ontotext.com/.
@@ -32,3 +36,10 @@ Infine eseguire:
 ```
 yarn start
 ```
+
+
+## Video esecuzione del progetto
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=5g7Gs0sNL4U
+" rel="noopener" target="_blank"><img src="http://img.youtube.com/vi/5g7Gs0sNL4U/0.jpg" 
+alt="Esecuzione ModSem" width="400" border="10" /></a>
