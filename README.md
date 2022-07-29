@@ -12,6 +12,8 @@ che suonano lo strumento musicale, sulle case produttrici degli
 strumenti musicali e sulle band musicali (o solisti) in cui gli artisti 
 suonano.
 
+**Disclaimer: Tutti i dati inseriti nel database da me sono dati di prova, completamente casuali e non sono da intendere come reali. Derivano tutti dalla mia immaginazione e inseriti casualmente. Non utilizzare alcun dato per nessun scopo particolare. Non mi assumo nessuna responsabilità.**
+
 ## Come visualizzare l'ontologia
 
 Installare Protégé da https://protege.stanford.edu/ e caricare l'ontologia.
