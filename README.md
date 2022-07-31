@@ -24,7 +24,7 @@ Installare GraphDB da https://graphdb.ontotext.com/.
 
 Una volta installato GraphDB, caricare l'ontologia importando il file 'musical-instruments.owl' dal menù di sinistra 'Import'.
 
-Una volta importata l'ontologia, spostarsi nella cartella del client:
+Da riga di comando, una volta importata l'ontologia, spostarsi nella cartella del client:
 ```
 cd music-client
 ```
